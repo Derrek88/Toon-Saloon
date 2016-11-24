@@ -6,19 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style type="text/css">
-        #background {
-            background-size: cover;
-            background-position: center;
-            position: static;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        .box {
-            background-color: floralwhite;
-        }
-    </style>
+    @RenderSection("stylesheets", false)
 
 </head>
 <body>

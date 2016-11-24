@@ -1,11 +1,24 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section stylesheets{
+    <link rel='stylesheet' href='../../Content/app/unite-gallery.css' type='text/css' />
+    <link rel='stylesheet' href='../../Content/app/ug-theme-default.css' type='text/css' /> 
+}
+<div id="gallery" style="display: none;" >
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <img alt="Rick and Morty" src="../../Backgrounds/images/thumbs/rickmortythumb.jpg"
+         data-image="../../Backgrounds/images/rick.jpg"
+         data-description="Rick and Morty fan love their show so much.... it's rickfrickendicilous'">
+
+    <img alt="Get Schwifty" src="../../Backgrounds/images/thumbs/schwiftythumb.jpg"
+         data-image="../../Backgrounds/images/960.jpg"
+         data-description="Show me what you've got">
+
+    <img alt="Jan Michael-Vincent"
+         data-type="youtube"
+         data-videoid="nLB4dU3Yc6M"
+         data-description="I've got Jan Michael Fever Vincent Quadrant 16'">
 </div>
 
 <div class="row">
@@ -38,4 +51,9 @@
         </p>
     </div>
     <div class="col-sm-4 text-center"></div>
-    </div>
+    @section scripts{
+        <script type='text/javascript' src='../../Scripts/app/unitegallery.min.js'></script>
+        <script type='text/javascript' src='../../Scripts/app/ug-theme-default.js'></script>
+        <script type='text/javascript' src='../../Scripts/app/Initgallery.js'></script>    
+    }
+</div>

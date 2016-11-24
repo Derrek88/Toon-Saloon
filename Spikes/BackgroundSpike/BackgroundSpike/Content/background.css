@@ -1,0 +1,11 @@
+﻿#background {
+            background-size: cover;
+            background-position: center;
+            position: static;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .box {
+            background-color: floralwhite;
+        }

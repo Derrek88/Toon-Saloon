@@ -25,6 +25,7 @@ namespace BackgroundSpike
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/background.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
