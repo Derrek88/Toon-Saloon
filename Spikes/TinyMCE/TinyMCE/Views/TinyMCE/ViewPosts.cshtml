@@ -1,0 +1,18 @@
+﻿@model List<TinyMCE.Models.BlogPost>
+@{
+    ViewBag.Title = "ViewPosts";
+}
+
+<h2>View Posts</h2>
+
+@if (Model.Count != 0)
+{
+    foreach (var post in Model)
+    {
+        <div>
+            <h2>@Html.Raw(post.PostBody)</h2>
+            <br />
+        </div>
+    }
+}
+
