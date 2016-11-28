@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBlogPostRepository.cs" />
+    <Compile Include="Interface\IBlogPostRepository.cs" />
+    <Compile Include="InMemRepo\InMemBlogRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

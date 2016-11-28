@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace ToonSaloon.Models
 {
-    public class Category
+    public enum Category
     {
-        public  int CateogryId {get; set; }
-        public string Name { get; set; }
+      Eigthies,
+      Nineties,
+      Twothousands,
+      LateNight,
+      Childrens,
+      Strange,
+      OldSchool
     }
 }

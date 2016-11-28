@@ -9,14 +9,14 @@ namespace ToonSaloon.Data
 {
    public interface IBlogPostRepository
    {
-       BlogPost GetPostByID();
+       BlogPost GetPostByID(int id);
 
        List<BlogPost> GetAllPosts();
 
-       void AddBlogPost();
+       void AddBlogPost(BlogPost postToAdd);
 
-       void RemoveBlogPost();
+       void RemoveBlogPost(BlogPost postToRemove);
 
-       void EditBlogPost();
+       void EditBlogPost(BlogPost postToEdit);
    }
 }

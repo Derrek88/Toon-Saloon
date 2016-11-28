@@ -12,5 +12,6 @@ namespace ToonSaloon.Models
         public string Body { get; set; }
         public List<string> Tags { get; set; }
         public string AuthorName { get; set; }
+        public Enum Category { get; set; }
     }
 }
