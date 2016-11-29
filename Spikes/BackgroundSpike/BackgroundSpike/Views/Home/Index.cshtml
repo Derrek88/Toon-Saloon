@@ -2,28 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 @section stylesheets{
-    <link rel='stylesheet' href='../../Content/app/unite-gallery.css' type='text/css' />
-    <link rel='stylesheet' href='../../Content/app/ug-theme-default.css' type='text/css' /> 
+    <link rel='stylesheet' href='../../Content/app/unite-gallery.css' type='text/css'/>
+    <link rel='stylesheet' href='../../Content/app/ug-theme-default.css' type='text/css'/>
+<link rel='stylesheet' href='../../Content/app/boxstyle.css' type='text/css'/>
 }
-<div id="gallery" style="display: none;" >
+<div class="row" style="height: 45px"></div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8"id="gallery" style="display: none;">
 
-    <img alt="Rick and Morty" src="../../Backgrounds/images/thumbs/rickmortythumb.jpg"
-         data-image="../../Backgrounds/images/rick.jpg"
-         data-description="Rick and Morty fan love their show so much.... it's rickfrickendicilous'">
+        <img alt="Rick and Morty" @*src="../../Backgrounds/images/thumbs/rickmortythumb.jpg"*@
+             data-image="../../Backgrounds/images/rick.jpg"
+             data-description="Rick and Morty fan love their show so much.... it's rickfrickendicilous'">
 
-    <img alt="Get Schwifty" src="../../Backgrounds/images/thumbs/schwiftythumb.jpg"
-         data-image="../../Backgrounds/images/960.jpg"
-         data-description="Show me what you've got">
+        <img alt="Get Schwifty" @*src="../../Backgrounds/images/thumbs/schwiftythumb.jpg"*@
+             data-image="../../Backgrounds/images/960.jpg"
+             data-description="Show me what you've got">
 
-    <img alt="Jan Michael-Vincent"
-         data-type="youtube"
-         data-videoid="nLB4dU3Yc6M"
-         data-description="I've got Jan Michael Fever Vincent Quadrant 16'">
+        <img alt="Jan Michael-Vincent"
+             data-type="youtube"
+             data-videoid="nLB4dU3Yc6M"
+             data-description="I've got Jan Michael Fever Vincent Quadrant 16">
+    </div>
+    <div class="col-sm-2"></div>
 </div>
 
 <div class="row">
     <div class="col-sm-4 text-center"></div>
-    <div class="well col-sm-4 text-center">
+    <div class="bpost col-sm-4 text-center">
         <p>
             Pour-over flexitarian franzen af. Poutine austin wayfarers, paleo single-origin coffee raclette cliche XOXO.
             Woke knausgaard fap succulents schlitz, health goth mumblecore single-origin coffee pour-over narwhal tote
