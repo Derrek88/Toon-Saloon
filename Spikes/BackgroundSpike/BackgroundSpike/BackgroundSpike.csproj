@@ -221,6 +221,7 @@
     <Content Include="Backgrounds\rickandMorty.jpg" />
     <Content Include="Backgrounds\simpsons.jpg" />
     <Content Include="Backgrounds\transformers.jpg" />
+    <Content Include="Content\app\boxstyle.css" />
     <Content Include="Content\app\ug-theme-default.css" />
     <Content Include="Content\app\unite-gallery.css" />
     <Content Include="Content\background.css" />
