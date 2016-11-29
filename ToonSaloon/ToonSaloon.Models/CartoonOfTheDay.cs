@@ -26,5 +26,7 @@ namespace ToonSaloon.Models
 
         [Required(ErrorMessage = "What episode is it?")]
         public int Episode { get; set; }
+
+        public DateTime DateCreated { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ToonSaloon.Models
         [Required(ErrorMessage = "What is this post about?")]
         public string Body { get; set; }
        
-        public DateTime DatePosted { get; set; }
+        public DateTime DateCreated { get; set; }
 
         [Required(ErrorMessage = "What tags does this post need?")]
         public List<Tag> Tags { get; set; }
