@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace ToonSaloon.Models
 {
-    public enum Category
+    public class Tag
     {
-      Eigthies,
-      Nineties,
-      Twothousands,
-      LateNight,
-      Childrens,
-      Strange,
-      OldSchool,
-      Anime
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
