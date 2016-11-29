@@ -27,5 +27,9 @@ namespace ToonSaloon.Models
         public Enum Category { get; set; }
 
         public bool isApproved { get; set; }
+
+        public List<Youtube> Youtubes { get; set; }
+
+        public List<Img> Imgs { get; set; }
     }
 }

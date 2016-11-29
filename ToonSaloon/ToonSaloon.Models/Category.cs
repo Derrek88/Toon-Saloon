@@ -14,6 +14,7 @@ namespace ToonSaloon.Models
       LateNight,
       Childrens,
       Strange,
-      OldSchool
+      OldSchool,
+      Anime
     }
 }
