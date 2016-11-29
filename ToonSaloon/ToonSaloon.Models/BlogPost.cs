@@ -14,17 +14,18 @@ namespace ToonSaloon.Models
 
         [Required(ErrorMessage = "What is this post about?")]
         public string Body { get; set; }
-
        
         public DateTime DatePosted { get; set; }
 
         [Required(ErrorMessage = "What tags does this post need?")]
-        public List<string> Tags { get; set; }
+        public List<Tag> Tags { get; set; }
 
         [Required(ErrorMessage = "Who is posting this?")]
         public string AuthorName { get; set; }
 
         [Required(ErrorMessage = "What Category does the post belong in?")]
         public Enum Category { get; set; }
+
+        public bool isApproved { get; set; }
     }
 }
