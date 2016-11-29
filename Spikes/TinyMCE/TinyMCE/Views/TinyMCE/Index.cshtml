@@ -1,0 +1,16 @@
+﻿@model TinyMCE.Models.BlogPost
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>TinyMCE Quick Start Guide</h1>
+@using (Html.BeginForm("AddPost", "TinyMCE", FormMethod.Post))
+{
+    @Html.TextAreaFor(p=>p.PostBody, new { @class = "form-control", id = "mytextarea" })
+    @*<textarea id="mytextarea">Hello, World!</textarea>*@
+    <button>Post</button>
+}
+@*<form method="post">
+    
+</form>*@
+
