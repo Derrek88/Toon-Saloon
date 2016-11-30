@@ -208,13 +208,95 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BackGrounds\watch 1.jpg" />
+    <Content Include="BackGrounds\20CN.jpg" />
+    <Content Include="BackGrounds\CN.jpg" />
+    <Content Include="BackGrounds\comics.jpg" />
+    <Content Include="BackGrounds\disney.jpg" />
+    <Content Include="BackGrounds\rickandMorty.jpg" />
+    <Content Include="BackGrounds\simpsons.jpg" />
+    <Content Include="BackGrounds\transformers.jpg" />
+    <Content Include="Content\app\boxstyle.css" />
+    <Content Include="Content\app\images\arrows_strip_left.png" />
+    <Content Include="Content\app\images\arrows_strip_right.png" />
+    <Content Include="Content\app\images\arrow_down_up.png" />
+    <Content Include="Content\app\images\button_fullscreen.png" />
+    <Content Include="Content\app\images\button_fullscreen_single.png" />
+    <Content Include="Content\app\images\button_playpause.png" />
+    <Content Include="Content\app\images\button_playpause_single.png" />
+    <Content Include="Content\app\ug-theme-default.css" />
+    <Content Include="Content\app\unite-gallery.css" />
+    <Content Include="Content\images\button-close.png" />
+    <Content Include="Content\images\cover-grid.png" />
+    <Content Include="Content\images\icon-link32.png" />
+    <Content Include="Content\images\icon-play32.png" />
+    <Content Include="Content\images\icon-zoom32.png" />
+    <Content Include="Content\images\lightbox-arrow-left.png" />
+    <Content Include="Content\images\lightbox-arrow-right.png" />
+    <Content Include="Content\images\lightbox-icon-close-compact.png" />
+    <Content Include="Content\images\lightbox-icon-close-compact2.png" />
+    <Content Include="Content\images\lightbox-icon-close.png" />
+    <Content Include="Content\images\loader-black1.gif" />
+    <Content Include="Content\images\loader-black2.gif" />
+    <Content Include="Content\images\loader-black3.gif" />
+    <Content Include="Content\images\loader-black4.gif" />
+    <Content Include="Content\images\loader-black5.gif" />
+    <Content Include="Content\images\loader-black6.gif" />
+    <Content Include="Content\images\loader-black7.gif" />
+    <Content Include="Content\images\loader-white1.gif" />
+    <Content Include="Content\images\loader-white2.gif" />
+    <Content Include="Content\images\loader-white3.gif" />
+    <Content Include="Content\images\loader-white4.gif" />
+    <Content Include="Content\images\loader-white5.gif" />
+    <Content Include="Content\images\loader-white6.gif" />
+    <Content Include="Content\images\loader-white7.gif" />
+    <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\images\loader_bright.gif" />
+    <Content Include="Content\images\loader_skype_trans.gif" />
+    <Content Include="Content\images\not_loaded.png" />
+    <Content Include="Content\images\play-button-round.png" />
+    <Content Include="Content\images\play-button-square.png" />
+    <Content Include="Content\images\transparent.png" />
+    <Content Include="Content\skins\default\arrows_strip_down.png" />
+    <Content Include="Content\skins\default\arrows_strip_left.png" />
+    <Content Include="Content\skins\default\arrows_strip_right.png" />
+    <Content Include="Content\skins\default\arrows_strip_up.png" />
+    <Content Include="Content\skins\default\arrow_grid_down.png" />
+    <Content Include="Content\skins\default\arrow_grid_up.png" />
+    <Content Include="Content\skins\default\button_fullscreen.png" />
+    <Content Include="Content\skins\default\button_playpause.png" />
+    <Content Include="Content\skins\default\grid_arrow_left.png" />
+    <Content Include="Content\skins\default\grid_arrow_right.png" />
+    <Content Include="Content\skins\default\grid_handle_black_bottom.png" />
+    <Content Include="Content\skins\default\grid_handle_black_left.png" />
+    <Content Include="Content\skins\default\grid_handle_black_right.png" />
+    <Content Include="Content\skins\default\grid_handle_black_top.png" />
+    <Content Include="Content\skins\default\icon_zoom_back.png" />
+    <Content Include="Content\skins\default\icon_zoom_minus.png" />
+    <Content Include="Content\skins\default\icon_zoom_plus.png" />
+    <Content Include="Content\skins\default\slider_arrow_left.png" />
+    <Content Include="Content\skins\default\slider_arrow_right.png" />
+    <Content Include="Content\skins\default\slider_bullets.png" />
+    <Content Include="Content\skins\default\tile_bullets_blue.png" />
+    <Content Include="Content\skins\default\tile_bullets_brown.png" />
+    <Content Include="Content\skins\default\tile_bullets_gray.png" />
+    <Content Include="Content\skins\default\tile_bullets_green.png" />
+    <Content Include="Content\skins\default\tile_bullets_red.png" />
+    <Content Include="Content\skins\default\tile_button_left.png" />
+    <Content Include="Content\skins\default\tile_button_play_pause.png" />
+    <Content Include="Content\skins\default\tile_button_right.png" />
+    <Content Include="Images\appimages\logo.jpg" />
+    <Content Include="Images\appimages\watch 1.jpg" />
+    <Content Include="Content\background.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\BackgroundRandomizer.js" />
+    <Content Include="Scripts\app\Initgallery.js" />
+    <Content Include="Scripts\app\ug-theme-default.js" />
+    <Content Include="Scripts\app\unitegallery.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -277,6 +359,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToonSaloon.BLL\ToonSaloon.BLL.csproj">
+      <Project>{a06ef637-0747-4d75-a8d9-a08a46c1fcff}</Project>
+      <Name>ToonSaloon.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToonSaloon.Models\ToonSaloon.Models.csproj">
+      <Project>{788fc0e0-aff9-4700-911e-86feef4b8938}</Project>
+      <Name>ToonSaloon.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

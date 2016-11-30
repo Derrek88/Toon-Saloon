@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using ToonSaloon.BLL;
 
 namespace ToonSaloon.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var model = new PostManager().GetAllPosts();
+            return View(model);
         }
 
         public ActionResult About()
@@ -26,5 +25,6 @@ namespace ToonSaloon.Web.Controllers
 
             return View();
         }
+
     }
 }
