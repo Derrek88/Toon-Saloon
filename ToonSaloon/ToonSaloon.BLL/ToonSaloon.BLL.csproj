@@ -43,6 +43,16 @@
     <Compile Include="PostManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToonSaloon.Data\ToonSaloon.Data.csproj">
+      <Project>{2525d63a-958a-4411-82b1-114a5b9b781e}</Project>
+      <Name>ToonSaloon.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToonSaloon.Models\ToonSaloon.Models.csproj">
+      <Project>{788fc0e0-aff9-4700-911e-86feef4b8938}</Project>
+      <Name>ToonSaloon.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

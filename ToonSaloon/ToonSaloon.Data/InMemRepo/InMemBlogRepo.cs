@@ -20,8 +20,10 @@ namespace ToonSaloon.Data.InMemRepo
                     new BlogPost()
                     {
                         Id = 1,
-                        Body = "Hydrogen atoms, shores of the cosmic ocean great turbulent clouds, from which we spring science hundreds of thousands. Hearts of the stars decipherment extraplanetary Orion\'s sword, a billion trillion network of wormholes circumnavigated. Made in the interiors of collapsing stars descended from astronomers Jean-François Champollion brain is the seed of intelligence, consciousness, birth. Citizens of distant epochs Sea of Tranquility Rig Veda. A mote of dust suspended in a sunbeam Drake Equation intelligent beings ship of the imagination rings of Uranus rogue Euclid. Preserve and cherish that pale blue dot.\r\nHundreds of thousands, billions upon billions. Two ghostly white figures in coveralls and helmets are soflty dancing network of wormholes Apollonius of Perga billions upon billions, kindling the energy hidden in matter, rings of Uranus, tendrils of gossamer clouds? Shores of the cosmic ocean colonies circumnavigated explorations star stuff harvesting star light corpus callosum hundreds of thousands rich in heavy atoms colonies white dwarf. Gathered by gravity another world how far away rich in heavy atoms rich in mystery, encyclopaedia galactica colonies kindling the energy hidden in matter colonies.\r\nVanquish the impossible, vastness is bearable only through love astonishment culture dispassionate extraterrestrial observer at the edge of forever, tendrils of gossamer clouds tingling of the spine consciousness? White dwarf. Gathered by gravity, hundreds of thousands, Jean-François Champollion realm of the galaxies! A still more glorious dawn awaits. Cosmic fugue Jean-François Champollion billions upon billions the carbon in our apple pies culture Flatland? How far away a mote of dust suspended in a sunbeam, stirred by starlight, galaxies, hundreds of thousands quasar, kindling the energy hidden in matter rings of Uranus hearts of the stars radio telescope vastness is bearable only through love worldlets and billions upon billions upon billions upon billions upon billions upon billions upon billions!",
+                        Body = "Hydrogen atoms, shores of the cosmic ocean great turbulent clouds, from which we spring science hundreds of thousands. Hearts of the stars decipherment extraplanetary Orion\'s sword, a billion trillion network of wormholes circumnavigated. Made in the interiors of collapsing stars descended from astronomers Jean-François Champollion brain is the seed of intelligence, consciousness, birth. Citizens of distant epochs Sea of Tranquility Rig Veda. A mote of dust suspended in a sunbeam Drake Equation intelligent beings ship of the imagination rings of Uranus rogue Euclid. Preserve and cherish that pale blue dot.\r\nHundreds of thousands, billions upon billions. Two ghostly white figures in coveralls and helmets are soflty dancing network of wormholes Apollonius of Perga billions upon billions, kindling the energy hidden in matter, rings of Uranus, tendrils of gossamer clouds? Shores of the cosmic ocean colonies circumnavigated explorations star stuff harvesting star light corpus callosum hundreds of thousands rich in heavy atoms colonies white dwarf. Gathered by gravity another world how far away rich in heavy atoms rich in mystery, encyclopaedia galactica colonies kindling the energy hidden in matter colonies.",
                         AuthorName = "Jacob",
+                        Headline = "Carl Sagan reveals the truth!",
+                        Subtitle = "annnnd no one listened... well not every one",
                         Tags = new List<Tag>
                         {
                            new Tag()
@@ -35,9 +37,9 @@ namespace ToonSaloon.Data.InMemRepo
                         {
                             new Youtube()
                             {
-                                TubeId = "ez3ePOmCqkl",
+                                TubeId = "XG5OwBqxIe8",
                                 Id = 1,
-                                Description = "Some randome video"
+                                Description = "Cool Card trick"
                             }
                         },
                         Imgs = new List<Img>
@@ -46,7 +48,7 @@ namespace ToonSaloon.Data.InMemRepo
                             {
                                 Id = 1,
                                 Title = "Random Image",
-                                Source = "../../Backgrounds/watch 1.jpg",
+                                Source = "../../Images/appimages/watch 1.jpg",
                                 Description = "a watch"
                             }
                         },
