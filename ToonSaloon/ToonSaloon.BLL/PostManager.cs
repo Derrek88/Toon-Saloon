@@ -10,7 +10,7 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.BLL
 {
-    public class PostManager 
+    public class PostManager : IBlogPostRepository
     {
         private IBlogPostRepository _blog;
 
