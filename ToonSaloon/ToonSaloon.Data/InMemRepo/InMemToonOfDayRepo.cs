@@ -40,9 +40,9 @@ namespace ToonSaloon.Data.InMemRepo
         {
             var toonList = _toons;
             //We need to grab the toon that is approved and is the oldest approved post
-            var result = toonList.Where(p => p.isApproved = true);
-                
-            return result.First();
+            var result = toonList.Where(p => p.isApproved = true).LastOrDefault();
+
+            return result;
         }
     }
 }

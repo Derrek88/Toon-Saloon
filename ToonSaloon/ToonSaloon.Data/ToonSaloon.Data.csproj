@@ -46,6 +46,7 @@
     <Compile Include="Factories\BlogFactory.cs" />
     <Compile Include="Interface\IBlogPostRepository.cs" />
     <Compile Include="InMemRepo\InMemBlogRepo.cs" />
+    <Compile Include="Interface\IToonOfDayRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

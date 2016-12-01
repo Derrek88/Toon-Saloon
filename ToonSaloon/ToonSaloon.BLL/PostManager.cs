@@ -55,7 +55,7 @@ namespace ToonSaloon.BLL
             return post;
         }
 
-        public BlogPost AddBlogPost(BlogPost postToAdd)
+        public PostResponse AddBlogPost(BlogPost postToAdd)
         {
             PostResponse response = new PostResponse();
             var post = _blog.AddBlogPost(postToAdd);
@@ -73,7 +73,7 @@ namespace ToonSaloon.BLL
             return post;
         }
 
-        public void RemoveBlogPost(BlogPost postToRemove)
+        public PostResponse RemoveBlogPost(BlogPost postToRemove)
         {
 
             PostResponse response = new PostResponse();
@@ -92,7 +92,7 @@ namespace ToonSaloon.BLL
             return post;
         }
 
-        public void EditBlogPost(BlogPost postToEdit)
+        public PostResponse EditBlogPost(BlogPost postToEdit)
         {
 
             PostResponse response = new PostResponse();

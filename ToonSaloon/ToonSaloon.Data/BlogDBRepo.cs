@@ -68,17 +68,17 @@ namespace ToonSaloon.Data
             return newBlogPost;
        }
 
-       public void AddBlogPost(BlogPost postToAdd)
+       public PostResponse AddBlogPost(BlogPost postToAdd)
        {
            throw new NotImplementedException();
        }
 
-       public void RemoveBlogPost(BlogPost postToRemove)
+       public PostResponse RemoveBlogPost(BlogPost postToRemove)
        {
            throw new NotImplementedException();
        }
 
-       public void EditBlogPost(BlogPost postToEdit)
+       public PostResponse EditBlogPost(BlogPost postToEdit)
        {
            throw new NotImplementedException();
        }
