@@ -1,32 +1,33 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToonSaloon.Data.InMemRepo;
+using ToonSaloon.Data.Interface;
+using ToonSaloon.Models;
 
 namespace ToonSaloon.Data.Factories
 {
-    public class BlogFactory
+    public class StaticFactory
     {
-
-        public static IBlogPostRepository CreatBlogPostRepository()
+        public static IStaticRepository CreateStaticPageRepository()
         {
-            IBlogPostRepository repo;
+            IStaticRepository repo;
 
-            string mode = ConfigurationManager.AppSettings["mode"].ToString();
+            string mode = ConfigurationManager.AppSettings["Mode"].ToString();
             switch (mode)
             {
-                case "test":
-                    repo = new InMemBlogRepo();
+                case "Test":
+                    repo = new InMemStaticRepo();
                     break;
+                case "Prod":
+                    throw new NotImplementedException();
                 default:
                     throw new Exception($"{mode} is not a recognized configuration");
             }
             return repo;
         }
-
     }
 }

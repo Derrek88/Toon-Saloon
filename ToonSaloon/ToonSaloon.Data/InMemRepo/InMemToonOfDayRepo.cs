@@ -27,7 +27,7 @@ namespace ToonSaloon.Data.InMemRepo
                         Season = 2,
                         Episode = 4,
                         ShowName = "Rick and Morty",
-                        isApproved = true,
+                        Approved = Approved.Yes,
                         ImgUrl = "../../Images/appimages/watch 1.jpg"
 
                     },
@@ -40,9 +40,9 @@ namespace ToonSaloon.Data.InMemRepo
         public CartoonOfTheDay GetPostByID(int id)
         {
             return _toons.FirstOrDefault(p => p.Id == id);
-            ////We need to grab the toon that is approved and is the oldest approved post
+            //We need to grab the toon that is approved and is the oldest approved post
             //var result = toonList.Where(p => p.isApproved = true).LastOrDefault();
-            ////this should get it working now
+            //this should get it working now
         }
 
         public void AddToonOfDay(CartoonOfTheDay toonToAdd)

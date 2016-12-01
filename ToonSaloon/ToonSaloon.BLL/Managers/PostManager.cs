@@ -38,7 +38,6 @@ namespace ToonSaloon.BLL
         {
             var repo = BlogFactory.CreatBlogPostRepository();
             var post = repo.GetAllPosts();
-
             return post;
         }
 
@@ -57,8 +56,7 @@ namespace ToonSaloon.BLL
         }
 
         public void EditBlogPost(BlogPost postToEdit)
-        {
-            PostResponse response = new PostResponse();
+        { 
 
             var repo = BlogFactory.CreatBlogPostRepository();
 

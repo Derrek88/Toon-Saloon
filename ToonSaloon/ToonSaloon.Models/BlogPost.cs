@@ -30,7 +30,7 @@ namespace ToonSaloon.Models
         [Required(ErrorMessage = "What Category does the post belong in?")]
         public Enum Category { get; set; }
 
-        public bool isApproved { get; set; }
+        public Enum Approved { get; set; }
 
         public List<Youtube> Youtubes { get; set; }
 
