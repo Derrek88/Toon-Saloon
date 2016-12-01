@@ -14,6 +14,10 @@ namespace ToonSaloon.Models
 
         [Required(ErrorMessage = "What is this post about?")]
         public string Body { get; set; }
+
+        public string Headline { get; set; }
+
+        public string Subtitle { get; set; }
        
         public DateTime DateCreated { get; set; }
 

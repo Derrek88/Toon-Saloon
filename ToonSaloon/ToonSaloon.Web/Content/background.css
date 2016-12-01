@@ -1,0 +1,17 @@
+﻿#background {
+            background: no-repeat center center fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            /*height: 100vh;*/
+            /*background-position: center;*/
+            position: static;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .box {
+            background-color: floralwhite;
+        }
+        body {
+            padding-bottom: 0;
+        }

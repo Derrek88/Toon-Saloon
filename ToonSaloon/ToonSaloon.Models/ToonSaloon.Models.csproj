@@ -45,10 +45,11 @@
     <Compile Include="CartoonOfTheDay.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Img.cs" />
-    <Compile Include="Post Response.cs" />
+    <Compile Include="PostResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticPage.cs" />
     <Compile Include="Tag.cs" />
+    <Compile Include="ToonOfDayResponse.cs" />
     <Compile Include="Youtube.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

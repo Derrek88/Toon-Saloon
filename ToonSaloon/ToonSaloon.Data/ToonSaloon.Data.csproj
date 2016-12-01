@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\ToonOfDayFactory.cs" />
+    <Compile Include="InMemRepo\InMemToonOfDayRepo.cs" />
+    <Compile Include="BlogDBRepo.cs" />
+    <Compile Include="Factories\BlogFactory.cs" />
     <Compile Include="Interface\IBlogPostRepository.cs" />
     <Compile Include="InMemRepo\InMemBlogRepo.cs" />
+    <Compile Include="Interface\IToonOfDayRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

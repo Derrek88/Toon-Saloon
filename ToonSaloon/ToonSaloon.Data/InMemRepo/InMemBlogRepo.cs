@@ -20,8 +20,10 @@ namespace ToonSaloon.Data.InMemRepo
                     new BlogPost()
                     {
                         Id = 1,
-                        Body = "Hydrogen atoms, shores of the cosmic ocean great turbulent clouds, from which we spring science hundreds of thousands. Hearts of the stars decipherment extraplanetary Orion\'s sword, a billion trillion network of wormholes circumnavigated. Made in the interiors of collapsing stars descended from astronomers Jean-François Champollion brain is the seed of intelligence, consciousness, birth. Citizens of distant epochs Sea of Tranquility Rig Veda. A mote of dust suspended in a sunbeam Drake Equation intelligent beings ship of the imagination rings of Uranus rogue Euclid. Preserve and cherish that pale blue dot.\r\nHundreds of thousands, billions upon billions. Two ghostly white figures in coveralls and helmets are soflty dancing network of wormholes Apollonius of Perga billions upon billions, kindling the energy hidden in matter, rings of Uranus, tendrils of gossamer clouds? Shores of the cosmic ocean colonies circumnavigated explorations star stuff harvesting star light corpus callosum hundreds of thousands rich in heavy atoms colonies white dwarf. Gathered by gravity another world how far away rich in heavy atoms rich in mystery, encyclopaedia galactica colonies kindling the energy hidden in matter colonies.\r\nVanquish the impossible, vastness is bearable only through love astonishment culture dispassionate extraterrestrial observer at the edge of forever, tendrils of gossamer clouds tingling of the spine consciousness? White dwarf. Gathered by gravity, hundreds of thousands, Jean-François Champollion realm of the galaxies! A still more glorious dawn awaits. Cosmic fugue Jean-François Champollion billions upon billions the carbon in our apple pies culture Flatland? How far away a mote of dust suspended in a sunbeam, stirred by starlight, galaxies, hundreds of thousands quasar, kindling the energy hidden in matter rings of Uranus hearts of the stars radio telescope vastness is bearable only through love worldlets and billions upon billions upon billions upon billions upon billions upon billions upon billions!",
+                        Body = "Hydrogen atoms, shores of the cosmic ocean great turbulent clouds, from which we spring science hundreds of thousands. Hearts of the stars decipherment extraplanetary Orion\'s sword, a billion trillion network of wormholes circumnavigated. Made in the interiors of collapsing stars descended from astronomers Jean-François Champollion brain is the seed of intelligence, consciousness, birth. Citizens of distant epochs Sea of Tranquility Rig Veda. A mote of dust suspended in a sunbeam Drake Equation intelligent beings ship of the imagination rings of Uranus rogue Euclid. Preserve and cherish that pale blue dot.\r\nHundreds of thousands, billions upon billions. Two ghostly white figures in coveralls and helmets are soflty dancing network of wormholes Apollonius of Perga billions upon billions, kindling the energy hidden in matter, rings of Uranus, tendrils of gossamer clouds? Shores of the cosmic ocean colonies circumnavigated explorations star stuff harvesting star light corpus callosum hundreds of thousands rich in heavy atoms colonies white dwarf. Gathered by gravity another world how far away rich in heavy atoms rich in mystery, encyclopaedia galactica colonies kindling the energy hidden in matter colonies.",
                         AuthorName = "Jacob",
+                        Headline = "Carl Sagan reveals the truth!",
+                        Subtitle = "annnnd no one listened... well not every one",
                         Tags = new List<Tag>
                         {
                            new Tag()
@@ -35,9 +37,9 @@ namespace ToonSaloon.Data.InMemRepo
                         {
                             new Youtube()
                             {
-                                TubeId = "ez3ePOmCqkl",
+                                TubeId = "XG5OwBqxIe8",
                                 Id = 1,
-                                Description = "Some randome video"
+                                Description = "Cool Card trick"
                             }
                         },
                         Imgs = new List<Img>
@@ -46,14 +48,54 @@ namespace ToonSaloon.Data.InMemRepo
                             {
                                 Id = 1,
                                 Title = "Random Image",
-                                Source = "../../Backgrounds/watch 1.jpg",
+                                Source = "../../Images/appimages/rick.jpg",
                                 Description = "a watch"
                             }
                         },
                         isApproved = true,
-                        DateCreated = DateTime.Today
+                        DateCreated = Convert.ToDateTime("11/28/2016"),
                         
                         
+                    },
+                    new BlogPost()
+                    {
+                        Id = 2,
+                        Body = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. 
+
+Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.",
+                        AuthorName = "Jacob",
+                        Headline = "Will rick escape?!?1",
+                        Subtitle = "Well, there has to be another season right?",
+                        Tags = new List<Tag>
+                        {
+                           new Tag()
+                           {
+                               Id = 1,
+                               Name = "Rick and Morty"
+                           }
+                        },
+                        Category = Category.Childrens,
+                        Youtubes = new List<Youtube>
+                        {
+                            new Youtube()
+                            {
+                                TubeId = "XG5OwBqxIe8",
+                                Id = 1,
+                                Description = "Cool Card trick"
+                            }
+                        },
+                        Imgs = new List<Img>
+                        {
+                            new Img()
+                            {
+                                Id = 1,
+                                Title = "Random Image",
+                                Source = "../../Images/appimages/art-false-positive.jpg",
+                                Description = "a watch"
+                            }
+                        },
+                        isApproved = true,
+                        DateCreated = Convert.ToDateTime("11/25/2016")
                     },
                     //new BlogPost()
                     //{
