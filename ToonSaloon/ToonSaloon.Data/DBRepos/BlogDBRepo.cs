@@ -55,7 +55,7 @@ namespace ToonSaloon.Data
                Body = dr["Body"].ToString(),
                AuthorName = dr["AuthorName"].ToString(),
                Category = (Category) dr["Category"],
-               isApproved = (bool) dr["isApproved"],
+               Approved = (Enum) dr["isApproved"],
                DateCreated = (DateTime) dr["DateCreated"],
                Headline = dr["Headlines"].ToString(),
                Subtitle = dr["Subtitle"].ToString(),

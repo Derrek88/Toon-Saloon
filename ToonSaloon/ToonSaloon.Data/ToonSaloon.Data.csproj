@@ -41,12 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\StaticFactory.cs" />
+    <Compile Include="Factories\TagFactory.cs" />
     <Compile Include="Factories\ToonOfDayFactory.cs" />
+    <Compile Include="InMemRepo\InMemStaticRepo.cs" />
+    <Compile Include="InMemRepo\InMemTagRepo.cs" />
     <Compile Include="InMemRepo\InMemToonOfDayRepo.cs" />
-    <Compile Include="BlogDBRepo.cs" />
+    <Compile Include="DBRepos\BlogDBRepo.cs" />
     <Compile Include="Factories\BlogFactory.cs" />
     <Compile Include="Interface\IBlogPostRepository.cs" />
     <Compile Include="InMemRepo\InMemBlogRepo.cs" />
+    <Compile Include="Interface\IStaticRepository.cs" />
+    <Compile Include="Interface\ITagRepository.cs" />
     <Compile Include="Interface\IToonOfDayRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

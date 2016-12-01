@@ -52,7 +52,7 @@ namespace ToonSaloon.Data.InMemRepo
                                 Description = "a watch"
                             }
                         },
-                        isApproved = true,
+                        Approved = Approved.Yes,
                         DateCreated = Convert.ToDateTime("11/28/2016"),
                         
                         
@@ -94,17 +94,9 @@ Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In
                                 Description = "a watch"
                             }
                         },
-                        isApproved = true,
+                        Approved = Approved.Yes,
                         DateCreated = Convert.ToDateTime("11/25/2016")
                     },
-                    //new BlogPost()
-                    //{
-                    //    Id = 2,
-                    //    Body = "Venture dream of the mind\'s eye extraplanetary? Something incredible is waiting to be known Rig Veda! Birth, something incredible is waiting to be known Orion\'s sword white dwarf, astonishment tendrils of gossamer clouds, astonishment concept of the number one as a patch of light consciousness. Brain is the seed of intelligence Drake Equation! Dispassionate extraterrestrial observer as a patch of light birth, billions upon billions cosmic fugue a still more glorious dawn awaits culture trillion.\r\nCosmos across the centuries Rig Veda, not a sunrise but a galaxyrise Hypatia extraplanetary shores of the cosmic ocean billions upon billions something incredible is waiting to be known, as a patch of light bits of moving fluff, rich in mystery rogue! Of brilliant syntheses a mote of dust suspended in a sunbeam, tingling of the spine a still more glorious dawn awaits explorations stirred by starlight, cosmic fugue billions upon billions, take root and flourish quasar light years are creatures of the cosmos rich in heavy atoms decipherment trillion worldlets.\r\nEmerged into consciousness citizens of distant epochs? Laws of physics Orion\'s sword courage of our questions descended from astronomers billions upon billions of brilliant syntheses, trillion, culture radio telescope culture? Light years prime number another world a mote of dust suspended in a sunbeam, not a sunrise but a galaxyrise vanquish the impossible, are creatures of the cosmos colonies galaxies paroxysm of global death, descended from astronomers! The ash of stellar alchemy Jean-François Champollion, Rig Veda and billions upon billions upon billions upon billions upon billions upon billions upon billions.",
-                    //    AuthorName = "Bryant",
-                    //    Tags = new List<string> {"this list looks weird"},
-                    //    Category = Category.Nineties
-                    //}
                 };
             }
         }
