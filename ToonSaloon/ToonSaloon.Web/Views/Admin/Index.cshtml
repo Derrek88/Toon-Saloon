@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 bpost text-center">
+            <h3>Manage Current Posts</h3>
+            <h4>@Html.ActionLink("Blog Posts", "ManageCurrentPosts", "Admin")</h4>
+            <h4>@Html.ActionLink("Toon of the Day", "ManageToonOfTheDay", "Admin")</h4>
+
+        </div>
+        <div class="col-xs-4 bpost text-center">
+            <h3>Submissions For Approval</h3>
+            <h4>@Html.ActionLink("BlogPost", "AdminViewBlogPostSubmissions", "Admin")</h4>
+            <h4>@Html.ActionLink("Toon of the Day", "AdminViewToonOfTheDaySubmissions", "Admin")</h4>
+        </div>
+
+        <div class="col-xs-4 bpost text-center">
+            <h3>Manage Information Pages</h3>
+            <h4>@Html.ActionLink("Information Pages", "AdminViewInfoPages","Admin")</h4>
+        </div>
+    </div>
+</div>
+
+@section styles{
+        <link rel='stylesheet' href='../../Content/app/AdminDashStyles.css' type='text/css' />
+    }
+
+
+
+
+

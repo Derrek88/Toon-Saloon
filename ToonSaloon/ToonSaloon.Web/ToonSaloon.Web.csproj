@@ -209,6 +209,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ToonOfTheDayAPIController.cs" />
@@ -229,7 +230,8 @@
     <Content Include="BackGrounds\rickandMorty.jpg" />
     <Content Include="BackGrounds\simpsons.jpg" />
     <Content Include="BackGrounds\transformers.jpg" />
-    <Content Include="Content\app\boxstyle.css" />
+    <Content Include="Content\app\AdminAddpostbox.css" />
+    <Content Include="Content\app\AdminDashStyles.css" />
     <Content Include="Content\app\HomePageStyles.css" />
     <Content Include="Content\app\images\arrows_strip_left.png" />
     <Content Include="Content\app\images\arrows_strip_right.png" />
@@ -270,6 +272,7 @@
     <Content Include="Content\images\play-button-round.png" />
     <Content Include="Content\images\play-button-square.png" />
     <Content Include="Content\images\transparent.png" />
+    <Content Include="Content\jquery.tagit.css" />
     <Content Include="Content\skins\default\arrows_strip_down.png" />
     <Content Include="Content\skins\default\arrows_strip_left.png" />
     <Content Include="Content\skins\default\arrows_strip_right.png" />
@@ -298,6 +301,33 @@
     <Content Include="Content\skins\default\tile_button_left.png" />
     <Content Include="Content\skins\default\tile_button_play_pause.png" />
     <Content Include="Content\skins\default\tile_button_right.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Images\appimages\art-false-positive.jpg" />
     <Content Include="Images\appimages\logo.jpg" />
     <Content Include="Images\appimages\rick.jpg" />
@@ -309,8 +339,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\AddmoreImages.js" />
     <Content Include="Scripts\app\BackgroundRandomizer.js" />
     <Content Include="Scripts\app\Initgallery.js" />
+    <Content Include="Scripts\app\Tags.js" />
+    <Content Include="Scripts\app\TinyMCE.js" />
+    <Content Include="Scripts\app\TniyMCE.js" />
     <Content Include="Scripts\app\ToonOfDayWebApi.js" />
     <Content Include="Scripts\app\ug-theme-default.js" />
     <Content Include="Scripts\app\unitegallery.min.js" />
@@ -325,6 +359,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -332,6 +368,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tag-it.js" />
+    <Content Include="Scripts\tag-it.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -369,6 +407,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ManageCurrentPosts.cshtml" />
+    <Content Include="Views\Admin\AdminAddPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
