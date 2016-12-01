@@ -10,30 +10,20 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.BLL
 {
-    public class ToonOfTheDayManager : IToonOfDayRepository
+    public class ToonOfTheDayManager
     {
-        private IToonOfDayRepository _toon;
-
-        public ToonOfTheDayManager()
-        {
-            _toon = ToonOfDayFactory.CreateToonOfDayRepository();
-        }
-        public CartoonOfTheDay GetToonOfTheDay()
-        {
-            var repo = new InMemToonOfDayRepo();
-
-            return repo.GetToon();
-        }
-
-        public CartoonOfTheDay GetPostByID(int id)
+        public CartoonOfTheDay GetCartoonOfTheDay(int id)
         {
             ToonOfDayResponse response = new ToonOfDayResponse();
-            var toon = _toon.GetPostByID(id);
+
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            var toon = repo.GetPostByID(id);
 
             if (toon != null)
             {
                 response.Success = true;
                 response.Message = "It worked!";
+                response.ToonOfTheDay = toon;
             }
             else
             {
@@ -43,58 +33,23 @@ namespace ToonSaloon.BLL
             return toon;
         }
 
-        public ToonOfDayResponse AddToonOfDay(CartoonOfTheDay toonToAdd)
+        public void AddToonOfDay(CartoonOfTheDay toonToAdd)
         {
-            ToonOfDayResponse response = new ToonOfDayResponse();
-            var toon = _toon.AddToonOfDay(toonToAdd);
-
-            if (toon != null)
-            {
-                response.Success = true;
-                response.Message = "Post Added!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasnt added!";
-            }
-            return toon;
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            repo.AddToonOfDay(toonToAdd);
         }
 
-        public ToonOfDayResponse RemoveToonOfDay(CartoonOfTheDay toonToRemove)
+        public void RemoveToonOfDay(CartoonOfTheDay toonToRemove)
         {
-            ToonOfDayResponse response = new ToonOfDayResponse();
-            var toon = _toon.RemoveToonOfDay(toonToRemove);
 
-            if (toon != null)
-            {
-                response.Success = true;
-                response.Message = "Post Removed!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasnt removed!";
-            }
-            return toon;
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            repo.RemoveToonOfDay(toonToRemove);
         }
 
-        public ToonOfDayResponse EditToonOfDay(CartoonOfTheDay toonToEdit)
+        public void EditToonOfDay(CartoonOfTheDay toonToEdit)
         {
-            ToonOfDayResponse response = new ToonOfDayResponse();
-            var toon = _toon.EditToonOfDay(toonToEdit);
-
-            if (toon != null)
-            {
-                response.Success = true;
-                response.Message = "Post Edited!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasnt edited!";
-            }
-            return toon;
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            repo.EditToonOfDay(toonToEdit);
         }
     }
 }

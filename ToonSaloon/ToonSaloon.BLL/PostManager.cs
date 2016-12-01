@@ -10,24 +10,21 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.BLL
 {
-    public class PostManager : IBlogPostRepository
+    public class PostManager
     {
-        private IBlogPostRepository _blog;
-
-        public PostManager()
-        {
-            _blog = BlogFactory.CreateBlogPostRepository();
-        }
-
         public BlogPost GetPostByID(int id)
         {
            PostResponse response = new PostResponse();
-            var post = _blog.GetPostByID(id);
+
+            var repo = BlogFactory.CreatBlogPostRepository();
+            var post = repo.GetPostByID(id);
+       
 
             if (post != null)
             {
                 response.Success = true;
                 response.Message = "It worked!";
+                response.BlogPost = post;
             }
             else
             {
@@ -39,76 +36,34 @@ namespace ToonSaloon.BLL
 
         public List<BlogPost> GetAllPosts()
         {
-           PostResponse response = new PostResponse();
-            var post = _blog.GetAllPosts();
+            var repo = BlogFactory.CreatBlogPostRepository();
+            var post = repo.GetAllPosts();
 
-            if (post != null)
-            {
-                response.Success = true;
-                response.Message = "Posts found!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "No posts found!";
-            }
             return post;
         }
 
-        public PostResponse AddBlogPost(BlogPost postToAdd)
+        public void AddBlogPost(BlogPost postToAdd)
         {
-            PostResponse response = new PostResponse();
-            var post = _blog.AddBlogPost(postToAdd);
+            var repo = BlogFactory.CreatBlogPostRepository();
 
-            if (post != null)
-            {
-                response.Success = true;
-                response.Message = "Post Added!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasn't added!";
-            }
-            return post;
+            repo.AddBlogPost(postToAdd);
         }
 
-        public PostResponse RemoveBlogPost(BlogPost postToRemove)
+        public void RemoveBlogPost(BlogPost postToRemove)
         {
+            var repo = BlogFactory.CreatBlogPostRepository();
 
-            PostResponse response = new PostResponse();
-            var post = _blog.RemoveBlogPost(postToRemove);
-
-            if (post != null)
-            {
-                response.Success = true;
-                response.Message = "Post Removed!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasn't removed!";
-            }
-            return post;
+            repo.RemoveBlogPost(postToRemove);
         }
 
-        public PostResponse EditBlogPost(BlogPost postToEdit)
+        public void EditBlogPost(BlogPost postToEdit)
         {
-
             PostResponse response = new PostResponse();
-            var post = _blog.EditBlogPost(postToEdit);
 
-            if (post != null)
-            {
-                response.Success = true;
-                response.Message = "Post Edited!";
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Post wasn't edited!";
-            }
-            return post;
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditBlogPost(postToEdit);
+
         }
     }
 }

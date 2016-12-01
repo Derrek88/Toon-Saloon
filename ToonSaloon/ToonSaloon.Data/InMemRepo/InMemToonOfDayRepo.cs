@@ -8,7 +8,7 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.Data.InMemRepo
 {
-    public class InMemToonOfDayRepo 
+    public class InMemToonOfDayRepo : IToonOfDayRepository
     {
         private static List<CartoonOfTheDay> _toons;
 
@@ -37,19 +37,12 @@ namespace ToonSaloon.Data.InMemRepo
 
         }
 
-        public CartoonOfTheDay GetToon()
-        {
-            var toonList = _toons;
-            //We need to grab the toon that is approved and is the oldest approved post
-            var result = toonList.Where(p => p.isApproved = true).LastOrDefault();
-            //this should get it working now
-
-            return result;
-        }
-
         public CartoonOfTheDay GetPostByID(int id)
         {
             return _toons.FirstOrDefault(p => p.Id == id);
+            ////We need to grab the toon that is approved and is the oldest approved post
+            //var result = toonList.Where(p => p.isApproved = true).LastOrDefault();
+            ////this should get it working now
         }
 
         public void AddToonOfDay(CartoonOfTheDay toonToAdd)

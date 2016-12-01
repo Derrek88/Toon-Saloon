@@ -239,7 +239,6 @@
     <Content Include="Content\app\images\button_playpause.png" />
     <Content Include="Content\app\images\button_playpause_single.png" />
     <Content Include="Content\app\ug-theme-default.css" />
-    <Content Include="Content\app\unite-gallery.css" />
     <Content Include="Content\images\button-close.png" />
     <Content Include="Content\images\cover-grid.png" />
     <Content Include="Content\images\icon-link32.png" />
@@ -334,7 +333,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

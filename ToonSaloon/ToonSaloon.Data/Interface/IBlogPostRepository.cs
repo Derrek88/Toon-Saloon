@@ -13,10 +13,10 @@ namespace ToonSaloon.Data
 
        List<BlogPost> GetAllPosts();
 
-       PostResponse AddBlogPost(BlogPost postToAdd);
+       void AddBlogPost(BlogPost postToAdd);
 
-       PostResponse RemoveBlogPost(BlogPost postToRemove);
+       void RemoveBlogPost(BlogPost postToRemove);
 
-       PostResponse EditBlogPost(BlogPost postToEdit);
+       void EditBlogPost(BlogPost postToEdit);
    }
 }

@@ -11,10 +11,10 @@ namespace ToonSaloon.Data.Interface
     {
         CartoonOfTheDay GetPostByID(int id);
 
-        ToonOfDayResponse AddToonOfDay(CartoonOfTheDay toonToAdd);
+        void AddToonOfDay(CartoonOfTheDay toonToAdd);
 
-        ToonOfDayResponse RemoveToonOfDay(CartoonOfTheDay toonToRemove);
+        void RemoveToonOfDay(CartoonOfTheDay toonToRemove);
 
-        ToonOfDayResponse EditToonOfDay(CartoonOfTheDay toonToEdit);
+        void EditToonOfDay(CartoonOfTheDay toonToEdit);
     }
 }

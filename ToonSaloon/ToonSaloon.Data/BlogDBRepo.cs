@@ -10,7 +10,7 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.Data
 {
-   public class BlogDBRepo 
+   public class BlogDBRepo : IBlogPostRepository
    {
        private readonly string _connectiionString =
            ConfigurationManager.ConnectionStrings["ToonSaloon"].ConnectionString;

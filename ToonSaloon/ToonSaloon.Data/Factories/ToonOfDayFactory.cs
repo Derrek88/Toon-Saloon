@@ -22,8 +22,8 @@ namespace ToonSaloon.Data.Factories
                 case "Test":
                     repo = new InMemToonOfDayRepo();
                     break;
-                //case "Prod":
-                //    repo = new 
+                case "Prod":
+                throw new NotImplementedException();
                 default:
                     throw new Exception($"{mode} is not a recognized configuration");
             }

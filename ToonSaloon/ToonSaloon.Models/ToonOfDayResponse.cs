@@ -11,5 +11,7 @@ namespace ToonSaloon.Models
         public bool Success { get; set; }
 
         public string Message { get; set; }
+
+        public CartoonOfTheDay ToonOfTheDay { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ToonSaloon.Web.Controllers
         {
             var manager = new ToonOfTheDayManager();
 
-            return manager.GetToonOfTheDay();
+            return manager.GetCartoonOfTheDay(1);
         }
     }
 }
