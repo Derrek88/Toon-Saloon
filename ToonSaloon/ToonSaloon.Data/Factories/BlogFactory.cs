@@ -16,10 +16,10 @@ namespace ToonSaloon.Data.Factories
         {
             IBlogPostRepository repo;
 
-            string mode = ConfigurationManager.AppSettings["mode"].ToString();
+            string mode = ConfigurationManager.AppSettings["Mode"].ToString();
             switch (mode)
             {
-                case "test":
+                case "Test":
                     repo = new InMemBlogRepo();
                     break;
                 default:
