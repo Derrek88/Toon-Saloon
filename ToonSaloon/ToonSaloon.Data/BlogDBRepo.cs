@@ -10,7 +10,7 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.Data
 {
-   public class BlogDBRepo : IBlogPostRepository
+   public class BlogDBRepo 
    {
        private readonly string _connectiionString =
            ConfigurationManager.ConnectionStrings["ToonSaloon"].ConnectionString;
@@ -68,17 +68,17 @@ namespace ToonSaloon.Data
             return newBlogPost;
        }
 
-       public PostResponse AddBlogPost(BlogPost postToAdd)
+       public void AddBlogPost(BlogPost postToAdd)
        {
            throw new NotImplementedException();
        }
 
-       public PostResponse RemoveBlogPost(BlogPost postToRemove)
+       public void RemoveBlogPost(BlogPost postToRemove)
        {
            throw new NotImplementedException();
        }
 
-       public PostResponse EditBlogPost(BlogPost postToEdit)
+       public void EditBlogPost(BlogPost postToEdit)
        {
            throw new NotImplementedException();
        }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\ToonOfDayFactory.cs" />
     <Compile Include="InMemRepo\InMemToonOfDayRepo.cs" />
     <Compile Include="BlogDBRepo.cs" />
     <Compile Include="Factories\BlogFactory.cs" />

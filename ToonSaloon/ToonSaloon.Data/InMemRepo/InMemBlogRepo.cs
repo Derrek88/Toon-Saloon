@@ -7,7 +7,7 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.Data.InMemRepo
 {
-    public class InMemBlogRepo : IBlogPostRepository
+    public class InMemBlogRepo
     {
         private static List<BlogPost> _posts;
 
