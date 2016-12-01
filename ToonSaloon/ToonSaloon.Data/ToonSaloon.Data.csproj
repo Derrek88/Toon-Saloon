@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InMemRepo\InMemToonOfDayRepo.cs" />
     <Compile Include="Interface\IBlogPostRepository.cs" />
     <Compile Include="InMemRepo\InMemBlogRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -48,7 +48,7 @@ namespace ToonSaloon.Data.InMemRepo
                             {
                                 Id = 1,
                                 Title = "Random Image",
-                                Source = "../../Images/appimages/watch 1.jpg",
+                                Source = "../../Images/appimages/rick.jpg",
                                 Description = "a watch"
                             }
                         },
@@ -90,7 +90,7 @@ Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In
                             {
                                 Id = 1,
                                 Title = "Random Image",
-                                Source = "../../Images/appimages/watch 1.jpg",
+                                Source = "../../Images/appimages/art-false-positive.jpg",
                                 Description = "a watch"
                             }
                         },
