@@ -14,23 +14,23 @@ namespace ToonSaloon.BLL
     {
         public CartoonOfTheDay GetCartoonOfTheDay(int id)
         {
-            ToonOfDayResponse response = new ToonOfDayResponse();
+            //ToonOfDayResponse response = new ToonOfDayResponse();
 
             var repo = ToonOfDayFactory.CreateToonOfDayRepository();
-            var toon = repo.GetPostByID(id);
+            return repo.GetPostByID(id);
 
-            if (toon != null)
-            {
-                response.Success = true;
-                response.Message = "It worked!";
-                response.ToonOfTheDay = toon;
-            }
-            else
-            {
-                response.Success = false;
-                response.Message = "Not Found!";
-            }
-            return toon;
+            //if (toon != null)
+            //{
+            //    response.Success = true;
+            //    response.Message = "It worked!";
+            //    response.ToonOfTheDay = toon;
+            //}
+            //else
+            //{
+            //    response.Success = false;
+            //    response.Message = "Not Found!";
+            //}
+            //return toon;
         }
 
         public void AddToonOfDay(CartoonOfTheDay toonToAdd)
