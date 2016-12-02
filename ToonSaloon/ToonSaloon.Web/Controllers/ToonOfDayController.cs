@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Web.Http;
-using ToonSaloon.Models;
 using ToonSaloon.BLL;
+using ToonSaloon.Models;
 
 namespace ToonSaloon.Web.Controllers
 {
-    public class ToonOfTheDayAPIController : ApiController
+    //[KnownType(typeof(ToonSaloon.Models.Approved))]
+    public class ToonOfDayController : ApiController
     {
-        public CartoonOfTheDay GetToon()
+        public CartoonOfTheDay Get()
         {
+
             var manager = new ToonOfTheDayManager();
 
             return manager.GetCartoonOfTheDay(1);
+
+
         }
     }
 }
-
-
