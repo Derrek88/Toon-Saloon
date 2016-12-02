@@ -1,0 +1,79 @@
+﻿@model ToonSaloon.Models.BlogPost
+@{
+    ViewBag.Title = "AdminAddPost";
+}
+<br />
+
+<div class="bpost">
+    <h2 class="text-center">Add Post</h2>
+    @using (Html.BeginForm("AdminAddPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <label>Head line</label>
+            @Html.TextBoxFor(p => p.Headline, new { @class = "form-control" })
+        </div>
+
+
+        @Html.TextAreaFor(p => p.Body, new { @class = "form-control", id = "mytextarea" })
+        <br />
+        <div class="form-group">
+            <label>Tags</label>
+            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "Form-control" })
+        </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                @Html.TextBoxFor(p => p.Category, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <div class="row" id="images1">
+                    <div id="image1Title" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[0].Title, new { @class = "form-control", placeholder = "Image Title" })</div>
+                    <div id="image1Description" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[0].Description, new { @class = "form-control", placeholder = "Image Description" })</div>
+                    <input type="file" name="files" id="file1" />
+                    <div class="btn btn-sm btn-info" id="addImage2">Add Image</div>
+                </div>
+
+
+                <div class="row" id="images2">
+                    <div id="image2Title" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[1].Title, new { @class = "form-control", placeholder = "Image Title" })</div>
+                    <div id="image2Description" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[1].Description, new { @class = "form-control", placeholder = "Image Description" })</div>
+                    <input type="file" name="files" id="file2" />
+                    <div class="btn btn-sm btn-info" id="addImage3">Add Image</div>
+                    <a href="#" id="removeImage2" class="remove_field">Remove</a>
+                </div>
+
+                <div class="row" id="images3">
+                    <div id="image3Title" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[2].Title, new { @class = "form-control", placeholder = "Image Title" })</div>
+                    <div id="image3Description" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[2].Description, new { @class = "form-control", placeholder = "Image Description" })</div>
+                    <input type="file" name="files" id="file3" />
+                    <a href="#" id="removeImage3" class="remove_field">Remove</a>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>Author Name</label>
+                @Html.TextBoxFor(p => p.AuthorName, new { @class = "form-control" })
+            </div>
+
+            <div class="btn btn-sm btn-success">Post</div>
+
+            }
+        </div>
+
+@section scripts{
+        <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+        <script src="~/Scripts/app/TinyMCE.js"></script>
+        <script src="~/Scripts/app/AddmoreImages.js"></script>
+        <script src="~/Scripts/jquery-1.4.4.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
+        <script src="~/Scripts/tag-it.js"></script>
+        <script src="~/Scripts/app/tags.js"></script>
+
+        }
+@section styles{
+    <link rel='stylesheet' href='../../Content/app/AdminAddpostbox.css' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <link href="~/Content/jquery.tagit.css" rel="stylesheet" />
+}
