@@ -1,4 +1,4 @@
-﻿var uri = '../../api/';
+﻿var uri = '/api/toonofday';
 
 $(document)
     .ready(function() {
@@ -6,12 +6,11 @@ $(document)
     });
 
 function GetToon() {
-    $.getJSON(uri)
-           .done(function (data) {
-               
-               // data contains a list of contacts
-               // we need to iterate each one and add it to the table
-            
-           });
+    $.getJSON(uri);
 };
+
+
+// data contains a list of contacts
+               // we need to iterate each one and add it to the table
+ 
     

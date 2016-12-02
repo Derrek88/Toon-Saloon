@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ToonSaloon.Models
 {
@@ -14,7 +16,7 @@ namespace ToonSaloon.Models
         [Required(ErrorMessage = "Who made this post?")]
         public string Author { get; set; }
 
-        public Enum Approved { get; set; }
+        public Approved Approved { get; set; }
 
         public string ImgUrl { get; set; }
 
@@ -29,4 +31,6 @@ namespace ToonSaloon.Models
 
         public DateTime DateCreated { get; set; }
     }
+
+   
 }
