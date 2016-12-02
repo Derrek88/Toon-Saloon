@@ -10,27 +10,29 @@ using ToonSaloon.Models;
 
 namespace ToonSaloon.Data.DBRepos
 {
-   public class StaticDBRepo: IStaticRepository
+    public class StaticDBRepo : IStaticRepository
     {
         private readonly string _connectiionString =
-           ConfigurationManager.ConnectionStrings["ToonSaloon"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["ToonSaloon"].ConnectionString;
 
         public StaticPage GetPageByID(int id)
-       {
+        {
             var repo = new StaticDBRepo();
             var page = repo.GetPageByID(id);
             return page;
         }
 
-       public List<StaticPage> GetAllPages()
-       {
-            List<StaticPage> posts = new List<StaticPage>();
+        public List<StaticPage> GetAllPages()
+        {
+            List<StaticPage> pages = new List<StaticPage>();
 
             using (var cn = new SqlConnection(_connectiionString))
             {
                 var cmd = new SqlCommand();
+
+                cmd.CommandText = @"SELECT *
+                                        FROM StaticPage";
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT * FROM StaticPage";
 
                 cn.Open();
 
@@ -38,25 +40,46 @@ namespace ToonSaloon.Data.DBRepos
                 {
                     while (dr.Read())
                     {
-                        ToonSaloon.Models.StaticPage newPage = ConvertReaderToPage(dr);
+                        StaticPage page = pages.FirstOrDefault(p => p.Id == (int) dr["StaticId"]);
 
-                        posts.Add(newPage);
+                        //ToonSaloon.Models.StaticPage newPage = ConvertReaderToPage(dr);
+
+                        if (page == null)
+                        {
+                            page = ConvertReaderToPage(dr);
+                            pages.Add(page);
+                        }
+
+                        //Tag tag = ConvertToTag(dr);
+
+                        //page.Tag.Add(tag);
+                       page.Tag = GetTagsByPageId(page.Id);
                     }
                 }
             }
-            return posts;
+            return pages;
         }
 
-       private StaticPage ConvertReaderToPage(SqlDataReader dr)
-       {
-           ToonSaloon.Models.StaticPage newPage = new ToonSaloon.Models.StaticPage
-           {
-               Name = dr["Name"].ToString(),
-               Body = dr["Body"].ToString(),
-               DateCreated = (DateTime) dr["DateCreated"],
-               Approved = (Approved) dr["Approved"],
-               //Tag = dr["Tag"].ToString()
-           };
+        private Tag ConvertToTag(SqlDataReader dr)
+        {
+            return new Tag()
+            {
+                Id = (int) dr["TagId"],
+                Name = dr["Name"].ToString()
+            };
+        }
+
+        private StaticPage ConvertReaderToPage(SqlDataReader dr)
+        {
+            ToonSaloon.Models.StaticPage newPage = new ToonSaloon.Models.StaticPage
+            {
+                Id = (int) dr["PageId"],
+                Name = dr["Name"].ToString(),
+                Body = dr["Body"].ToString(),
+                DateCreated = (DateTime) dr["DateCreated"],
+                Approved = (Approved) dr["Approved"],
+               
+            };
            return newPage;
        }
 
@@ -119,6 +142,39 @@ namespace ToonSaloon.Data.DBRepos
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+       private List<Tag> GetTagsByPageId(int id)
+        {
+            List<Tag> tags = new List<Tag>();
+
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.CommandText = @"SELECT TagId, Name
+                                        FROM Tag t
+                                            JOIN Page_TagBridge b
+                                                ON t.TagId = b.TagId
+                                                  WHERE b.Page.Id = @Page.Id";
+
+                cmd.Parameters.AddWithValue("@Page.Id", id);
+
+                cmd.Connection = cn;
+
+                cn.Open();
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Tag tag = ConvertToTag(dr);
+
+                        tags.Add(tag);
+                    }
+                }
+            }
+            return tags;
         }
     }
 }

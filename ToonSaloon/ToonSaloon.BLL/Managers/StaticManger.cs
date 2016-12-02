@@ -59,5 +59,7 @@ namespace ToonSaloon.BLL
 
             repo.EditStaticPage(pageToEdit);
         }
+
+        
     }
 }
