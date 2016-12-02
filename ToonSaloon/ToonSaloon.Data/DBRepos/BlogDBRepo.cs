@@ -18,9 +18,9 @@ namespace ToonSaloon.Data
        public BlogPost GetPostByID(int id)
        {
            var repo = new BlogDBRepo();
-           var post = repo.GetAllPosts();
-           return post.FirstOrDefault(p => p.Id == id);
-        }
+           var post = repo.GetPostByID(id);
+           return post;
+       }
 
        public List<BlogPost> GetAllPosts()
        {
@@ -55,7 +55,7 @@ namespace ToonSaloon.Data
                Body = dr["Body"].ToString(),
                AuthorName = dr["AuthorName"].ToString(),
                Category = (Category) dr["Category"],
-               Approved = (Enum) dr["isApproved"],
+               Approved = (Approved) dr["Approved"],
                DateCreated = (DateTime) dr["DateCreated"],
                Headline = dr["Headlines"].ToString(),
                Subtitle = dr["Subtitle"].ToString(),
@@ -65,22 +65,88 @@ namespace ToonSaloon.Data
                //Youtubes = dr["Youtube"].ToString(),
 
            };
-            return newBlogPost;
+           return newBlogPost;
        }
 
        public void AddBlogPost(BlogPost postToAdd)
        {
-           throw new NotImplementedException();
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+               cmd.Connection = cn;
+               cmd.CommandText =
+                   @"INSERT INTO BlogPost(Body, AuthorName, Category, Approved, DateCreated, Headline, Subtitle) 
+                                    VALUE (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle";
+
+               cmd.Parameters.AddWithValue("@Body", postToAdd.Body);
+               cmd.Parameters.AddWithValue("@AuthorName", postToAdd.AuthorName);
+               cmd.Parameters.AddWithValue("@Category", postToAdd.Category);
+               cmd.Parameters.AddWithValue("@Approved", postToAdd.Approved);
+               cmd.Parameters.AddWithValue("@DateCreated", postToAdd.DateCreated);
+               cmd.Parameters.AddWithValue("@Headline", postToAdd.Headline);
+               cmd.Parameters.AddWithValue("@Subtitle", postToAdd.Subtitle);
+
+               cn.Open();
+
+               cmd.ExecuteNonQuery();
+
+           }
        }
 
        public void RemoveBlogPost(BlogPost postToRemove)
        {
-           throw new NotImplementedException();
-       }
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText =
+                    @"DELETE FROM BlogPost 
+                              WHERE BlogId = @BlogId";
+
+                cmd.Parameters.AddWithValue("@Body", postToRemove.Body);
+                cmd.Parameters.AddWithValue("@AuthorName", postToRemove.AuthorName);
+                cmd.Parameters.AddWithValue("@Category", postToRemove.Category);
+                cmd.Parameters.AddWithValue("@Approved", postToRemove.Approved);
+                cmd.Parameters.AddWithValue("@DateCreated", postToRemove.DateCreated);
+                cmd.Parameters.AddWithValue("@Headline", postToRemove.Headline);
+                cmd.Parameters.AddWithValue("@Subtitle", postToRemove.Subtitle);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+
+            }
+        }
 
        public void EditBlogPost(BlogPost postToEdit)
        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText =
+                    @"UPDATE BlogPost
+                        SET Body = @Body, AuthorName = @AuthorName, @Cateogry = Cateogry, Approved = @Approved, DateCreated = @DateCreated, Headline = @Headline, Subtitle = @Subtitle
+                        WHERE BlogId = @BlogId";
+
+                cmd.Parameters.AddWithValue("@Body", postToEdit.Body);
+                cmd.Parameters.AddWithValue("@AuthorName", postToEdit.AuthorName);
+                cmd.Parameters.AddWithValue("@Category", postToEdit.Category);
+                cmd.Parameters.AddWithValue("@Approved", postToEdit.Approved);
+                cmd.Parameters.AddWithValue("@DateCreated", postToEdit.DateCreated);
+                cmd.Parameters.AddWithValue("@Headline", postToEdit.Headline);
+                cmd.Parameters.AddWithValue("@Subtitle", postToEdit.Subtitle);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
+       public List<BlogPost> GetPostByTag(string TagName)
+       {
            throw new NotImplementedException();
        }
-    }
+   }
 }

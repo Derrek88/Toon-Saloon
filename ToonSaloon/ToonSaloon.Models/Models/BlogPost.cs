@@ -28,12 +28,16 @@ namespace ToonSaloon.Models
         public string AuthorName { get; set; }
 
         [Required(ErrorMessage = "What Category does the post belong in?")]
-        public Enum Category { get; set; }
+        public Category Category { get; set; }
 
-        public Enum Approved { get; set; }
+        public Approved Approved { get; set; }
 
         public List<Youtube> Youtubes { get; set; }
 
         public List<Img> Imgs { get; set; }
+
+        //just a placeholder for tags don't think this needs to go in the database
+        public string TagPlaceHolder { get; set; }
+
     }
 }

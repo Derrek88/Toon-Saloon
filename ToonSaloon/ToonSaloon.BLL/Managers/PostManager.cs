@@ -63,5 +63,13 @@ namespace ToonSaloon.BLL
             repo.EditBlogPost(postToEdit);
 
         }
+
+        public List<BlogPost> GetPostByTag(string TagName)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            return repo.GetPostByTag(TagName);
+
+        }
     }
 }

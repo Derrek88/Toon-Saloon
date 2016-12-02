@@ -22,6 +22,9 @@ namespace ToonSaloon.Data.Factories
                 case "Test":
                     repo = new InMemBlogRepo();
                     break;
+                case "Prod":
+                    repo = new BlogDBRepo();
+                    break;
                 default:
                     throw new Exception($"{mode} is not a recognized configuration");
             }

@@ -16,5 +16,7 @@ namespace ToonSaloon.Data.Interface
         void RemoveToonOfDay(CartoonOfTheDay toonToRemove);
 
         void EditToonOfDay(CartoonOfTheDay toonToEdit);
+
+        List<CartoonOfTheDay> GetAllToons();
     }
 }

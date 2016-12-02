@@ -8,5 +8,10 @@ namespace ToonSaloon.Models.Responses
 {
     public class TagResponse
     {
+        public bool Success { get; set; }
+
+        public string Message { get; set; }
+
+        public Tag Tag { get; set; }
     }
 }

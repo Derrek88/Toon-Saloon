@@ -63,5 +63,10 @@ namespace ToonSaloon.Data.InMemRepo
             post = toonToEdit;
             _toons.Add(post);
         }
+
+        public List<CartoonOfTheDay> GetAllToons()
+        {
+            return _toons;
+        }
     }
 }
