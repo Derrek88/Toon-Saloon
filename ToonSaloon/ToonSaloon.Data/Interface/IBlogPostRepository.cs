@@ -18,5 +18,7 @@ namespace ToonSaloon.Data
        void RemoveBlogPost(BlogPost postToRemove);
 
        void EditBlogPost(BlogPost postToEdit);
+
+       List<BlogPost> GetPostByTag(string TagName);
    }
 }

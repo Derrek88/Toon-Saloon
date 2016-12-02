@@ -19,7 +19,7 @@ namespace ToonSaloon.Models
 
         public DateTime DateCreated { get; set; }
 
-        public Enum Approved { get; set; }
+        public Approved Approved { get; set; }
 
         public List<Tag> Tag { get; set; }
     }

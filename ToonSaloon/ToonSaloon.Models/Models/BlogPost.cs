@@ -28,9 +28,9 @@ namespace ToonSaloon.Models
         public string AuthorName { get; set; }
 
         [Required(ErrorMessage = "What Category does the post belong in?")]
-        public Enum Category { get; set; }
+        public Category Category { get; set; }
 
-        public Enum Approved { get; set; }
+        public Approved Approved { get; set; }
 
         public List<Youtube> Youtubes { get; set; }
 

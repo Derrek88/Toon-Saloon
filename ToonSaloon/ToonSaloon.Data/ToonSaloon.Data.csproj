@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBRepos\StaticDBRepo.cs" />
+    <Compile Include="DBRepos\TagDBRepo.cs" />
+    <Compile Include="DBRepos\ToonOfDayDBRepo.cs" />
     <Compile Include="Factories\StaticFactory.cs" />
     <Compile Include="Factories\TagFactory.cs" />
     <Compile Include="Factories\ToonOfDayFactory.cs" />

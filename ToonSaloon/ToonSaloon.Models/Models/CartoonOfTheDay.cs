@@ -14,7 +14,7 @@ namespace ToonSaloon.Models
         [Required(ErrorMessage = "Who made this post?")]
         public string Author { get; set; }
 
-        public Enum Approved { get; set; }
+        public Approved Approved { get; set; }
 
         public string ImgUrl { get; set; }
 
