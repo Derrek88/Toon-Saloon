@@ -133,8 +133,7 @@ namespace ToonSaloon.Data.InMemRepo
 
         public List<BlogPost> GetPostByTag(string TagName)
         {
-            //var tagPosts = _posts.Where(p => p.Tags.);
-            //tagPosts = tagPosts.Where
+           throw new NotImplementedException();
 
         }
     }
