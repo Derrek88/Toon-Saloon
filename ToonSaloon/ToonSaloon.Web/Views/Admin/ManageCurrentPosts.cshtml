@@ -29,7 +29,7 @@
                         <td>@post.AuthorName</td>
                         <td>@post.DateCreated.ToShortDateString()</td>
                         <td>@Html.ActionLink("Edit", "AdminEditPost", "Admin", new { id = post.Id }, new { @class = "btn btn-sm btn-info" })</td>
-                        <td>@Html.ActionLink("Delete", "AdminDeletePost", "Admin", new { id = post.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                        <td>@Html.ActionLink("Delete", "AdminDeletetPost", "Admin", new { id = post.Id }, new { @class = "btn btn-sm btn-danger" })</td>
                     </tr>
                 }
             }
