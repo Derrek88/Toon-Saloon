@@ -51,5 +51,13 @@ namespace ToonSaloon.BLL
             var repo = ToonOfDayFactory.CreateToonOfDayRepository();
             repo.EditToonOfDay(toonToEdit);
         }
+
+        public List<CartoonOfTheDay> GetAllToons()
+        {
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+
+            return repo.GetAllToons();
+
+        }
     }
 }
