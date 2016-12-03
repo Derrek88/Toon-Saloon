@@ -114,6 +114,15 @@ namespace ToonSaloon.Data.InMemRepo
 
         public void AddBlogPost(BlogPost postToAdd)
         {
+            
+            var taglist = new List<Tag>();
+            var posttags = postToAdd.TagPlaceHolder;
+            var repo = new InMemTagRepo();
+            taglist = repo.addTagToPost(posttags);
+            postToAdd.Tags = taglist;
+            
+            
+
             _posts.Add(postToAdd);
         }
 
