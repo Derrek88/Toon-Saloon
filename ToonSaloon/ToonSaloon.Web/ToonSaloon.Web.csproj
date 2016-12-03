@@ -233,6 +233,7 @@
     <Content Include="BackGrounds\transformers.jpg" />
     <Content Include="Content\app\AdminAddpostbox.css" />
     <Content Include="Content\app\AdminDashStyles.css" />
+    <Content Include="Content\app\font-awesome.css" />
     <Content Include="Content\app\HomePageStyles.css" />
     <Content Include="Content\app\images\arrows_strip_left.png" />
     <Content Include="Content\app\images\arrows_strip_right.png" />
@@ -241,7 +242,10 @@
     <Content Include="Content\app\images\button_fullscreen_single.png" />
     <Content Include="Content\app\images\button_playpause.png" />
     <Content Include="Content\app\images\button_playpause_single.png" />
+    <Content Include="Content\app\jssocials-theme-classic.css" />
+    <Content Include="Content\app\jssocials.css" />
     <Content Include="Content\app\ug-theme-default.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\button-close.png" />
     <Content Include="Content\images\cover-grid.png" />
     <Content Include="Content\images\icon-link32.png" />
@@ -343,6 +347,8 @@
     <Content Include="Scripts\app\AddmoreImages.js" />
     <Content Include="Scripts\app\BackgroundRandomizer.js" />
     <Content Include="Scripts\app\Initgallery.js" />
+    <Content Include="Scripts\app\initsocial.js" />
+    <Content Include="Scripts\app\jssocials.js" />
     <Content Include="Scripts\app\Tags.js" />
     <Content Include="Scripts\app\TinyMCE.js" />
     <Content Include="Scripts\app\TniyMCE.js" />
@@ -356,6 +362,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App.config" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

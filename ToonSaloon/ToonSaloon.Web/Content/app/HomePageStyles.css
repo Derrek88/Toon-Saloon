@@ -17,3 +17,43 @@
 .spacer {
     padding-bottom: 10%;
 }
+#toonday {
+    -webkit-box-shadow: 10px 10px 2px 2px #FF1F17;
+    box-shadow: 10px 10px 2px 2px #FF1F17;
+    -webkit-border-radius: 111px;
+    border-radius: 111px;
+    background-color: whitesmoke;
+    width: 17vw;
+    height: 22vw
+}
+#toondayimg {
+    text-align: right;
+    padding:1px;
+    margin-left: 15.5%;
+    border:1px solid #021a40;
+    background-color:white;
+}
+#toondayshowtitle {
+    text-align: center;
+}
+#toonepisode {
+    text-align: center;
+}
+#social {
+    -webkit-box-shadow: 10px 10px 2px 2px #FF1F17;
+    box-shadow: 10px 10px 2px 2px #FF1F17;
+    -webkit-border-radius: 111px;
+    border-radius: 111px;
+    background-color: whitesmoke;
+    width: 17vw;
+    height: 15vw;
+    margin-top: 4%;
+}
+#share {
+    text-align: center;
+    padding-top: 8%; 
+}
+.postbody {
+    margin-left: 18%;
+}
+
