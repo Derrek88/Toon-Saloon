@@ -38,14 +38,156 @@ namespace ToonSaloon.Data
                 {
                     while (dr.Read())
                     {
-                        ToonSaloon.Models.BlogPost newBlogPost = ConvertReaderToPost(dr);
+                        BlogPost post = posts.FirstOrDefault(p => p.Id == (int) dr["BlogId"]);
 
-                        posts.Add(newBlogPost);
+                        if (post == null)
+                        {
+                            post = ConvertReaderToPost(dr);
+                            posts.Add(post);
+                        }
+
+                        //ToonSaloon.Models.BlogPost newBlogPost = ConvertReaderToPost(dr);
+
+                        post.Tags = GetTagsByPostId(post.Id);
+                        post.Imgs = GetImgsByPostId(post.Imgs);
+                        post.Youtubes = GetYoutubeById(post.Youtubes);
+
                     }
                 }
             }
             return posts;
         }
+
+       private List<Youtube> GetYoutubeById(List<Youtube> id)
+       {
+           List<Youtube> youtubes = new List<Youtube>();
+
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+
+               cmd.CommandText = @"SELECT YoutubeId, TubeId, Description
+                                        FROM Youtube y
+                                           JOIN Youtube_BlogBride b
+                                               ON y.YoutubeId = b.YoutubeId
+                                                    WHERE y.Blog.Id = @Blog.Id";
+
+                cmd.Parameters.AddWithValue("@Blog.Id", id);
+
+                cmd.Connection = cn;
+
+                cn.Open();
+
+               using (var dr = cmd.ExecuteReader())
+               {
+                   while (dr.Read())
+                   {
+                       Youtube youtube = ConvertToYoutube(dr);
+
+                       youtubes.Add(youtube);
+                   }
+               }
+            }
+           return youtubes;
+
+       }
+
+       private Youtube ConvertToYoutube(SqlDataReader dr)
+       {
+           return new Youtube()
+           {
+               Id = (int) dr["YoutubeId"],
+               Description = dr["Description"].ToString(),
+               TubeId = dr["TubeId"].ToString()
+
+           };
+       }
+
+       private List<Img> GetImgsByPostId(List<Img> id)
+       {
+           List<Img> imgs = new List<Img>();
+
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+
+               cmd.CommandText = @"ImgId, Name
+                                        FROM Img i
+                                           JOIN Img_BlogBride b
+                                             ON i.ImgId = b.ImgId
+                                               WHERE b.BlogId = @Blog.Id";
+
+               cmd.Parameters.AddWithValue("@Blog.Id", id);
+
+               cmd.Connection = cn;
+
+                cn.Open();
+
+               using (var dr = cmd.ExecuteReader())
+               {
+                   while (dr.Read())
+                   {
+                       Img img = ConvertToImg(dr);
+
+                        imgs.Add(img);
+                   }
+               }
+           }
+           return imgs;
+       }
+
+       private List<Tag> GetTagsByPostId(int id)
+       {
+           List<Tag> tags = new List<Tag>();
+
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+
+               cmd.CommandText = @"SELECT TagId, Name
+                                   From Tag t
+                                        JOIN Tag_BlogBridge b
+                                            ON t.TagId = b.TagId
+                                                WHERE b.BlogId = @Blog.Id";
+
+               cmd.Parameters.AddWithValue("@Blog.Id", id);
+
+               cmd.Connection = cn;
+
+               cn.Open();
+
+               using (var dr = cmd.ExecuteReader())
+               {
+                   while (dr.Read())
+                   {
+                       Tag tag = ConvertToTag(dr);
+
+                       tags.Add(tag);
+                   }
+               }
+           }
+           return tags;
+       }
+
+       private Tag ConvertToTag(SqlDataReader dr)
+       {
+           return new Tag()
+           {
+               Id = (int) dr["TagId"],
+               Name = dr["Name"].ToString()
+           };
+       }
+
+       private Img ConvertToImg(SqlDataReader dr)
+       {
+           return new Img()
+           {
+               Id = (int) dr["ImgId"],
+               Title = dr["Title"].ToString(),
+               Source = dr["Source"].ToString(),
+               Description = dr["Description"].ToString()
+           };
+       }
 
        private BlogPost ConvertReaderToPost(SqlDataReader dr)
        {
