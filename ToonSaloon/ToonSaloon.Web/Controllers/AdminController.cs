@@ -48,6 +48,7 @@ namespace ToonSaloon.Web.Controllers
             }
 
             var manager = new PostManager();
+            post.Approved = Approved.Yes;
             manager.AddBlogPost(post);
             return RedirectToAction("ManageCurrentPosts");
         }
