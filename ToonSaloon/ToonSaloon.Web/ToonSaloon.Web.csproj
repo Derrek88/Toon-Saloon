@@ -442,6 +442,10 @@
     <Content Include="Views\Employee\EmployeeAddToon.cshtml" />
     <Content Include="Views\Employee\EmployeeDeleteToon.cshtml" />
     <Content Include="Views\Employee\EmployeeEditToon.cshtml" />
+    <Content Include="Views\Admin\ManageStaticPages.cshtml" />
+    <Content Include="Views\Admin\AdminAddStaticPage.cshtml" />
+    <Content Include="Views\Admin\AdminEditStaticPage.cshtml" />
+    <Content Include="Views\Admin\AdminDeleteStaticPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -196,5 +196,61 @@ namespace ToonSaloon.Web.Controllers
 
             return View(model);
         }
+
+        //STATIC PAGE SECTION
+
+        [HttpGet]
+        public ActionResult ManageStaticPages()
+        {
+            var manager = new StaticManger();
+            var model = manager.GetAllPages();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AdminAddStaticPage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminAddStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.AddStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
+
+        [HttpGet]
+        public ActionResult AdminEditStaticPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetPostByID(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminEditStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.EditStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
+
+        [HttpGet]
+        public ActionResult AdminDeleteStaticPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetPostByID(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminDeleteStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.RemoveStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
     }
 }
