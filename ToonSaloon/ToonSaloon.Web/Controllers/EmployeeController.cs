@@ -39,8 +39,16 @@ namespace ToonSaloon.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EmployeeAddPost()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult EmployeeAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
+            int i = 0;
             foreach (var file in files)
             {
 
@@ -49,13 +57,17 @@ namespace ToonSaloon.Web.Controllers
                     var filename = System.IO.Path.GetFileName(file.FileName);
 
                     // Where do we want to save the image
-                    var path = System.IO.Path.Combine(Server.MapPath("~/Post Images"), filename);
+                    var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
                     file.SaveAs(path);
+                    post.Imgs[i].Source = "../../Images/appimages/" + filename;
+
                 }
+                i++;
             }
 
             var manager = new PostManager();
             post.Approved = Approved.Waiting;
+            post.DateCreated = DateTime.Today;
             manager.AddBlogPost(post);
             return RedirectToAction("ManageCurrentPosts");
         }

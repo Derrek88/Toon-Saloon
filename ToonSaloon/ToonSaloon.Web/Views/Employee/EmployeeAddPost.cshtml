@@ -1,30 +1,34 @@
-﻿@model ToonSaloon.Models.BlogPost
+﻿@model  ToonSaloon.Models.BlogPost
 @{
-    ViewBag.Title = "AdminAddPost";
+    ViewBag.Title = "EmployeeAddPost";
+}
+
+<h2>Create your Post</h2>
+
 }
 <br />
 
 <div class="bpost">
     <h2 class="text-center">Add Post</h2>
-    @using (Html.BeginForm("AdminAddPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("EmployeeAddPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="form-group">
             <label>Head line</label>
             @Html.TextBoxFor(p => p.Headline, new { @class = "form-control" })
+            @Html.TextBoxFor(p => p.Subtitle, new { @class = "form-control" })
         </div>
 
         @Html.TextAreaFor(p => p.Body, new { @class = "form-control", id = "mytextarea" })
         <br />
         <div class="form-group">
             <label>Tags</label>
-            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "form-control" })
-            @Html.TextBoxFor(p => p.Subtitle, new { @class = "form-control" })
+            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "Form-control" })
         </div>
 
-            <div class="form-group">
-                <label>Category</label>
-                @Html.EnumDropDownListFor(p => p.Category,"Select a Category" , new { @class = "form-control" })
-            </div>
+        <div class="form-group">
+            <label>Category</label>
+            @Html.EnumDropDownListFor(p => p.Category, "Select a Category", new { @class = "form-control" })
+        </div>
             <div class="form-group">
                 <label>Image</label>
                 <div class="row" id="images1">
@@ -61,18 +65,18 @@
             @Html.ActionLink("Cancel", "ManageCurrentPosts", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }
-        </div>
+</div>
 
 @section scripts{
-        <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
-        <script src="~/Scripts/app/TinyMCE.js"></script>
-        <script src="~/Scripts/app/AddmoreImages.js"></script>
-        <script src="~/Scripts/jquery-1.4.4.min.js"></script>
-        <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
-        <script src="~/Scripts/tag-it.js"></script>
-        <script src="~/Scripts/app/tags.js"></script>
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="~/Scripts/app/TinyMCE.js"></script>
+    <script src="~/Scripts/app/AddmoreImages.js"></script>
+    <script src="~/Scripts/jquery-1.4.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
+    <script src="~/Scripts/tag-it.js"></script>
+    <script src="~/Scripts/app/tags.js"></script>
 
-        }
+}
 @section styles{
     <link rel='stylesheet' href='../../Content/app/AdminAddpostbox.css' type='text/css' />
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">

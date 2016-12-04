@@ -53,6 +53,7 @@ namespace ToonSaloon.Web.Controllers
 
             var manager = new PostManager();
             post.Approved = Approved.Yes;
+            post.DateCreated = DateTime.Today;
             manager.AddBlogPost(post);
             return RedirectToAction("ManageCurrentPosts");
         }
