@@ -52,7 +52,7 @@ namespace ToonSaloon.Data.InMemRepo
                                 Description = "a watch"
                             }
                         },
-                        Approved = Approved.Yes,
+                        Approved = Approved.Waiting,
                         DateCreated = Convert.ToDateTime("11/28/2016"),
                         
                         

@@ -17,9 +17,9 @@ namespace ToonSaloon.Data
 
        public BlogPost GetPostByID(int id)
        {
-           var repo = new BlogDBRepo();
-           var post = repo.GetPostByID(id);
-           return post;
+           var allPosts = GetAllPosts();
+           var blogPost = allPosts.FirstOrDefault(b => b.Id == id);
+           return blogPost;
        }
 
        public List<BlogPost> GetAllPosts()

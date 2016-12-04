@@ -9,7 +9,24 @@
     @using (Html.BeginForm("AdminEditPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.HiddenFor(p=> p.Id)
-        @Html.HiddenFor(p=> p.Imgs)
+
+
+        for (int i = 0; i < Model.Imgs.Count; i++)
+        {
+            <div class="invisible">
+
+                @Html.EditorFor(model => Model.Imgs[i].Id);
+                @Html.EditorFor(model => Model.Imgs[i].Description);
+                @Html.EditorFor(model => Model.Imgs[i].Title);
+                @Html.EditorFor(model => Model.Imgs[i].Source);
+            </div>
+
+
+        }
+
+
+
+
         @Html.HiddenFor(p=> p.Subtitle)
         @Html.HiddenFor(p=> p.Approved)
         <div class="form-group">
