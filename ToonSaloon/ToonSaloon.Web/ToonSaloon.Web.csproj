@@ -426,6 +426,8 @@
     <Content Include="Views\Admin\AdminDeletetPost.cshtml" />
     <Content Include="Views\Admin\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Admin\AdminAddToon.cshtml" />
+    <Content Include="Views\Admin\AdminEditToon.cshtml" />
+    <Content Include="Views\Admin\AdminDeleteToon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

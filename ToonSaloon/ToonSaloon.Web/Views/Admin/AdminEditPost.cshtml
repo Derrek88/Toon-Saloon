@@ -9,6 +9,9 @@
     @using (Html.BeginForm("AdminEditPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.HiddenFor(p=> p.Id)
+        @Html.HiddenFor(p=> p.Imgs)
+        @Html.HiddenFor(p=> p.Subtitle)
+        @Html.HiddenFor(p=> p.Approved)
         <div class="form-group">
             <label>Head line</label>
             @Html.TextBoxFor(p => p.Headline, new { @class = "form-control" })
@@ -26,14 +29,14 @@
             <label>Category</label>
             @Html.EnumDropDownListFor(p => p.Category, "Select a Category", new { @class = "form-control" })
         </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label>Image</label>
                 <div class="row" id="images1">
                     <div id="image1Title" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[0].Title, new { @class = "form-control", placeholder = "Image Title" })</div>
                     <div id="image1Description" class="col-xs-4">@Html.TextBoxFor(m => m.Imgs[0].Description, new { @class = "form-control", placeholder = "Image Description" })</div>
                     <input type="file" name="files" id="file1" />
                     <div class="btn btn-sm btn-info" id="addImage2">Add Image</div>
-                </div>
+                </div>*@
 
 
                 @*<div class="row" id="images2">
@@ -50,7 +53,7 @@
                     <input type="file" name="files" id="file3" />
                     <a href="#" id="removeImage3" class="remove_field">Remove</a>
                 </div>*@
-            </div>
+            @*</div>*@
 
 
             <div class="form-group">
@@ -58,7 +61,8 @@
                 @Html.TextBoxFor(p => p.AuthorName, new { @class = "form-control" })
             </div>
 
-            <div class="btn btn-sm btn-success">Post</div>
+            <button type="submit" class="btn btn-lg btn-success">Add</button>
+            @Html.ActionLink("Cancel", "ManageCurrentPosts", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }
 </div>
