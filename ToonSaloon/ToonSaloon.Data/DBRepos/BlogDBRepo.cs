@@ -12,14 +12,14 @@ namespace ToonSaloon.Data
 {
    public class BlogDBRepo : IBlogPostRepository
    {
-       private readonly string _connectiionString =
+       private readonly string _connectiionString = 
            ConfigurationManager.ConnectionStrings["ToonSaloon"].ConnectionString;
 
        public BlogPost GetPostByID(int id)
        {
-           var repo = new BlogDBRepo();
-           var post = repo.GetPostByID(id);
-           return post;
+           var allPosts = GetAllPosts();
+           var blogPost = allPosts.FirstOrDefault(b => b.Id == id);
+           return blogPost;
        }
 
        public List<BlogPost> GetAllPosts()
