@@ -446,6 +446,8 @@
     <Content Include="Views\Admin\AdminAddStaticPage.cshtml" />
     <Content Include="Views\Admin\AdminEditStaticPage.cshtml" />
     <Content Include="Views\Admin\AdminDeleteStaticPage.cshtml" />
+    <Content Include="Views\Admin\AdminViewToonOfTheDaySubmissions.cshtml" />
+    <Content Include="Views\Admin\AdminApproveToon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,6 @@
 ﻿@model List<ToonSaloon.Models.BlogPost>
 @{
-    ViewBag.Title = "AdminViewBlogPostSubmissions";
+    ViewBag.Title = "AdminViewToonOfTheDaySubmissions";
 } 
 
 <h2>AdminViewBlogPostSubmissions</h2>
@@ -35,9 +35,9 @@
                         <td>@post.AuthorName</td>
                         <td>@post.DateCreated.ToShortDateString()</td>
                         <td>@post.Approved</td>
-                        <td>@Html.ActionLink("Approval", "AdminApprovePost", "Admin", new { id = post.Id }, new { @class = "btn btn-sm btn-info" })|</td>
-                        <td>@Html.ActionLink("Edit", "AdminEditPost", "Admin", new {id = post.Id}, new {@class = "btn btn-sm btn-info"})|</td>
-                        <td>@Html.ActionLink("Delete", "AdminDeletetPost", "Admin", new {id = post.Id}, new {@class = "btn btn-sm btn-danger"})|</td>
+                        <td>@Html.ActionLink("Approval", "AdminApprovePost", "Admin", new { id = post.Id }, new { @class = "btn btn-sm btn-info" })</td>
+                        <td>@Html.ActionLink("Edit", "AdminEditPost", "Admin", new {id = post.Id}, new {@class = "btn btn-sm btn-info"})</td>
+                        <td>@Html.ActionLink("Delete", "AdminDeletetPost", "Admin", new {id = post.Id}, new {@class = "btn btn-sm btn-danger"})</td>
                     </tr>
                 }
             }

@@ -32,6 +32,18 @@ namespace ToonSaloon.Data.InMemRepo
 
 
                     },
+
+                    new CartoonOfTheDay()
+                    {
+                        Id = 2,
+                        Author = "Derrek",
+                        DateCreated = Convert.ToDateTime("12/04/2016"),
+                        Season = 1,
+                        Episode = 1,
+                        ShowName = "Gundam Wing",
+                        Approved = Approved.Waiting,
+                        ImgUrl = "../../Images/appimages/1_ms_2.png"
+                    }
                 };
 
             }
@@ -69,5 +81,6 @@ namespace ToonSaloon.Data.InMemRepo
         {
             return _toons;
         }
+
     }
 }

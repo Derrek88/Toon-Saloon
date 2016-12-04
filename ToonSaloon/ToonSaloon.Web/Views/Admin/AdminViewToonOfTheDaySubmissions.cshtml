@@ -1,0 +1,54 @@
+﻿@model List<ToonSaloon.Models.CartoonOfTheDay>
+@{
+    ViewBag.Title = "AdminViewToonOfTheDaySubmissions";
+}
+
+<h2>AdminViewBlogPostSubmissions</h2>
+@using (Html.BeginForm("AdminAddToon", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+
+    <div class="row">
+        <h1>
+            <strong>Current Toons to</strong>
+        </h1>
+
+        <table id="posts" class="table table-responsive table-bordered">
+            <thead>
+                <tr class="active">
+                    <th>Toon ID</th>
+                    <th>Toon Season</th>
+                    <th>Toon Episode</th>
+                    <th>Toon Author</th>
+                    <th>Toon Date</th>
+                    <th>Toon Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+
+                    foreach (var toon in Model)
+                    {
+                        <tr class="active">
+                            <td>@toon.Id</td>
+                            <td>@toon.Season</td>
+                            <td>@toon.Episode</td>
+                            <td>@toon.Author</td>
+                            <td>@toon.DateCreated.ToShortDateString()</td>
+                            <td>@toon.Approved</td>
+                            <td>@Html.ActionLink("Approval", "AdminApproveToon", "Admin", new { id = toon.Id }, new { @class = "btn btn-sm btn-info" })</td>
+                            <td>@Html.ActionLink("Edit", "AdminEditToon", "Admin", new { id = toon.Id }, new { @class = "btn btn-sm btn-info" })</td>
+                            <td>@Html.ActionLink("Delete", "AdminDeleteToon", "Admin", new { id = toon.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td style="color: red">There are no post in the blog.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
