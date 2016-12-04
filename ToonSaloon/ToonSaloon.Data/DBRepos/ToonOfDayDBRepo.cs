@@ -17,8 +17,8 @@ namespace ToonSaloon.Data.DBRepos
 
         public CartoonOfTheDay GetPostByID(int id)
         {
-            var repo = new ToonOfDayDBRepo();
-            var toon = repo.GetPostByID(id);
+            var allToons = GetAllToons();
+            var toon = allToons.FirstOrDefault(t => t.Id == id);
             return toon;
         }
 
@@ -31,7 +31,8 @@ namespace ToonSaloon.Data.DBRepos
             {
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT * FROM CartoonOfTheDay";
+                cmd.CommandText = @"SELECT * 
+                                            FROM CartoonOfTheDay";
 
                 cn.Open();
 

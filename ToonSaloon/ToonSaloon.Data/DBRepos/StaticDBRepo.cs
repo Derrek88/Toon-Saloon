@@ -17,8 +17,8 @@ namespace ToonSaloon.Data.DBRepos
 
         public StaticPage GetPageByID(int id)
         {
-            var repo = new StaticDBRepo();
-            var page = repo.GetPageByID(id);
+            var allPages = GetAllPages();
+            var page = allPages.FirstOrDefault(p => p.Id == id);
             return page;
         }
 

@@ -436,6 +436,7 @@
     <Content Include="Views\Employee\ManageCurrentPosts.cshtml" />
     <Content Include="Views\Employee\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Employee\EmployeeViewPandR.cshtml" />
+    <Content Include="Views\Employee\EmployeeAddPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
