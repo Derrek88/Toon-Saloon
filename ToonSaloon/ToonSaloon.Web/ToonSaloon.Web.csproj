@@ -211,6 +211,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ToonOfDayController.cs" />
@@ -426,6 +427,10 @@
     <Content Include="Views\Admin\AdminDeletetPost.cshtml" />
     <Content Include="Views\Admin\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Admin\AdminAddToon.cshtml" />
+    <Content Include="Views\Admin\AdminViewBlogPostSubmissions.cshtml" />
+    <Content Include="Views\Admin\AdminViewPost.cshtml" />
+    <Content Include="Views\Admin\AdminApprovePost.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

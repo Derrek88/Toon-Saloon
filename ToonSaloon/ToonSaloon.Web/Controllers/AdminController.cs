@@ -63,7 +63,7 @@ namespace ToonSaloon.Web.Controllers
         public ActionResult AdminEditPost(BlogPost post)
         {
             var manager = new PostManager();
-            manager.AddBlogPost(post);
+            manager.EditBlogPost(post);
             return RedirectToAction("ManageCurrentPosts");
         }
 
@@ -115,13 +115,44 @@ namespace ToonSaloon.Web.Controllers
         [HttpGet]
         public ActionResult AdminViewBlogPostSubmissions()
         {
-            return View();
+            var repo = new PostManager();
+            var model = repo.GetUnapprovedBlogPosts();
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult AdminViewToonOfTheDaySubmissions()
         {
             return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult AdminViewPost(int id)
+        //{
+
+        //    var repo = new PostManager();
+        //    var model = repo.GetPostByID(id);
+
+        //    return View(model);
+        //}
+        [HttpPost]
+        public ActionResult AdminApprovePost(BlogPost post)
+        {
+            var manager = new PostManager();
+            manager.EditBlogPost(post);
+
+            return RedirectToAction("AdminViewBlogPostSubmissions");
+
+        }
+
+        [HttpGet]
+        public ActionResult AdminApprovePost(int id)
+        {
+
+            var manager = new PostManager();
+            var model = manager.GetPostByID(id);
+
+            return View(model);
         }
     }
 }

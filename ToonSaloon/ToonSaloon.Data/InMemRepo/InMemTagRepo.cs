@@ -27,6 +27,49 @@ namespace ToonSaloon.Data.InMemRepo
                     {
                         Id = 2,
                         Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
+                    },
+                    new Tag()
+                    {
+                        Id = 2,
+                        Name = "Static Page"
                     }
                 };
             }

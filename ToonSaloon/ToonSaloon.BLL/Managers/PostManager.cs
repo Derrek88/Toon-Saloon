@@ -71,5 +71,18 @@ namespace ToonSaloon.BLL
             return repo.GetPostByTag(TagName);
 
         }
+
+        public List<BlogPost> GetUnapprovedBlogPosts()
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            var allPosts = repo.GetAllPosts();
+
+            var results = from p in allPosts
+                where p.Approved == Approved.Waiting
+                select p;
+
+            return results.ToList();
+        }
     }
 }
