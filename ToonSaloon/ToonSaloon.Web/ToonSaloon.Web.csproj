@@ -437,6 +437,10 @@
     <Content Include="Views\Employee\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Employee\EmployeeViewPandR.cshtml" />
     <Content Include="Views\Employee\EmployeeAddPost.cshtml" />
+    <Content Include="Views\Admin\ManageStaticPages.cshtml" />
+    <Content Include="Views\Admin\AdminAddStaticPage.cshtml" />
+    <Content Include="Views\Admin\AdminEditStaticPage.cshtml" />
+    <Content Include="Views\Admin\AdminDeleteStaticPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
