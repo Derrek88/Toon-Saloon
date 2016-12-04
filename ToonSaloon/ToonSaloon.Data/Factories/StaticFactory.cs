@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToonSaloon.Data.DBRepos;
 using ToonSaloon.Data.InMemRepo;
 using ToonSaloon.Data.Interface;
 using ToonSaloon.Models;
@@ -23,7 +24,8 @@ namespace ToonSaloon.Data.Factories
                     repo = new InMemStaticRepo();
                     break;
                 case "Prod":
-                    throw new NotImplementedException();
+                    repo = new StaticDBRepo();
+                    break;
                 default:
                     throw new Exception($"{mode} is not a recognized configuration");
             }

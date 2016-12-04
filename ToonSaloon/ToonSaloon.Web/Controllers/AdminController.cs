@@ -106,12 +106,40 @@ namespace ToonSaloon.Web.Controllers
             return RedirectToAction("ManageToonOfTheDay");
         }
 
+        [HttpGet]
+        public ActionResult AdminEditToon(int id)
+        {
+            var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
+            return View(model);
+        }
 
+        [HttpPost]
+        public ActionResult AdminEditToon(CartoonOfTheDay toon)
+        {
+            var manager = new ToonOfTheDayManager();
+            manager.EditToonOfDay(toon); ;
+            return RedirectToAction("ManageToonOfTheDay");
+        }
 
+        [HttpGet]
+        public ActionResult AdminDeleteToon(int id)
+        {
+            var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminDeleteToon(CartoonOfTheDay toon)
+        {
+            var manager = new ToonOfTheDayManager();
+            manager.RemoveToonOfDay(toon);
+            return RedirectToAction("ManageToonOfTheDay");
+        }
 
 
 
         //SUBMISSIONS SECTION
+
         [HttpGet]
         public ActionResult AdminViewBlogPostSubmissions()
         {

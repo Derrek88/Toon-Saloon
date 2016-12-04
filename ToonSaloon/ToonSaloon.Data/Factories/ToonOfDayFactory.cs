@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using ToonSaloon.Data.DBRepos;
 using ToonSaloon.Data.InMemRepo;
 using ToonSaloon.Data.Interface;
 
@@ -23,7 +24,8 @@ namespace ToonSaloon.Data.Factories
                     repo = new InMemToonOfDayRepo();
                     break;
                 case "Prod":
-                throw new NotImplementedException();
+                     repo = new ToonOfDayDBRepo();
+                    break;
                 default:
                     throw new Exception($"{mode} is not a recognized configuration");
             }

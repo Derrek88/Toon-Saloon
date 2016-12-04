@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ToonSaloon.Models
 {
@@ -12,6 +13,7 @@ namespace ToonSaloon.Models
     {
         public int Id { get; set; }
 
+        [AllowHtml]
         [Required(ErrorMessage = "What is this post about?")]
         public string Body { get; set; }
 
