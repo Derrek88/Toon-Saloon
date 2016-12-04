@@ -121,6 +121,8 @@ namespace ToonSaloon.Data.InMemRepo
             var repo = new InMemTagRepo();
             taglist = repo.addTagToPost(posttags);
             postToAdd.Tags = taglist;
+            postToAdd.Id = GetAllPosts().Max(p => p.Id) + 1;
+
             
             
 
