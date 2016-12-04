@@ -28,7 +28,7 @@
                         <td>@page.Name</td>
                         <td>@page.DateCreated.ToShortDateString()</td>
                         <td>@Html.ActionLink("Edit", "AdminEditStaticPage", "Admin", new { id = page.Id }, new { @class = "btn btn-sm btn-info" })
-                        @Html.ActionLink("Delete", "AdminDeletetStaticPage", "Admin", new { id = page.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                        @Html.ActionLink("Delete", "AdminDeleteStaticPage", "Admin", new { id = page.Id }, new { @class = "btn btn-sm btn-danger" })</td>
                     </tr>
                 }
             }
