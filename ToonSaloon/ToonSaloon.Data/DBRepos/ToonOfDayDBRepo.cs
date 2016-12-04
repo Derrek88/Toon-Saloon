@@ -31,7 +31,8 @@ namespace ToonSaloon.Data.DBRepos
             {
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT * FROM CartoonOfTheDay";
+                cmd.CommandText = @"SELECT * 
+                                            FROM CartoonOfTheDay";
 
                 cn.Open();
 
