@@ -437,6 +437,11 @@
     <Content Include="Views\Employee\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Employee\EmployeeViewPandR.cshtml" />
     <Content Include="Views\Employee\EmployeeAddPost.cshtml" />
+    <Content Include="Views\Employee\EmployeeEditPost.cshtml" />
+    <Content Include="Views\Employee\EmployeeDeletetPost.cshtml" />
+    <Content Include="Views\Employee\EmployeeAddToon.cshtml" />
+    <Content Include="Views\Employee\EmployeeDeleteToon.cshtml" />
+    <Content Include="Views\Employee\EmployeeEditToon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
