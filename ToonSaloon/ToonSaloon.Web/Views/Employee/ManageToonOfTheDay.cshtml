@@ -1,0 +1,52 @@
+﻿@model List<ToonSaloon.Models.CartoonOfTheDay>
+@{
+    ViewBag.Title = "ManageToonOfTheDay";
+}
+
+<h2>ManageToonOfTheDay</h2>
+
+<div class="row">
+    <h1><strong>Manage Current Posts</strong></h1>
+    @Html.ActionLink("Add", "AdminAddToon", "Admin", null, new { @class = "btn btn-lg btn-success" })
+
+
+    <table id="posts" class="table table-responsive table-bordered">
+        <thead>
+            <tr class="active">
+                <th>Toon ID</th>
+                <th>Show Name</th>
+                <th>Season</th>
+                <th>Episode</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Approval</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+
+                foreach (var toon in Model)
+                {
+                    <tr class="active">
+                        <td>@toon.Id</td>
+                        <td>@toon.ShowName</td>
+                        <td>@toon.Season</td>
+                        <td>@toon.Episode</td>
+                        <td>@toon.Author</td>
+                        <td>@toon.DateCreated.ToShortDateString()</td>
+                        <td>@toon.Approved</td>
+                        <td>@Html.ActionLink("Edit", "EmployeeEditToon", "Employee", new { id = toon.Id }, new { @class = "btn btn-sm btn-info" })
+                        @Html.ActionLink("Delete", "EmployeeDeleteToon", "Employee", new { id = toon.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td style="color: red">There are no post in the blog.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+

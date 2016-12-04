@@ -1,0 +1,46 @@
+﻿@model List<ToonSaloon.Models.BlogPost>
+@{
+    ViewBag.Title = "ManageCurrentPosts";
+}
+
+<h2>ManageCurrentPosts</h2>
+
+<div class="row">
+    <h1><strong>Manage Current Posts</strong></h1>
+    @Html.ActionLink("Add", "EmployeeAddPost", "Employee", null, new { @class = "btn btn-lg btn-success" })
+
+
+    <table id="posts" class="table table-responsive table-bordered">
+        <thead>
+            <tr class="active">
+                <th>Post ID</th>
+                <th>Post Title</th>
+                <th>Post Author</th>
+                <th>Post Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+
+                foreach (var post in Model)
+                {
+                    <tr class="active">
+                        <td>@post.Id</td>
+                        <td>@post.Headline</td>
+                        <td>@post.AuthorName</td>
+                        <td>@post.DateCreated.ToShortDateString()</td>
+                        <td>@Html.ActionLink("Edit", "EmployeeEditPost", "Employee", new { id = post.Id }, new { @class = "btn btn-sm btn-info" })</td>
+                        <td>@Html.ActionLink("Delete", "EmployeeDeletetPost", "Employee", new { id = post.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td style="color: red">There are no post in the blog.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
