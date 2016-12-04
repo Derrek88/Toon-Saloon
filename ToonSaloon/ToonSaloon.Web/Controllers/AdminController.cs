@@ -104,8 +104,13 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdminAddToon(CartoonOfTheDay toon)
+        public ActionResult AdminAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
+            var filename = System.IO.Path.GetFileName(file.FileName);
+            var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+            file.SaveAs(path);
+            toon.ImgUrl = "../../Images/appimages/" + filename;
+
             var manager = new ToonOfTheDayManager();
             manager.AddToonOfDay(toon);
             return RedirectToAction("ManageToonOfTheDay");
