@@ -24,5 +24,13 @@ namespace ToonSaloon.Data
        void AddImageToBlogPost(Img imgToAdd);
 
        void InsertImgBlogBridgeTable(BlogPost id);
+
+       void RemoveImageToBlogPost(Img imgToDelete);
+
+       void DeleteImgBlogBridgeTable(BlogPost id);
+
+       void EditImageOnBlogPost(Img imgToEdit);
+
+       void EditImgBlogBridgeTable(BlogPost id);
    }
 }

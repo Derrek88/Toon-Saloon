@@ -68,6 +68,34 @@ namespace ToonSaloon.BLL
             repo.InsertImgBlogBridgeTable(id);
         }
 
+        public void DeleteImage(Img imgToDelete)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.RemoveImageToBlogPost(imgToDelete);
+        }
+
+        public void DeleteImageFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteImgBlogBridgeTable(id);
+        }
+
+        public void EditImage(Img imgToEdit)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditImageOnBlogPost(imgToEdit);
+        }
+
+        public void EditImageOnBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditImgBlogBridgeTable(id);
+        }
+
         public void RemoveBlogPost(BlogPost postToRemove)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
