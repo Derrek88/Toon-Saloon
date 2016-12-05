@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ToonSaloon.Models
 {
@@ -14,6 +15,7 @@ namespace ToonSaloon.Models
         [Required(ErrorMessage = "What is the name?")]
         public string Name { get; set; }
 
+        [AllowHtml]
         [Required(ErrorMessage = "What is is made up of?")]
         public string Body { get; set; }
 

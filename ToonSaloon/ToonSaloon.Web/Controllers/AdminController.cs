@@ -105,8 +105,16 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdminAddToon(CartoonOfTheDay toon)
+        public ActionResult AdminAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
+            var filename = System.IO.Path.GetFileName(file.FileName);
+            var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+            file.SaveAs(path);
+
+            toon.ImgUrl = "../../Images/appimages/" + filename;
+            toon.Approved = Approved.Yes;
+            toon.DateCreated = DateTime.Today;
+
             var manager = new ToonOfTheDayManager();
             manager.AddToonOfDay(toon);
             return RedirectToAction("ManageToonOfTheDay");
@@ -157,7 +165,9 @@ namespace ToonSaloon.Web.Controllers
         [HttpGet]
         public ActionResult AdminViewToonOfTheDaySubmissions()
         {
-            return View();
+            var manager = new ToonOfTheDayManager();
+            var model = manager.GetUnapprovedToons();
+            return View(model);
         }
 
         //[HttpPost]
@@ -187,6 +197,78 @@ namespace ToonSaloon.Web.Controllers
             var model = manager.GetPostByID(id);
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AdminApproveToon(int id)
+        {
+            var manager = new ToonOfTheDayManager();
+            var model = manager.GetCartoonOfTheDay(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminApproveToon(CartoonOfTheDay toon)
+        {
+            var manager = new ToonOfTheDayManager();
+            manager.EditToonOfDay(toon);
+            return RedirectToAction("AdminViewToonOfTheDaySubmissions");
+        }
+
+        //STATIC PAGE SECTION
+
+        [HttpGet]
+        public ActionResult ManageStaticPages()
+        {
+            var manager = new StaticManger();
+            var model = manager.GetAllPages();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AdminAddStaticPage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminAddStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.AddStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
+
+        [HttpGet]
+        public ActionResult AdminEditStaticPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetPostByID(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminEditStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.EditStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
+
+        [HttpGet]
+        public ActionResult AdminDeleteStaticPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetPostByID(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminDeleteStaticPage(StaticPage page)
+        {
+            var manager = new StaticManger();
+            manager.RemoveStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
         }
     }
 }

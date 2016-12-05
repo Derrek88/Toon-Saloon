@@ -30,7 +30,27 @@ namespace ToonSaloon.Data.InMemRepo
                            {
                                Id = 1,
                                Name = "Rick and Morty"
-                           }
+                           },
+                           new Tag()
+                           {
+                               Id = 2,
+                               Name = "Cosmos"
+                           },
+                           new Tag()
+                           {
+                               Id = 3,
+                               Name = "Science"
+                           },
+                           new Tag()
+                           {
+                               Id = 4,
+                               Name = "Wub-A-Lub-A-Dub-Dub"
+                           },
+                           new Tag()
+                           {
+                               Id = 5,
+                               Name = "Gilb-Glob"
+                           },
                         },
                         Category = Category.Childrens,
                         Youtubes = new List<Youtube>
@@ -47,6 +67,20 @@ namespace ToonSaloon.Data.InMemRepo
                             new Img()
                             {
                                 Id = 1,
+                                Title = "Random Image",
+                                Source = "../../Images/appimages/rick.jpg",
+                                Description = "a watch"
+                            },
+                            new Img()
+                            {
+                                Id = 2,
+                                Title = "Random Image",
+                                Source = "../../Images/appimages/rick.jpg",
+                                Description = "a watch"
+                            },
+                            new Img()
+                            {
+                                Id = 3,
                                 Title = "Random Image",
                                 Source = "../../Images/appimages/rick.jpg",
                                 Description = "a watch"
@@ -115,6 +149,7 @@ namespace ToonSaloon.Data.InMemRepo
         public void AddBlogPost(BlogPost postToAdd)
 
         {
+
             
             var taglist = new List<Tag>();
             var posttags = postToAdd.TagPlaceHolder;
@@ -122,10 +157,8 @@ namespace ToonSaloon.Data.InMemRepo
             taglist = repo.addTagToPost(posttags);
             postToAdd.Tags = taglist;
             postToAdd.Id = GetAllPosts().Max(p => p.Id) + 1;
-
+            postToAdd.DateCreated = DateTime.Now;
             
-            
-
             _posts.Add(postToAdd);
         }
 

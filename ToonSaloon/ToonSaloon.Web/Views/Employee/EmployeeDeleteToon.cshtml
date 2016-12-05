@@ -1,7 +1,8 @@
 ﻿@model ToonSaloon.Models.CartoonOfTheDay
 @{
-    ViewBag.Title = "AdminDeleteToon";
+    ViewBag.Title = "EmployeeDeleteToon";
 }
+
 
 @section styles{
     <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
@@ -10,7 +11,7 @@
 
 <div class="col-xs-4 bpost">
     <h2 class="text-center">Edit Toon</h2>
-    @using (Html.BeginForm("AdminDeleteToon", "Admin", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    @using (Html.BeginForm("EmployeeDeleteToon", "Employee", FormMethod.Post, new { enctype = "multipart/from-data" }))
     {
         @Html.HiddenFor(t => t.Id)
         <div class="form-group">
@@ -33,8 +34,14 @@
             @Html.DisplayFor(t => t.Author, new { @class = "form-control" })
         </div>
 
+        <div class="form-group">
+            <label>Image url</label>
+            @Html.DisplayFor(t => t.ImgUrl, new { @class = "form-control" })
+        </div>
         <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Delete</button>
-        @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Employee", null, new { @class = "btn btn-sm btn-info" })
 
     }
 </div>
+
+

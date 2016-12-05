@@ -1,0 +1,77 @@
+﻿@model ToonSaloon.Models.BlogPost
+@{
+    ViewBag.Title = "EmployeeEditPost";
+}
+
+<h2>EmployeeEditPost</h2>
+
+
+<br />
+<div class="bpost">
+    <h2 class="text-center">Edit Post</h2>
+    @using (Html.BeginForm("EmployeeEditPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(p => p.Id)
+
+
+        for (int i = 0; i < Model.Imgs.Count; i++)
+        {
+            <div class="invisible">
+
+                @Html.EditorFor(model => Model.Imgs[i].Id);
+                @Html.EditorFor(model => Model.Imgs[i].Description);
+                @Html.EditorFor(model => Model.Imgs[i].Title);
+                @Html.EditorFor(model => Model.Imgs[i].Source);
+            </div>
+
+
+        }
+
+        @Html.HiddenFor(p => p.Approved)
+        <div class="form-group">
+            <label>Head line</label>
+            @Html.TextBoxFor(p => p.Headline, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Tag Line</label>
+            @Html.TextBoxFor(p => p.Subtitle, new { @class = "form-control" })
+        </div>
+
+        @Html.TextAreaFor(p => p.Body, new { @class = "form-control", id = "mytextarea" })
+        <br />
+        <div class="form-group">
+            <label>Tags</label>
+            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "Form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            @Html.EnumDropDownListFor(p => p.Category, "Select a Category", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Author Name</label>
+            @Html.TextBoxFor(p => p.AuthorName, new { @class = "form-control" })
+        </div>
+
+            <button type="submit" class="btn btn-lg btn-success">Add</button>
+            @Html.ActionLink("Cancel", "ManageCurrentPosts", "Employee", null, new { @class = "btn btn-sm btn-info" })
+
+    }
+</div>
+
+@section scripts{
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="~/Scripts/app/TinyMCE.js"></script>
+    <script src="~/Scripts/app/AddmoreImages.js"></script>
+    <script src="~/Scripts/jquery-1.4.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
+    <script src="~/Scripts/tag-it.js"></script>
+    <script src="~/Scripts/app/tags.js"></script>
+
+}
+@section styles{
+    <link rel='stylesheet' href='../../Content/app/AdminAddpostbox.css' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <link href="~/Content/jquery.tagit.css" rel="stylesheet" />
+}
