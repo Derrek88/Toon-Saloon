@@ -165,7 +165,9 @@ namespace ToonSaloon.Web.Controllers
         [HttpGet]
         public ActionResult AdminViewToonOfTheDaySubmissions()
         {
-            return View();
+            var manager = new ToonOfTheDayManager();
+            var model = manager.GetUnapprovedToons();
+            return View(model);
         }
 
         //[HttpPost]
@@ -195,6 +197,22 @@ namespace ToonSaloon.Web.Controllers
             var model = manager.GetPostByID(id);
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AdminApproveToon(int id)
+        {
+            var manager = new ToonOfTheDayManager();
+            var model = manager.GetCartoonOfTheDay(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AdminApproveToon(CartoonOfTheDay toon)
+        {
+            var manager = new ToonOfTheDayManager();
+            manager.EditToonOfDay(toon);
+            return RedirectToAction("AdminViewToonOfTheDaySubmissions");
         }
 
         //STATIC PAGE SECTION

@@ -59,5 +59,18 @@ namespace ToonSaloon.BLL
             return repo.GetAllToons();
 
         }
+
+        public List<CartoonOfTheDay> GetUnapprovedToons()
+        {
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+
+            var allToons = repo.GetAllToons();
+
+            var results = from p in allToons
+                          where p.Approved == Approved.Waiting
+                          select p;
+
+            return results.ToList();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model ToonSaloon.Models.CartoonOfTheDay
 @{
-    ViewBag.Title = "AdminDeleteToon";
+    ViewBag.Title = "AdminApproveToon";
 }
 
 @section styles{
@@ -9,32 +9,42 @@
 <br />
 
 <div class="col-xs-4 bpost">
-    <h2 class="text-center">Edit Toon</h2>
-    @using (Html.BeginForm("AdminDeleteToon", "Admin", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    <h2 class="text-center">Approve Toon</h2>
+    @using (Html.BeginForm("AdminApproveToon", "Admin", FormMethod.Post, new { enctype = "multipart/from-data" }))
     {
         @Html.HiddenFor(t => t.Id)
         <div class="form-group">
             <label>Show Name</label>
+            @Html.HiddenFor(t=> t.ShowName)
             @Html.DisplayFor(t => t.ShowName, new { @class = "form-control" })
         </div>
 
         <div class="form-group">
             <label>Season</label>
+            @Html.HiddenFor(t => t.Season)
             @Html.DisplayFor(t => t.Season, new { @class = "form-control" })
         </div>
 
         <div class="form-group">
             <label>Episode</label>
+            @Html.HiddenFor(t => t.Episode)
             @Html.DisplayFor(t => t.Episode, new { @class = "form-control" })
         </div>
 
         <div class="form-group">
             <label>Author</label>
+            @Html.HiddenFor(t => t.Author)
             @Html.DisplayFor(t => t.Author, new { @class = "form-control" })
         </div>
 
-        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Delete</button>
-        @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        <div class="form-group">
+            @Html.EnumDropDownListFor(t=>t.Approved, new { @class = "form-control" })
+        </div>
+
+        
+
+        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Approve</button>
+        @Html.ActionLink("Cancel", "AdminViewToonOfTheDaySubmissions", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }
 </div>
