@@ -334,6 +334,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Images\appimages\api.jpg" />
     <Content Include="Images\appimages\art-false-positive.jpg" />
     <Content Include="Images\appimages\logo.jpg" />
     <Content Include="Images\appimages\rick.jpg" />

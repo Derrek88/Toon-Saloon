@@ -104,9 +104,34 @@ namespace ToonSaloon.Data.InMemRepo
                         {
                            new Tag()
                            {
-                               Id = 1,
+                               Id = 6,
                                Name = "Rick and Morty"
-                           }
+                           },
+                           new Tag()
+                           {
+                               Id = 7,
+                               Name = "Rick and Morty"
+                           },
+                           new Tag()
+                           {
+                               Id = 8,
+                               Name = "Rick and Morty"
+                           },
+                           new Tag()
+                           {
+                               Id = 9,
+                               Name = "Rick and Morty"
+                           },
+                           new Tag()
+                           {
+                               Id = 10,
+                               Name = "Rick and Morty"
+                           },
+
+
+
+
+
                         },
                         Category = Category.Childrens,
                         Youtubes = new List<Youtube>

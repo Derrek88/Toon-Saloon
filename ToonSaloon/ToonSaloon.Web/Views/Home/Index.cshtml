@@ -22,30 +22,34 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-3 col-sm-offset-11" id="toonday">
-        <h3 class="text-center">Toon of the Day</h3>
-    </div>
-    <div class="col-sm-3 col-sm-offset-11" id="social">
-        <div style="text-align: center">
-            <h2>Social Media</h2>
+    <div class="col-sm-3 pull-right">
+        <div id="toonday">
+            <h3 class="text-center">Toon of the Day</h3>
         </div>
-        <div id="share">
+        <div id="social">
+            <div style="text-align: center">
+                <h2>Social Media</h2>
+            </div>
+            <div id="share">
+            </div>
         </div>
-    </div>
-    <div class="col-sm-3 col-sm-offset-11" id="social">
-        <div style="text-align: center">
-            <h2>Popular Topics</h2>
-        </div>
-        <div>
+        <div class="bpost" id="populartags">
+            <div style="text-align: center">
+                <h2>Popular Topics</h2>
+            </div>
         </div>
     </div>
     @foreach (var post in Model)
     {
-        <div class="col-sm-9 col-sm-offset-1 bpost">
+        <div class="col-sm-9 bpost">
             <div>
                 <div class="col-sm-2 datedate">
                     <h2>@post.DateCreated.ToString("MMM")</h2>
                     <h3>@post.DateCreated.ToString("dd")th</h3>
+                    <div class="cata">
+                        Category:
+                        @post.Category.ToString()
+                    </div>
                     <div id="tag">
                         <ul class="nav nav-pills">
                             @foreach (var tag in @post.Tags)
@@ -140,11 +144,21 @@
                     @Html.Raw(post.Body)
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 author">
+                    <h3>
+                        - @post.AuthorName
+                    </h3>
+                </div>
+            </div>
+
 
         </div>
         <div class="col-sm-5 spacer"></div>
 
     }
+
 
 </div>
 
