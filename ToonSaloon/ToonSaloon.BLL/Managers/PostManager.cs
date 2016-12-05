@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToonSaloon.BLL.Managers;
 using ToonSaloon.Data;
 using ToonSaloon.Data.Factories;
 using ToonSaloon.Data.InMemRepo;
@@ -44,6 +45,11 @@ namespace ToonSaloon.BLL
         public void AddBlogPost(BlogPost postToAdd)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
+            var taglist = new List<Tag>();
+            var posttags = postToAdd.TagPlaceHolder;
+            var manager = new TagManager();
+            taglist = manager.addTagToPost(posttags);
+            postToAdd.Tags = taglist;
 
             repo.AddBlogPost(postToAdd);
         }

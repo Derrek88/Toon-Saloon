@@ -96,50 +96,50 @@ namespace ToonSaloon.Data.InMemRepo
             _tags.Remove(result);
         }
 
-        public List<Tag> addTagToPost(string taglist)
-        {
-            var tags = new List<Tag>();
-            var tagWords = taglist.Split(',');
+        //public List<Tag> addTagToPost(string taglist)
+        //{
+        //    var tags = new List<Tag>();
+        //    var tagWords = taglist.Split(',');
 
-            //var oldTags = GetAllTags();
+        //    //var oldTags = GetAllTags();
             
 
-            foreach (var name in tagWords)
-            {
-                tags.Add(doestagexist(name));
+        //    foreach (var name in tagWords)
+        //    {
+        //        tags.Add(doestagexist(name));
                 
-            }
-            return tags;
+        //    }
+        //    return tags;
             
-        }
+        //}
 
-        public Tag doestagexist(string tagname)
-        {
+        //public Tag doestagexist(string tagname)
+        //{
 
-            var tagtoreturn = new Tag();
-            var oldTags = GetAllTags();
+        //    var tagtoreturn = new Tag();
+        //    var oldTags = GetAllTags();
 
-            foreach (var tag in oldTags)
-            {
+        //    foreach (var tag in oldTags)
+        //    {
 
-                if (tagname == tag.Name)
-                {
+        //        if (tagname == tag.Name)
+        //        {
 
-                    tagtoreturn = tag; 
-                }
-                else //if (tagname != tag.Name)
-                {
-                    var newtag = new Tag();
-                    newtag.Name = tagname;
-                    newtag.Id = oldTags.Max(t => t.Id) + 1;
-                    AddTag(newtag);
+        //            tagtoreturn = tag; 
+        //        }
+        //        else //if (tagname != tag.Name)
+        //        {
+        //            var newtag = new Tag();
+        //            newtag.Name = tagname;
+        //            newtag.Id = oldTags.Max(t => t.Id) + 1;
+        //            AddTag(newtag);
 
-                    tagtoreturn =  newtag;
-                }
-                break;
+        //            tagtoreturn =  newtag;
+        //        }
+        //        break;
                
-            }
-            return tagtoreturn;
-        }
+        //    }
+        //    return tagtoreturn;
+        //}
     }
 }

@@ -16,6 +16,7 @@
 <div class="row">
     <div class="col-sm-9 col-sm-offset-1 bpost">
         @Html.HiddenFor(p => p.Id)
+        @Html.HiddenFor(p => p.DateCreated)
         <div class="row">
             <div class="col-sm-2 datedate">
                 <h2>@Model.DateCreated.ToString("MMM")</h2>

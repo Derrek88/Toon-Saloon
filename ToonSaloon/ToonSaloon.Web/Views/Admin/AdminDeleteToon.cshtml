@@ -13,6 +13,7 @@
     @using (Html.BeginForm("AdminDeleteToon", "Admin", FormMethod.Post, new { enctype = "multipart/from-data" }))
     {
         @Html.HiddenFor(t => t.Id)
+        @Html.HiddenFor(t=>t.DateCreated)
         <div class="form-group">
             <label>Show Name</label>
             @Html.DisplayFor(t => t.ShowName, new { @class = "form-control" })
