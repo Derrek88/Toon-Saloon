@@ -66,13 +66,13 @@ namespace ToonSaloon.Data
            {
                var cmd = new SqlCommand();
 
-               cmd.CommandText = @"SELECT YoutubeId, TubeId, Description
+               cmd.CommandText = @"SELECT y.YoutubeId, y.TubeId, y.Description
                                         FROM Youtube y
                                            JOIN Youtube_BlogBride b
                                                ON y.YoutubeId = b.YoutubeId
-                                                    WHERE y.Blog.Id = @Blog.Id";
+                                                    WHERE b.BlogId = @BlogId";
 
-                cmd.Parameters.AddWithValue("@Blog.Id", id);
+                cmd.Parameters.AddWithValue("@BlogId", id);
 
                 cmd.Connection = cn;
 
@@ -111,13 +111,13 @@ namespace ToonSaloon.Data
            {
                var cmd = new SqlCommand();
 
-               cmd.CommandText = @"ImgId, Name
+               cmd.CommandText = @"SELECT i.ImgId, i.Title, i.Description, i.Source
                                         FROM Img i
                                            JOIN Img_BlogBride b
                                              ON i.ImgId = b.ImgId
-                                               WHERE b.BlogId = @Blog.Id";
+                                               WHERE b.BlogId = @BlogId";
 
-               cmd.Parameters.AddWithValue("@Blog.Id", id);
+               cmd.Parameters.AddWithValue("@BlogId", id);
 
                cmd.Connection = cn;
 
@@ -144,13 +144,14 @@ namespace ToonSaloon.Data
            {
                var cmd = new SqlCommand();
 
-               cmd.CommandText = @"SELECT TagId, Name
+               cmd.CommandText = @"SELECT t.TagId, t.Name
                                    From Tag t
                                         JOIN Tag_BlogBridge b
                                             ON t.TagId = b.TagId
-                                                WHERE b.BlogId = @Blog.Id";
+                                                WHERE b.BlogId = @BlogId";
 
-               cmd.Parameters.AddWithValue("@Blog.Id", id);
+               cmd.Parameters.AddWithValue("@BlogId", id);
+
 
                cmd.Connection = cn;
 
@@ -199,7 +200,7 @@ namespace ToonSaloon.Data
                Category = (Category) dr["Category"],
                Approved = (Approved) dr["Approved"],
                DateCreated = (DateTime) dr["DateCreated"],
-               Headline = dr["Headlines"].ToString(),
+               Headline = dr["Headline"].ToString(),
                Subtitle = dr["Subtitle"].ToString(),
                
                //Tags = dr["Tags"].ToString()
@@ -218,7 +219,7 @@ namespace ToonSaloon.Data
                cmd.Connection = cn;
                cmd.CommandText =
                    @"INSERT INTO BlogPost(Body, AuthorName, Category, Approved, DateCreated, Headline, Subtitle) 
-                                    VALUE (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle";
+                                    VALUES (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle)";
 
                cmd.Parameters.AddWithValue("@Body", postToAdd.Body);
                cmd.Parameters.AddWithValue("@AuthorName", postToAdd.AuthorName);
