@@ -91,7 +91,7 @@ namespace ToonSaloon.Data.DBRepos
                cmd.Connection = cn;
                cmd.CommandText =
                    @"INSERT INTO CartoonOfTheDay(Name, Body, DateCreated, Approced)
-                            VALUE (@Name, @Body, @DateCreated, @Approved)";
+                            VALUES (@Name, @Body, @DateCreated, @Approved)";
                cmd.Parameters.AddWithValue("@Name", pageToAdd.Name);
                cmd.Parameters.AddWithValue("@Body", pageToAdd.Body);
                cmd.Parameters.AddWithValue("@DateCreated", pageToAdd.DateCreated);
@@ -156,7 +156,7 @@ namespace ToonSaloon.Data.DBRepos
                                         FROM Tag t
                                             JOIN Page_TagBridge b
                                                 ON t.TagId = b.TagId
-                                                  WHERE b.Page.Id = @Page.Id";
+                                                  WHERE t.Page.Id = @Page.Id";
 
                 cmd.Parameters.AddWithValue("@Page.Id", id);
 

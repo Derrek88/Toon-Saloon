@@ -64,7 +64,7 @@ namespace ToonSaloon.Data.DBRepos
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"INSERT INTO Tag(Name)
-                                           VALUE (@Name)";
+                                           VALUES (@Name)";
                 cmd.Parameters.AddWithValue("@Name", tagToAdd.Name);
 
                 cn.Open();

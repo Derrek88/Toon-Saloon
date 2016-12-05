@@ -75,7 +75,7 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"INSERT INTO CartoonOfTheDay(Author, ShowName, Season, Episode, Approved, DateCreated, ImgUrl)
-                                            VALUE (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreared, @ImgUrl)";
+                                            VALUES (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreared, @ImgUrl)";
                 cmd.Parameters.AddWithValue("@Author", toonToAdd.Author);
                 cmd.Parameters.AddWithValue("@ShowName", toonToAdd.ShowName);
                 cmd.Parameters.AddWithValue("@Season", toonToAdd.Season);

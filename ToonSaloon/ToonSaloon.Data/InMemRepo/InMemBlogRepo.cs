@@ -176,13 +176,13 @@ namespace ToonSaloon.Data.InMemRepo
         {
 
             
-            var taglist = new List<Tag>();
-            var posttags = postToAdd.TagPlaceHolder;
-            var repo = new InMemTagRepo();
-            taglist = repo.addTagToPost(posttags);
-            postToAdd.Tags = taglist;
-            postToAdd.Id = GetAllPosts().Max(p => p.Id) + 1;
-            postToAdd.DateCreated = DateTime.Now;
+            //var taglist = new List<Tag>();
+            //var posttags = postToAdd.TagPlaceHolder;
+            //var repo = new InMemTagRepo();
+            //taglist = repo.addTagToPost(posttags);
+            //postToAdd.Tags = taglist;
+            //postToAdd.Id = GetAllPosts().Max(p => p.Id) + 1;
+            //postToAdd.DateCreated = DateTime.Now;
             
             _posts.Add(postToAdd);
         }

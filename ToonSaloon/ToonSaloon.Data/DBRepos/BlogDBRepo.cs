@@ -34,6 +34,8 @@ namespace ToonSaloon.Data
 
                 cn.Open();
 
+                cmd.ExecuteNonQuery();
+
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
@@ -49,8 +51,8 @@ namespace ToonSaloon.Data
                         //ToonSaloon.Models.BlogPost newBlogPost = ConvertReaderToPost(dr);
 
                         post.Tags = GetTagsByPostId(post.Id);
-                        post.Imgs = GetImgsByPostId(post.Imgs);
-                        post.Youtubes = GetYoutubeById(post.Youtubes);
+                        post.Imgs = GetImgsByPostId(post.Id);
+                        post.Youtubes = GetYoutubeById(post.Id);
 
                     }
                 }
@@ -58,7 +60,40 @@ namespace ToonSaloon.Data
             return posts;
         }
 
-       private List<Youtube> GetYoutubeById(List<Youtube> id)
+       private List<Img> GetImgsByPostId(int id)
+        {
+            List<Img> imgs = new List<Img>();
+
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.CommandText = @"SELECT i.ImgId, i.Title, i.Description, i.Source
+                                        FROM Img i
+                                           JOIN Img_BlogBridge b
+                                             ON i.ImgId = b.ImgId
+                                        WHERE b.BlogId = @BlogId";
+
+                cmd.Parameters.AddWithValue("@BlogId", id);
+
+                cmd.Connection = cn;
+
+                cn.Open();
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Img img = ConvertToImg(dr);
+
+                        imgs.Add(img);
+                    }
+                }
+            }
+            return imgs;
+        }
+
+       private List<Youtube> GetYoutubeById(int id)
        {
            List<Youtube> youtubes = new List<Youtube>();
 
@@ -66,19 +101,19 @@ namespace ToonSaloon.Data
            {
                var cmd = new SqlCommand();
 
-               cmd.CommandText = @"SELECT YoutubeId, TubeId, Description
+               cmd.CommandText = @"SELECT y.YoutubeId, y.TubeId, y.Description
                                         FROM Youtube y
-                                           JOIN Youtube_BlogBride b
+                                           JOIN Youtube_BlogBridge b
                                                ON y.YoutubeId = b.YoutubeId
-                                                    WHERE y.Blog.Id = @Blog.Id";
+                                                    WHERE b.BlogId = @BlogId";
 
-                cmd.Parameters.AddWithValue("@Blog.Id", id);
+                cmd.Parameters.AddWithValue("@BlogId", id);
 
                 cmd.Connection = cn;
 
                 cn.Open();
 
-               using (var dr = cmd.ExecuteReader())
+                using (var dr = cmd.ExecuteReader())
                {
                    while (dr.Read())
                    {
@@ -92,6 +127,40 @@ namespace ToonSaloon.Data
 
        }
 
+       private List<Tag> GetTagsByPostId(int id)
+        {
+            List<Tag> tags = new List<Tag>();
+
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.CommandText = @"SELECT t.TagId, t.Name
+                                   From Tag t
+                                        JOIN Tag_BlogBridge b
+                                            ON t.TagId = b.TagId
+                                                WHERE b.BlogId = @BlogId";
+
+                cmd.Parameters.AddWithValue("@BlogId", id);
+
+
+                cmd.Connection = cn;
+
+                cn.Open();
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Tag tag = ConvertToTag(dr);
+
+                        tags.Add(tag);
+                    }
+                }
+            }
+            return tags;
+        }
+
        private Youtube ConvertToYoutube(SqlDataReader dr)
        {
            return new Youtube()
@@ -103,80 +172,14 @@ namespace ToonSaloon.Data
            };
        }
 
-       private List<Img> GetImgsByPostId(List<Img> id)
-       {
-           List<Img> imgs = new List<Img>();
-
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-
-               cmd.CommandText = @"ImgId, Name
-                                        FROM Img i
-                                           JOIN Img_BlogBride b
-                                             ON i.ImgId = b.ImgId
-                                               WHERE b.BlogId = @Blog.Id";
-
-               cmd.Parameters.AddWithValue("@Blog.Id", id);
-
-               cmd.Connection = cn;
-
-                cn.Open();
-
-               using (var dr = cmd.ExecuteReader())
-               {
-                   while (dr.Read())
-                   {
-                       Img img = ConvertToImg(dr);
-
-                        imgs.Add(img);
-                   }
-               }
-           }
-           return imgs;
-       }
-
-       private List<Tag> GetTagsByPostId(int id)
-       {
-           List<Tag> tags = new List<Tag>();
-
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-
-               cmd.CommandText = @"SELECT TagId, Name
-                                   From Tag t
-                                        JOIN Tag_BlogBridge b
-                                            ON t.TagId = b.TagId
-                                                WHERE b.BlogId = @Blog.Id";
-
-               cmd.Parameters.AddWithValue("@Blog.Id", id);
-
-               cmd.Connection = cn;
-
-               cn.Open();
-
-               using (var dr = cmd.ExecuteReader())
-               {
-                   while (dr.Read())
-                   {
-                       Tag tag = ConvertToTag(dr);
-
-                       tags.Add(tag);
-                   }
-               }
-           }
-           return tags;
-       }
-
        private Tag ConvertToTag(SqlDataReader dr)
-       {
-           return new Tag()
-           {
-               Id = (int) dr["TagId"],
-               Name = dr["Name"].ToString()
-           };
-       }
+        {
+            return new Tag()
+            {
+                Id = (int)dr["TagId"],
+                Name = dr["Name"].ToString()
+            };
+        }
 
        private Img ConvertToImg(SqlDataReader dr)
        {
@@ -199,7 +202,7 @@ namespace ToonSaloon.Data
                Category = (Category) dr["Category"],
                Approved = (Approved) dr["Approved"],
                DateCreated = (DateTime) dr["DateCreated"],
-               Headline = dr["Headlines"].ToString(),
+               Headline = dr["Headline"].ToString(),
                Subtitle = dr["Subtitle"].ToString(),
                
                //Tags = dr["Tags"].ToString()
@@ -218,7 +221,7 @@ namespace ToonSaloon.Data
                cmd.Connection = cn;
                cmd.CommandText =
                    @"INSERT INTO BlogPost(Body, AuthorName, Category, Approved, DateCreated, Headline, Subtitle) 
-                                    VALUE (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle";
+                                    VALUES (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle)";
 
                cmd.Parameters.AddWithValue("@Body", postToAdd.Body);
                cmd.Parameters.AddWithValue("@AuthorName", postToAdd.AuthorName);
@@ -236,7 +239,7 @@ namespace ToonSaloon.Data
        }
 
        public void RemoveBlogPost(BlogPost postToRemove)
-       {
+        {
             using (var cn = new SqlConnection(_connectiionString))
             {
                 var cmd = new SqlCommand();
@@ -261,7 +264,7 @@ namespace ToonSaloon.Data
         }
 
        public void EditBlogPost(BlogPost postToEdit)
-       {
+        {
             using (var cn = new SqlConnection(_connectiionString))
             {
                 var cmd = new SqlCommand();
@@ -285,6 +288,44 @@ namespace ToonSaloon.Data
 
             }
         }
+
+       public void AddImageToBlogPost(Img imgToAdd)
+       {
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+
+               cmd.Connection = cn;
+               cmd.CommandText = @"INSERT INTO Img(Title, Source, Description)
+                                                VALUES (@Title, @Source, @Description)";
+
+               cmd.Parameters.AddWithValue("@Title", imgToAdd.Title);
+               cmd.Parameters.AddWithValue("@Source", imgToAdd.Source);
+               cmd.Parameters.AddWithValue("@Description", imgToAdd.Description);
+
+                cn.Open();
+
+               cmd.ExecuteNonQuery();
+           }
+       }
+        
+       public void InsertImgBlogBridgeTable(BlogPost id)
+       {
+           foreach (var image in id.Imgs )
+           {
+               using (var cn = new SqlConnection(_connectiionString))
+               {
+                   var cmd = new SqlCommand();
+
+                   cmd.Connection = cn;
+                   cmd.CommandText = @"INSERT INTO Img_BlogBridge (BlogId, ImgId)
+                                                VALUES (@BlogId, @ImgId)";
+
+                   cmd.Parameters.AddWithValue("@BlogId", id);
+                   cmd.Parameters.AddWithValue("@ImgId", image.Id);
+               }
+           }
+       }
 
        public List<BlogPost> GetPostByTag(string TagName)
        {
