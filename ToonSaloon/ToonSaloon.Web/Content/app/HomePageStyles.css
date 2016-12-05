@@ -56,11 +56,9 @@
 .postbody {
     margin-left: 18%;
 }
-.tag {
-    -webkit-border-radius: 5px 5px 54px 5px;
-    border-radius: 5px 5px 54px 5px;
-    -webkit-box-shadow: 10px 10px 1px 2px #FF1F17;
-    box-shadow: 10px 10px 1px 2px #FF1F17;
-
+#tag {
+    padding-top: 54%;
 }
-
+#tags {
+    padding-top: 10%;
+}
