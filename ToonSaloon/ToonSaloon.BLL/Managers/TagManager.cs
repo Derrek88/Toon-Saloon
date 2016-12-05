@@ -55,5 +55,55 @@ namespace ToonSaloon.BLL.Managers
 
             repo.RemoveTag(tagToRemove);
         }
+
+
+
+        //Met and create tags
+
+        public List<Tag> addTagToPost(string taglist)
+        {
+            var tags = new List<Tag>();
+            var tagWords = taglist.Split(',');
+
+            //var oldTags = GetAllTags();
+
+
+            foreach (var name in tagWords)
+            {
+                tags.Add(doestagexist(name));
+
+            }
+            return tags;
+
+        }
+
+        public Tag doestagexist(string tagname)
+        {
+            var repo = TagFactory.CreateTagRepository();
+            var tagtoreturn = new Tag();
+            var oldTags = repo.GetAllTags();
+
+            foreach (var tag in oldTags)
+            {
+
+                if (tagname == tag.Name)
+                {
+
+                    tagtoreturn = tag;
+                }
+                else //if (tagname != tag.Name)
+                {
+                    var newtag = new Tag();
+                    newtag.Name = tagname;
+                    newtag.Id = oldTags.Max(t => t.Id) + 1;
+                    repo.AddTag(newtag);
+               
+                    tagtoreturn = newtag;
+                }
+                break;
+
+            }
+            return tagtoreturn;
+        }
     }
 }
