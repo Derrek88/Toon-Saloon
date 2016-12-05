@@ -46,7 +46,17 @@
                 <div class="col-sm-2 datedate">
                     <h2>@post.DateCreated.ToString("MMM")</h2>
                     <h3>@post.DateCreated.ToString("dd")th</h3>
+                    <ul class="nav nav-pills">
+                        @foreach (var tag in @post.Tags)
+                        {
+
+                            <li class="active"><a>@tag.Name</a></li>
+                           
+
+                        }
+                    </ul>
                 </div>
+                
                 <div class="col-sm-10">
                     <h2>@post.Headline</h2>
                     <h3>@post.Subtitle</h3>
