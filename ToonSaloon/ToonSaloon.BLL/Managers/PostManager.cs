@@ -45,7 +45,21 @@ namespace ToonSaloon.BLL
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.AddBlogPost(postToAdd);
+            repo.AddBlogPost(postToAdd); 
+        }
+
+        public void AddImage(Img imgToAdd)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.AddImageToBlogPost(imgToAdd);
+        }
+
+        public void InsertImage(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.InsertImgBlogBridgeTable(id);
         }
 
         public void RemoveBlogPost(BlogPost postToRemove)

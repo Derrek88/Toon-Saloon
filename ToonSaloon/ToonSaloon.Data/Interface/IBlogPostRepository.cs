@@ -20,5 +20,9 @@ namespace ToonSaloon.Data
        void EditBlogPost(BlogPost postToEdit);
 
        List<BlogPost> GetPostByTag(string TagName);
+
+       void AddImageToBlogPost(Img imgToAdd);
+
+       void InsertImgBlogBridgeTable(BlogPost id);
    }
 }
