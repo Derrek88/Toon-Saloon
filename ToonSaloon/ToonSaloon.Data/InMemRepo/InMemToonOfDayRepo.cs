@@ -28,7 +28,7 @@ namespace ToonSaloon.Data.InMemRepo
                         Episode = 4,
                         ShowName = "Rick and Morty",
                         Approved = Approved.Yes,
-                        ImgUrl = "../../Images/appimages/watch 1.jpg"
+                        ImgUrl = "../../Images/appimages/api.jpg"
 
 
                     },
