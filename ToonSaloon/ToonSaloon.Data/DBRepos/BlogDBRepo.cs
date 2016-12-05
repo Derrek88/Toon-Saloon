@@ -34,6 +34,8 @@ namespace ToonSaloon.Data
 
                 cn.Open();
 
+                cmd.ExecuteNonQuery();
+
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
@@ -49,8 +51,8 @@ namespace ToonSaloon.Data
                         //ToonSaloon.Models.BlogPost newBlogPost = ConvertReaderToPost(dr);
 
                         post.Tags = GetTagsByPostId(post.Id);
-                        post.Imgs = GetImgsByPostId(post.Imgs);
-                        post.Youtubes = GetYoutubeById(post.Youtubes);
+                        post.Imgs = GetImgsByPostId(post.Id);
+                        post.Youtubes = GetYoutubeById(post.Id);
 
                     }
                 }
@@ -58,7 +60,7 @@ namespace ToonSaloon.Data
             return posts;
         }
 
-       private List<Youtube> GetYoutubeById(List<Youtube> id)
+       private List<Youtube> GetYoutubeById(int id)
        {
            List<Youtube> youtubes = new List<Youtube>();
 
@@ -68,7 +70,7 @@ namespace ToonSaloon.Data
 
                cmd.CommandText = @"SELECT y.YoutubeId, y.TubeId, y.Description
                                         FROM Youtube y
-                                           JOIN Youtube_BlogBride b
+                                           JOIN Youtube_BlogBridge b
                                                ON y.YoutubeId = b.YoutubeId
                                                     WHERE b.BlogId = @BlogId";
 
@@ -78,7 +80,7 @@ namespace ToonSaloon.Data
 
                 cn.Open();
 
-               using (var dr = cmd.ExecuteReader())
+                using (var dr = cmd.ExecuteReader())
                {
                    while (dr.Read())
                    {
@@ -103,7 +105,7 @@ namespace ToonSaloon.Data
            };
        }
 
-       private List<Img> GetImgsByPostId(List<Img> id)
+       private List<Img> GetImgsByPostId(int id)
        {
            List<Img> imgs = new List<Img>();
 
@@ -113,17 +115,17 @@ namespace ToonSaloon.Data
 
                cmd.CommandText = @"SELECT i.ImgId, i.Title, i.Description, i.Source
                                         FROM Img i
-                                           JOIN Img_BlogBride b
+                                           JOIN Img_BlogBridge b
                                              ON i.ImgId = b.ImgId
-                                               WHERE b.BlogId = @BlogId";
+                                        WHERE b.BlogId = @BlogId";
 
                cmd.Parameters.AddWithValue("@BlogId", id);
 
                cmd.Connection = cn;
 
-                cn.Open();
+               cn.Open();
 
-               using (var dr = cmd.ExecuteReader())
+                using (var dr = cmd.ExecuteReader())
                {
                    while (dr.Read())
                    {
@@ -157,7 +159,7 @@ namespace ToonSaloon.Data
 
                cn.Open();
 
-               using (var dr = cmd.ExecuteReader())
+                using (var dr = cmd.ExecuteReader())
                {
                    while (dr.Read())
                    {
