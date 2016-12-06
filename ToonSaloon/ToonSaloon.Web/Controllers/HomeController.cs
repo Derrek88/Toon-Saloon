@@ -26,5 +26,12 @@ namespace ToonSaloon.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ViewSearchedStaticPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetBySearch(id);
+        }
+
     }
 }

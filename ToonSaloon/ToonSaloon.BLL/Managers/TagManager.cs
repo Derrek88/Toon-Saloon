@@ -95,7 +95,7 @@ namespace ToonSaloon.BLL.Managers
                 {
                     var newtag = new Tag();
                     newtag.Name = tagname;
-                    newtag.Id = oldTags.Max(t => t.Id) + 1;
+                    // newtag.Id = oldTags.Max(t => t.Id) + 1;
                     repo.AddTag(newtag);
                
                     tagtoreturn = newtag;

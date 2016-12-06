@@ -60,6 +60,34 @@ namespace ToonSaloon.BLL
             repo.EditStaticPage(pageToEdit);
         }
 
-        
+        public StaticPage GetBySearch(int id)
+        {
+            var pageToReturn = new StaticPage();
+            var categoryPosts = new List<BlogPost>();
+
+            // list of posts by tags in static page
+            var tagposts = new List<BlogPost>();
+            var repo = BlogFactory.CreatBlogPostRepository();
+            // get static page data
+            var page = GetPostByID(id);             
+            var posts = repo.GetAllPosts();
+            
+
+            // get each post by Category
+            foreach(var post in posts)
+            {
+                if(page.Category == post.Category)
+                {
+                    categoryPosts.Add(post);
+                }
+            }
+
+            // get by tags
+            foreach(var tag in page.Tag)
+            {
+               var postsbytag = repo.GetPostByTag(tag.Name); 
+                tagposts.AddRange(postsbytag);
+            }
+        }
     }
 }
