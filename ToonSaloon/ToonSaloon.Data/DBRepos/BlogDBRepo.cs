@@ -399,7 +399,7 @@ namespace ToonSaloon.Data
                    cmd.CommandText = @"INSTER INTO Tag_BlogBridge (TagId, BlogId)
                                                 VALUES (@TagId, @BlogId)";
 
-                    cmd.Parameters.AddWithValue("@BlogId", id);
+                    cmd.Parameters.AddWithValue("@BlogId", id.Id);
                     cmd.Parameters.AddWithValue("@TagId", tag.Id);
 
                     cn.Open();
@@ -419,7 +419,7 @@ namespace ToonSaloon.Data
                 cmd.CommandText = @"UPDATE Tag_BlogBridge
                                         WHERE BlogId = @BlogId;";
 
-                cmd.Parameters.AddWithValue("@BlogId", id);
+                cmd.Parameters.AddWithValue("@BlogId", id.Id);
 
                 cn.Open();
 
@@ -437,7 +437,7 @@ namespace ToonSaloon.Data
                 cmd.CommandText = @"DELETE FROM Tag_BlogBridge
                                                 WHERE BlogId = @BlogId";
 
-                cmd.Parameters.AddWithValue("@BlogId", id);
+                cmd.Parameters.AddWithValue("@BlogId", id.Id);
 
                 cn.Open();
 
@@ -455,7 +455,7 @@ namespace ToonSaloon.Data
                cmd.CommandText = @"UPDATE Img_BlogBridge
                                         WHERE BlogId = @BlogId";
 
-               cmd.Parameters.AddWithValue("@BlogId", id);
+               cmd.Parameters.AddWithValue("@BlogId", id.Id);
 
                cn.Open();
 
@@ -474,7 +474,7 @@ namespace ToonSaloon.Data
                cmd.CommandText = @"DELETE FROM Img_BlogBridge
                                                 WHERE BlogId = @BlogId";
 
-               cmd.Parameters.AddWithValue("@BlogId", id);
+               cmd.Parameters.AddWithValue("@BlogId", id.Id);
 
                cn.Open();
 
@@ -495,15 +495,15 @@ namespace ToonSaloon.Data
                    cmd.CommandText = @"INSERT INTO Img_BlogBridge (BlogId, ImgId)
                                                 VALUES (@BlogId, @ImgId)";
 
-                   cmd.Parameters.AddWithValue("@BlogId", id);
+                   cmd.Parameters.AddWithValue("@BlogId", id.Id);
                    cmd.Parameters.AddWithValue("@ImgId", image.Id);
 
-                    cn.Open();
+                   cn.Open();
 
-                    cmd.ExecuteNonQuery();
-                }
+                   cmd.ExecuteNonQuery();
+               }
 
-            }
+           }
        }
 
        public List<BlogPost> GetPostByTag(string TagName)
