@@ -99,9 +99,12 @@ namespace ToonSaloon.BLL
             }else if(categoryPosts != null && tagposts == null)
             {
                 filteredPosts = categoryPosts;
-            }else
+            }else if(categoryPosts == null && tagposts != null)
             {
                 filteredPosts = tagposts;
+            }else
+            {
+                filteredPosts = null;
             }
 
             pageToReturn = page;

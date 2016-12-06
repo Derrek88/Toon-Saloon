@@ -1,4 +1,4 @@
-﻿using System;
+﻿.using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,13 +83,15 @@ namespace ToonSaloon.BLL.Managers
             var tagtoreturn = new Tag();
             var oldTags = repo.GetAllTags();
 
+            oldTags.fi
+
             foreach (var tag in oldTags)
             {
                 if (tagname == tag.Name)
                 {
-
-                    tagtoreturn = tag;
+                   tagtoreturn = tag;
                 }
+
                 else if(tagname != tag.Name)
                 {
                     var newtag = new Tag();

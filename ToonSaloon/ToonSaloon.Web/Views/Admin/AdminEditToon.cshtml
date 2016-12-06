@@ -18,6 +18,7 @@
 
         @Html.HiddenFor(t => t.Id)
         @Html.HiddenFor(t=>t.DateCreated)
+        @Html.HiddenFor(t=>t.WhenPosted)
         <div class="form-group">
             <label>Show Name</label>
             @Html.TextBoxFor(t => t.ShowName, new { @class = "form-control" })
