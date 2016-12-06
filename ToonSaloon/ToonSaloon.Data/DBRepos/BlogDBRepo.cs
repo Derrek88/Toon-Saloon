@@ -387,58 +387,6 @@ namespace ToonSaloon.Data
            }
        }
 
-       public void AddTagIntoBlogPost(Tag tagToAdd)
-        {
-            using (var cn = new SqlConnection(_connectiionString))
-            {
-                var cmd = new SqlCommand();
-
-                cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO Tag(Name)
-                                            VALUES (@Name)";
-
-                cmd.Parameters.AddWithValue("@Name", tagToAdd.Name);
-
-                cn.Open();
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-       public void EditTagFromBlogPost(Tag tagToEdit)
-       {
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-               cmd.Connection = cn;
-               cmd.CommandText = @"UPDATE Tag
-                                        SET Name = @Name";
-
-               cmd.Parameters.AddWithValue("@Name", tagToEdit.Name);
-
-               cn.Open();
-
-               cmd.ExecuteNonQuery();
-           }
-       }
-
-       public void DeleteTagFromBlogPost(Tag tagToDelete)
-       {
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-               cmd.Connection = cn;
-               cmd.CommandText = @"DELETE FROM Tag
-                                            WHERE TagId = @TagId";
-
-               cmd.Parameters.AddWithValue("@Name", tagToDelete.Name);
-
-               cn.Open();
-
-               cmd.ExecuteNonQuery();
-           }
-       }
-
        public void InsertTagBlogBridgeTable(BlogPost id)
        {
            foreach (var tag in id.Tags)
