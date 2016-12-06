@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <label>Select Category</label>
-            @Html.ListBoxFor(t => t.Tags, new MultiSelectList(Model.Tags), new { @class = "form-control" })
+            @Html.ListBoxFor(t => t.SelectedTagIds, Model.Tags, new { @class = "form-control" })
         </div>
 
         <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>

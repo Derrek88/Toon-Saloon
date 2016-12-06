@@ -8,6 +8,7 @@ namespace ToonSaloon.Models
 {
     public enum Category
     {
+      None,
       Eigthies,
       Nineties,
       Twothousands,
@@ -15,6 +16,7 @@ namespace ToonSaloon.Models
       Childrens,
       Strange,
       OldSchool,
-      Anime
+      Anime,
+      Other
     }
 }

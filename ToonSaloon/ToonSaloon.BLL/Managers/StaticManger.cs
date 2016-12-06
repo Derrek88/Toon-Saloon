@@ -62,32 +62,81 @@ namespace ToonSaloon.BLL
 
         public StaticPage GetBySearch(int id)
         {
+            var filteredPosts = new List<BlogPost>();
             var pageToReturn = new StaticPage();
             var categoryPosts = new List<BlogPost>();
-
-            // list of posts by tags in static page
             var tagposts = new List<BlogPost>();
-            var repo = BlogFactory.CreatBlogPostRepository();
+            
             // get static page data
             var page = GetPostByID(id);             
-            var posts = repo.GetAllPosts();
             
-
             // get each post by Category
-            foreach(var post in posts)
+            if(page.Category != Category.None)
             {
-                if(page.Category == post.Category)
+                categoryPosts = GetCategoryPosts(page);
+            }
+            else
+            {
+                categoryPosts = null;
+            }
+          
+            //get posts by tags
+            if(page.Tag.Count != 0)
+            {
+                tagposts = GetTagPosts(page);
+            }else
+            {
+                tagposts = null;
+            }
+
+            // get filtered tags if needed
+            if(categoryPosts != null && tagposts != null)
+            {
+                filteredPosts = tagposts.Where(p => p.Category == page.Category).ToList();
+                
+               //  FilteredPosts(tagposts, categoryPosts);
+
+            }else if(categoryPosts != null && tagposts == null)
+            {
+                filteredPosts = categoryPosts;
+            }else
+            {
+                filteredPosts = tagposts;
+            }
+
+            pageToReturn = page;
+            pageToReturn.Posts = filteredPosts;
+            return pageToReturn;
+        }
+
+        public List<BlogPost> GetCategoryPosts(StaticPage page)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+            var categoryPosts = new List<BlogPost>();
+            var posts = repo.GetAllPosts();
+
+            foreach (var post in posts)
+            {
+                if (page.Category == post.Category)
                 {
                     categoryPosts.Add(post);
                 }
             }
+            return categoryPosts;
+        }
 
-            // get by tags
-            foreach(var tag in page.Tag)
+        public List<BlogPost> GetTagPosts(StaticPage page)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+            var tagposts = new List<BlogPost>();
+
+            foreach (var tag in page.Tag)
             {
-               var postsbytag = repo.GetPostByTag(tag.Name); 
+                var postsbytag = repo.GetPostByTag(tag.Name);
                 tagposts.AddRange(postsbytag);
             }
+
+            return tagposts;
         }
     }
 }

@@ -31,6 +31,7 @@ namespace ToonSaloon.Web.Controllers
         {
             var manager = new StaticManger();
             var model = manager.GetBySearch(id);
+            return View(model);
         }
 
     }

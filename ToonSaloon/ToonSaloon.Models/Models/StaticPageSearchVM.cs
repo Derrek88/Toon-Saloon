@@ -10,7 +10,7 @@ namespace ToonSaloon.Models.Models
     public class StaticPageSearchVM
     {
         public List<SelectListItem> Tags { get; set; }
-        // public List<SelectListItem> Categories { get; set; }
+        public List<int> SelectedTagIds { get; set; }
         public StaticPage Page { get; set; }
 
         public StaticPageSearchVM()
@@ -18,6 +18,7 @@ namespace ToonSaloon.Models.Models
             // Categories = new List<SelectListItem>();
             Tags = new List<SelectListItem>();
             Page = new StaticPage();
+            SelectedTagIds = new List<int>();
         }
 
         public void SetTags(IEnumerable<Tag> tags)
