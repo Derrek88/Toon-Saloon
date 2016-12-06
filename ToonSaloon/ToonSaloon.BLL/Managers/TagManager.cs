@@ -1,4 +1,4 @@
-﻿.using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,8 +82,6 @@ namespace ToonSaloon.BLL.Managers
             var repo = TagFactory.CreateTagRepository();
             var tagtoreturn = new Tag();
             var oldTags = repo.GetAllTags();
-
-            oldTags.fi
 
             foreach (var tag in oldTags)
             {

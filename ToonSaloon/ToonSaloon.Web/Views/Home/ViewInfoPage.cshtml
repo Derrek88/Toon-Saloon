@@ -1,0 +1,120 @@
+﻿@model ToonSaloon.Models.StaticPage
+@{
+    ViewBag.Title = "ViewInfoPage";
+}
+
+<h2>@Model.Name</h2>
+
+
+<h5><strong>@Model.Body</strong></h5>
+
+@if (Model.Posts != null)
+{
+    foreach (var post in Model.Posts)
+    {
+        <div class="col-sm-9 bpost">
+            <div>
+                <div class="col-sm-2 datedate">
+                    <h2>@post.DateCreated.ToString("MMM")</h2>
+                    <h3>@post.DateCreated.ToString("dd")th</h3>
+                    <div class="cata">
+                        Category:
+                        @post.Category.ToString()
+                    </div>
+                    <div id="tag">
+                        <ul class="nav nav-pills">
+                            @foreach (var tag in @post.Tags)
+                            {
+                                <li id="tags" class="active">
+                                    <a>@tag.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-10">
+                    <h2>@post.Headline</h2>
+                    <h3>@post.Subtitle</h3>
+                </div>
+            </div>
+            <div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-9">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            @{
+                                int i = 0;
+                                foreach (var image in post.Imgs)
+                                {
+                                    if (post.Imgs.First() == image)
+                                    {
+                                        <li data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+                                    }
+                                    else
+                                    {
+                                        <li data-target="#myCarousel" data-slide-to="@i"></li>
+                                    }
+                                    i++;
+                                }
+                            }
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            @foreach (var image in post.Imgs)
+                            {
+                                if (post.Imgs.First() == image)
+                                {
+                                    <div class="item active carouselheight">
+                                        <img src="@image.Source" alt="@image.Title">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item carouselheight">
+                                        <img src="@image.Source" alt="@image.Title">
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <!-- End Carousel Thank god! -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 postbody">
+                    @Html.Raw(post.Body)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 author">
+                    <h3>
+                        - @post.AuthorName
+                    </h3>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-sm-5 spacer"></div>
+                                    }
+                                }              
+
+
+
+
