@@ -28,7 +28,8 @@ namespace ToonSaloon.Data.InMemRepo
                         Episode = 4,
                         ShowName = "Rick and Morty",
                         Approved = Approved.Yes,
-                        ImgUrl = "../../Images/appimages/api.jpg"
+                        ImgUrl = "../../Images/appimages/api.jpg",
+                        HasNotBeenPosted = true
 
 
                     },
@@ -41,8 +42,10 @@ namespace ToonSaloon.Data.InMemRepo
                         Season = 1,
                         Episode = 1,
                         ShowName = "Gundam Wing",
-                        Approved = Approved.Waiting,
-                        ImgUrl = "../../Images/appimages/1_ms_2.png"
+                        Approved = Approved.Yes,
+                        ImgUrl = "../../Images/appimages/1_ms_2.png",
+                        HasNotBeenPosted = true
+
                     }
                 };
 

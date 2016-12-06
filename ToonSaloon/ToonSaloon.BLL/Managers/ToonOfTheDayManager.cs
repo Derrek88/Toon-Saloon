@@ -25,6 +25,7 @@ namespace ToonSaloon.BLL
 
             if (theToon == null)
             {
+
                 var recycle = from t in toons
                     where t.Approved == Approved.Yes && t.HasNotBeenPosted == false
                     select t;
@@ -36,6 +37,9 @@ namespace ToonSaloon.BLL
 
                 return rlist[r];
             }
+
+            return theToon;
+
 
 
         }
