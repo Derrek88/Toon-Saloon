@@ -10,11 +10,12 @@ namespace ToonSaloon.Models
     {
       Eigthies,
       Nineties,
-      Twothousands,
+      TwoThousands,
       LateNight,
       Childrens,
       Strange,
       OldSchool,
-      Anime
+      Anime,
+      StaticPage
     }
 }
