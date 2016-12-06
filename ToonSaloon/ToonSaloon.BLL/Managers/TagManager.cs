@@ -65,9 +65,6 @@ namespace ToonSaloon.BLL.Managers
             var tags = new List<Tag>();
             var tagWords = taglist.Split(',');
 
-            //var oldTags = GetAllTags();
-
-
             foreach (var name in tagWords)
             {
                 tags.Add(doestagexist(name));
@@ -83,16 +80,16 @@ namespace ToonSaloon.BLL.Managers
             var tagtoreturn = new Tag();
             var oldTags = repo.GetAllTags();
 
-            oldTags.fi
+            var isTagThere = oldTags.Exists(t => t.Name == tagname);
 
-            foreach (var tag in oldTags)
-            {
-                if (tagname == tag.Name)
+          
+                if (isTagThere == true)
                 {
-                   tagtoreturn = tag;
+                var tag = oldTags.FirstOrDefault(t => t.Name == tagname);
+                tagtoreturn = tag;
                 }
 
-                else if(tagname != tag.Name)
+                else //if(isTagThere ==  false)
                 {
                     var newtag = new Tag();
                     newtag.Name = tagname;
@@ -101,8 +98,6 @@ namespace ToonSaloon.BLL.Managers
                     tagtoreturn = newtag;
                 }
                 
-
-            }
             return tagtoreturn;
         }
     }
