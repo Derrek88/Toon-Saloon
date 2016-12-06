@@ -1,0 +1,48 @@
+﻿@model ToonSaloon.Models.Models.StaticPageSearchVM
+@{
+    ViewBag.Title = "AdminStaticPageWithPosts";
+}
+
+
+
+
+@section styles{
+    <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
+}
+<br />
+
+<div class="col-xs-10 bpost">
+    <h2 class="text-center">Static Page With Posts</h2>
+    @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
+    {
+
+        <div class="form-group">
+            <label>Title</label>
+            @Html.TextBoxFor(t => t.Page.Name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Page Information</label>
+            @Html.TextAreaFor(t => t.Page.Body, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Select Category</label>
+            @Html.EnumDropDownListFor(t=> t.Page.Category, new { @class ="form-control"})
+        </div>
+
+        <div class="form-group">
+            <label>Select Category</label>
+            @Html.ListBoxFor(t => t.SelectedTagIds, Model.Tags, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>
+        @Html.ActionLink("Cancel", "ManageStaticPages", "Admin", null, new { @class = "btn btn-sm btn-info" })
+
+    }
+</div>
+
+@section scripts{
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="~/Scripts/app/TinyMCE.js"></script>
+}

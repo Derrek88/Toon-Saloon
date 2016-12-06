@@ -18,17 +18,16 @@ namespace ToonSaloon.BLL
             var toons = repo.GetAllToons();
 
             var result = from t in toons
-                where t.Approved == Approved.Yes && t.HasNotBeenPosted
-                select t;
+                         where t.Approved == Approved.Yes && t.HasNotBeenPosted
+                         select t;
 
             var theToon = result.OrderBy(t => t.DateCreated).First();
 
             if (theToon == null)
             {
-
                 var recycle = from t in toons
-                    where t.Approved == Approved.Yes && t.HasNotBeenPosted == false
-                    select t;
+                              where t.Approved == Approved.Yes && t.HasNotBeenPosted == false
+                              select t;
 
                 Random rnd = new Random();
                 var rlist = recycle.ToList();
@@ -39,10 +38,11 @@ namespace ToonSaloon.BLL
             }
 
             return theToon;
-
-
-
         }
+
+
+
+        //}
         public CartoonOfTheDay GetCartoonOfTheDay(int id)
         {
             //ToonOfDayResponse response = new ToonOfDayResponse();

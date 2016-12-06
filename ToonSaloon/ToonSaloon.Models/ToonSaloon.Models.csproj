@@ -78,6 +78,7 @@
     <Compile Include="Models\CartoonOfTheDay.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Models\Img.cs" />
+    <Compile Include="Models\StaticPageSearchVM.cs" />
     <Compile Include="Responses\PostResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\StaticResponse.cs" />

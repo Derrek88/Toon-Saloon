@@ -26,5 +26,10 @@ namespace ToonSaloon.Models
         public Approved Approved { get; set; }
 
         public List<Tag> Tag { get; set; }
+
+        // does not need stored
+        public List<BlogPost> Posts { get; set; }
+
+        
     }
 }

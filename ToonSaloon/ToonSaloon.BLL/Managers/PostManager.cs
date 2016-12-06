@@ -51,6 +51,13 @@ namespace ToonSaloon.BLL
             taglist = manager.addTagToPost(posttags);
             postToAdd.Tags = taglist;
 
+            foreach(var img in postToAdd.Imgs)
+            {
+                AddImage(img);
+            }
+            AddImageFromBridge(postToAdd);
+            AddTagFromBridge(postToAdd);
+         
             repo.AddBlogPost(postToAdd); 
         }
 
@@ -58,13 +65,35 @@ namespace ToonSaloon.BLL
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
+            DeleteImageFromBridge(postToRemove);
+            foreach(var img in postToRemove.Imgs)
+            {
+                DeleteImage(img);
+            }
+
+            DeleteTagFromBridge(postToRemove);
+
             repo.RemoveBlogPost(postToRemove);
         }
 
         public void EditBlogPost(BlogPost postToEdit)
         {
-
+            var taglist = new List<Tag>();
+            var posttags = postToEdit.TagPlaceHolder;
+            var manager = new TagManager();
             var repo = BlogFactory.CreatBlogPostRepository();
+
+            // edit tags
+            DeleteTagFromBridge(postToEdit);
+            taglist = manager.addTagToPost(posttags);
+            postToEdit.Tags = taglist;
+
+            // edit images
+            DeleteImageFromBridge(postToEdit);
+            foreach (var img in postToEdit.Imgs)
+            {
+                AddImage(img);
+            }
 
             repo.EditBlogPost(postToEdit);
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ToonSaloon.BLL;
 using ToonSaloon.BLL.Managers;
 using ToonSaloon.Models;
+using ToonSaloon.Models.Models;
 
 namespace ToonSaloon.Web.Controllers
 {
@@ -235,6 +236,30 @@ namespace ToonSaloon.Web.Controllers
         public ActionResult AdminAddStaticPage(StaticPage page)
         {
             var manager = new StaticManger();
+            manager.AddStaticPage(page);
+            return RedirectToAction("ManageStaticPages");
+        }
+
+        [HttpGet]
+        public ActionResult AdminStaticPageWithPosts()
+        {
+            var manager = new TagManager();
+            var vm = new StaticPageSearchVM();
+            vm.SetTags(manager.GetAllTags());
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult AdminStaticPageWithPosts(StaticPageSearchVM vm)
+        {
+            var manager = new StaticManger();
+            StaticPage page = new StaticPage();
+            page.Name = vm.Page.Name;
+            page.Tag = vm.Page.Tag;
+            page.Category = vm.Page.Category;
+            page.Name = vm.Page.Name;
+            page.Approved = Approved.Yes;
+            page.DateCreated = DateTime.Today;
             manager.AddStaticPage(page);
             return RedirectToAction("ManageStaticPages");
         }
