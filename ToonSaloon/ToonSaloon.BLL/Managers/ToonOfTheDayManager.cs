@@ -21,7 +21,7 @@ namespace ToonSaloon.BLL
                          where t.Approved == Approved.Yes && t.HasNotBeenPosted
                          select t;
 
-            var theToon = result.OrderBy(t => t.DateCreated).First();
+            var theToon = result.OrderBy(t => t.DateCreated).FirstOrDefault();
 
             if (theToon == null)
             {
@@ -36,6 +36,8 @@ namespace ToonSaloon.BLL
 
                 return rlist[r];
             }
+
+            //check recycle to see if toon is current toon...  
 
             return theToon;
         }

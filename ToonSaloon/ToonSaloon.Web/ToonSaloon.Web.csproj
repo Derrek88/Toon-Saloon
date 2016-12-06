@@ -214,6 +214,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StaticPageListController.cs" />
     <Compile Include="Controllers\ToonOfDayController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -351,6 +352,7 @@
     <Content Include="Scripts\app\Initgallery.js" />
     <Content Include="Scripts\app\initsocial.js" />
     <Content Include="Scripts\app\jssocials.js" />
+    <Content Include="Scripts\app\StaticPageListWebApi.js" />
     <Content Include="Scripts\app\Tags.js" />
     <Content Include="Scripts\app\TinyMCE.js" />
     <Content Include="Scripts\app\TniyMCE.js" />

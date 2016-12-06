@@ -20,6 +20,7 @@ namespace ToonSaloon.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/app/StaticPageListWebApi.js",
                       "~/Scripts/app/BackgroundRandomizer.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));

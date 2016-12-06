@@ -19,6 +19,7 @@ namespace ToonSaloon.Web.Controllers
             var manager = new ToonOfTheDayManager(); 
             var toon =  manager.ChooseCartoon();
             toon.HasNotBeenPosted = false;
+            toon.WhenPosted = DateTime.Today;
             return toon;
 
 
