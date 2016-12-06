@@ -16,9 +16,10 @@ namespace ToonSaloon.Web.Controllers
         public CartoonOfTheDay Get()
         {
 
-            var manager = new ToonOfTheDayManager();
-
-            return manager.GetCartoonOfTheDay(1);
+            var manager = new ToonOfTheDayManager(); 
+            var toon =  manager.ChooseCartoon();
+            toon.HasNotBeenPosted = false;
+            return toon;
 
 
         }

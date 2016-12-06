@@ -23,6 +23,8 @@ namespace ToonSaloon.Models
         //newbool! I iz saries
         public bool HasNotBeenPosted { get; set; }
 
+        public DateTime WhenPosted { get; set; }
+
         [Required(ErrorMessage = "Whats the shows name?")]
         public string ShowName { get; set; }
 

@@ -12,30 +12,34 @@ namespace ToonSaloon.BLL
 {
     public class ToonOfTheDayManager
     {
-        //public CartoonOfTheDay ChooseCartoon()
-        //{
-        //    var repo = ToonOfDayFactory.CreateToonOfDayRepository();
-        //    var toons = repo.GetAllToons();
+        public CartoonOfTheDay ChooseCartoon()
+        {
+            var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            var toons = repo.GetAllToons();
 
-        //    var result = from t in toons
-        //        where t.Approved == Approved.Yes && t.HasNotBeenPosted
-        //        select t;
+            var result = from t in toons
+                         where t.Approved == Approved.Yes && t.HasNotBeenPosted
+                         select t;
 
-        //    var theToon = result.OrderBy(t => t.DateCreated).First();
+            var theToon = result.OrderBy(t => t.DateCreated).First();
 
-        //    if (theToon == null)
-        //    {
-        //        var recycle = from t in toons
-        //            where t.Approved == Approved.Yes && t.HasNotBeenPosted == false
-        //            select t;
+            if (theToon == null)
+            {
+                var recycle = from t in toons
+                              where t.Approved == Approved.Yes && t.HasNotBeenPosted == false
+                              select t;
 
-        //        Random rnd = new Random();
-        //        var rlist = recycle.ToList();
+                Random rnd = new Random();
+                var rlist = recycle.ToList();
 
-        //        int r = rnd.Next(rlist.Count);
+                int r = rnd.Next(rlist.Count);
 
-        //        return rlist[r];
-        //    }
+                return rlist[r];
+            }
+
+            return theToon;
+        }
+
 
 
         //}

@@ -24,6 +24,41 @@ namespace ToonSaloon.Data
            return blogPost;
        }
 
+       public List<Tag> GetTop10Tags()
+       {
+           List<Tag> tags = new List<Tag>();
+
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+               cmd.Connection = cn;
+               cmd.CommandText = @"SELECT TagName
+                                      FROM Tag
+                                        JOIN Blog_TagBridge on TagId
+                                            GROUPBY Name
+                                                ORDERBY Count Desc
+                                                    LIMIT 10";
+               cmd.Connection = cn;
+
+               cn.Open();
+
+               using (var dr = cmd.ExecuteReader())
+               {
+                   while (dr.Read())
+                   {
+                       Tag tag = tags.FirstOrDefault(t => t.Id == (int) dr["TagId"]);
+
+                       if (tag == null)
+                       {
+                           tag = ConvertToTag(dr);
+                           tags.Add(tag);
+                       }
+                   }
+               }
+           }
+           return tags;
+       }
+
        public List<BlogPost> GetAllPosts()
        {
             List<BlogPost> posts = new List<BlogPost>();
@@ -34,9 +69,9 @@ namespace ToonSaloon.Data
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT * FROM BlogPost";
 
-                cn.Open();
+                cmd.Connection = cn;
 
-                cmd.ExecuteNonQuery();
+                cn.Open();
 
                 using (var dr = cmd.ExecuteReader())
                 {

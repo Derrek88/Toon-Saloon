@@ -11,7 +11,7 @@ namespace ToonSaloon.Models
       None,
       Eigthies,
       Nineties,
-      Twothousands,
+      TwoThousands,
       LateNight,
       Childrens,
       Strange,
