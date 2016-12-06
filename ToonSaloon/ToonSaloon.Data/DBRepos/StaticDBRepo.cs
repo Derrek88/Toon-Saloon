@@ -148,6 +148,63 @@ namespace ToonSaloon.Data.DBRepos
             }
         }
 
+       public void InsertTagStaticBridgeTable(StaticPage id)
+        {
+            foreach (var tag in id.Tag)
+            {
+                using (var cn = new SqlConnection(_connectiionString))
+                {
+                    var cmd = new SqlCommand();
+
+                    cmd.Connection = cn;
+                    cmd.CommandText = @"INSERT INTO Page_TagBridge (TagId, PageId)
+                                                VALUES (@TagId, PageId)";
+
+                    cmd.Parameters.AddWithValue("@TagId", tag.Id);
+                    cmd.Parameters.AddWithValue("@BlogId", id);
+
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+       public void DeleteTagStaticBridgeTable(StaticPage id)
+        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"DELETE FROM Page_TagBridge (TagId, PageId)";
+
+                cmd.Parameters.AddWithValue("@PageId", id);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       public void EditTagStaticBridgeTable(StaticPage id)
+        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"UPDATE Page_TagBridge
+                                        WHERE PageId = @PageId";
+
+                cmd.Parameters.AddWithValue("@PageId", id);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
        private List<Tag> GetTagsByPageId(int id)
         {
             List<Tag> tags = new List<Tag>();

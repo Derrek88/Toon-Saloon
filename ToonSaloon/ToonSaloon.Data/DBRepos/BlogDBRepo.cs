@@ -416,6 +416,8 @@ namespace ToonSaloon.Data
 
                cmd.Parameters.AddWithValue("@Name", tagToEdit.Name);
 
+               cn.Open();
+
                cmd.ExecuteNonQuery();
            }
        }
@@ -452,6 +454,9 @@ namespace ToonSaloon.Data
                     cmd.Parameters.AddWithValue("@BlogId", id);
                     cmd.Parameters.AddWithValue("@TagId", tag.Id);
 
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
                 }
            }
        }
@@ -494,14 +499,13 @@ namespace ToonSaloon.Data
 
        public void EditImgBlogBridgeTable(BlogPost id)
        {
-
            using (var cn = new SqlConnection(_connectiionString))
            {
                var cmd = new SqlCommand();
 
                cmd.Connection = cn;
                cmd.CommandText = @"UPDATE Img_BlogBridge
-                                        WHERE BlogId = @BlogId;";
+                                        WHERE BlogId = @BlogId";
 
                cmd.Parameters.AddWithValue("@BlogId", id);
 
@@ -545,8 +549,13 @@ namespace ToonSaloon.Data
 
                    cmd.Parameters.AddWithValue("@BlogId", id);
                    cmd.Parameters.AddWithValue("@ImgId", image.Id);
-               }
-           }
+
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
        }
 
        public List<BlogPost> GetPostByTag(string TagName)
