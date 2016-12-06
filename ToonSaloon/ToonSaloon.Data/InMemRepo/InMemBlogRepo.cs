@@ -207,5 +207,15 @@ namespace ToonSaloon.Data.InMemRepo
             //var tagPosts = _posts.Where(p => p.Tags.);
             //tagPosts = tagPosts.Where
         }
+
+        public void AddImageToBlogPost(Img imgToAdd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertImgBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
