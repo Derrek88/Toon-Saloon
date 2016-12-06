@@ -217,5 +217,55 @@ namespace ToonSaloon.Data.InMemRepo
         {
             throw new NotImplementedException();
         }
+
+        public void RemoveImageToBlogPost(Img imgToDelete)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteImgBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditImageOnBlogPost(Img imgToEdit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditImgBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddTagIntoBlogPost(Tag tagToAdd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditTagFromBlogPost(Tag tagToEdit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTagFromBlogPost(Tag tagToDelete)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertTagBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditTagBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTagBlogBridgeTable(BlogPost id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
