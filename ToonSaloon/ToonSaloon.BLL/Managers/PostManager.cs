@@ -84,6 +84,7 @@ namespace ToonSaloon.BLL
             var repo = BlogFactory.CreatBlogPostRepository();
 
             // edit tags
+            EditTagFromBridge(postToEdit);
             DeleteTagFromBridge(postToEdit);
             taglist = manager.addTagToPost(posttags);
             postToEdit.Tags = taglist;
