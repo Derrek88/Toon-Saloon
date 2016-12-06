@@ -56,6 +56,19 @@ namespace ToonSaloon.BLL.Managers
             repo.RemoveTag(tagToRemove);
         }
 
+        public List<Tag> GetTopTenTags()
+        {
+            var repo = TagFactory.CreateTagRepository();
+
+            var tenTags = repo.GetAllTags().Take(10);
+
+            return tenTags.ToList();
+
+            //This is the test method!!! not the PRod method will 
+            //write when DB is finished... need the SQL List
+
+        } 
+
 
 
         //Met and create tags

@@ -23,6 +23,11 @@ namespace ToonSaloon.BLL
 
             var theToon = result.OrderBy(t => t.DateCreated).FirstOrDefault();
 
+            if (theToon != null && theToon.WhenPosted <= theToon.WhenPosted.AddDays(1) )
+            {
+                return theToon;
+            }
+
             if (theToon == null)
             {
                 var recycle = from t in toons
@@ -36,9 +41,6 @@ namespace ToonSaloon.BLL
 
                 return rlist[r];
             }
-
-            //check recycle to see if toon is current toon...  
-
             return theToon;
         }
 
