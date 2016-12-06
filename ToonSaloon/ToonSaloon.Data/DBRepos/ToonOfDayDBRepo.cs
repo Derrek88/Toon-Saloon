@@ -60,6 +60,8 @@ namespace ToonSaloon.Data.DBRepos
                 Episode = (int) dr["Episode"],
                 Approved = (Approved) dr["Approved"],
                 DateCreated = (DateTime) dr["DateCreated"],
+                WhenPosted = (DateTime) dr["WhenPosted"],
+                HasNotBeenPosted = (bool) dr["HasNotBeenPosted"],
                 ImgUrl = dr["ImgUrl"].ToString()
 
             };
@@ -74,8 +76,8 @@ namespace ToonSaloon.Data.DBRepos
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText =
-                    @"INSERT INTO CartoonOfTheDay(Author, ShowName, Season, Episode, Approved, DateCreated, ImgUrl)
-                                            VALUES (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreared, @ImgUrl)";
+                    @"INSERT INTO CartoonOfTheDay(Author, ShowName, Season, Episode, Approved, DateCreated, ImgUrl, WhenPosted, HasNotBeenPosted)
+                                            VALUES (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreared, @ImgUrl, @WhenPosted, @HasNotBeenPosted)";
                 cmd.Parameters.AddWithValue("@Author", toonToAdd.Author);
                 cmd.Parameters.AddWithValue("@ShowName", toonToAdd.ShowName);
                 cmd.Parameters.AddWithValue("@Season", toonToAdd.Season);
@@ -83,6 +85,8 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Parameters.AddWithValue("@Approved", toonToAdd.Approved);
                 cmd.Parameters.AddWithValue("@DateCreated", toonToAdd.DateCreated);
                 cmd.Parameters.AddWithValue("@ImgUrl", toonToAdd.ImgUrl);
+                cmd.Parameters.AddWithValue("@WhenPosted", toonToAdd.WhenPosted);
+                cmd.Parameters.AddWithValue("@HasNotBeenPosted", toonToAdd.HasNotBeenPosted);
 
                 cn.Open();
 
@@ -107,6 +111,8 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Parameters.AddWithValue("@Approved", toonToRemove.Approved);
                 cmd.Parameters.AddWithValue("@DateCreated", toonToRemove.DateCreated);
                 cmd.Parameters.AddWithValue("@ImgUrl", toonToRemove.ImgUrl);
+                cmd.Parameters.AddWithValue("@WhenPosted", toonToRemove.WhenPosted);
+                cmd.Parameters.AddWithValue("@HasNotBeenPosted", toonToRemove.HasNotBeenPosted);
 
                 cn.Open();
 
@@ -122,7 +128,7 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"UPDATE CartoonOfTheDay
-                         SET Author = @Author, ShowName = @ShowName, Seaon = @Season, Episode = @Episode, Approve = @Approved, DateCreated = @DateCreated, ImgUrl = @ImgUrl
+                         SET Author = @Author, ShowName = @ShowName, Seaon = @Season, Episode = @Episode, Approve = @Approved, DateCreated = @DateCreated, ImgUrl = @ImgUrl, WhenPosted = @WhenPosted, HasNotBeenPosted = @HasNotBeenPosted
                           WHERE CotDId = @CotDId";
 
                 cmd.Parameters.AddWithValue("@Author", toonToEdit.Author);
@@ -132,6 +138,8 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Parameters.AddWithValue("@Approved", toonToEdit.Approved);
                 cmd.Parameters.AddWithValue("@DateCreated", toonToEdit.DateCreated);
                 cmd.Parameters.AddWithValue("@ImgUrl", toonToEdit.ImgUrl);
+                cmd.Parameters.AddWithValue("@WhenPosted", toonToEdit.WhenPosted);
+                cmd.Parameters.AddWithValue("@HasNotBeenPosted", toonToEdit.HasNotBeenPosted);
 
                 cn.Open();
 
