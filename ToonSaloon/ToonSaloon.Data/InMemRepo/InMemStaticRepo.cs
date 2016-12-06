@@ -143,5 +143,20 @@ computer systems are to be used for business purposes only.When using [Companyâ€
             page = pageToEdit;
             _pages.Add(page);
         }
+
+        public void EditTagStaticBridgeTable(StaticPage id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTagStaticBridgeTable(StaticPage id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertTagStaticBridgeTable(StaticPage id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
