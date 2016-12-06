@@ -34,5 +34,13 @@ namespace ToonSaloon.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult ViewInfoPage(int id)
+        {
+            var manager = new StaticManger();
+            var model = manager.GetPostByID(id);
+
+            return View(model);
+        }
     }
 }
