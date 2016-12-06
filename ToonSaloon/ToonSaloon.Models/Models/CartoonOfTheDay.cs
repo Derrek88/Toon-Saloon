@@ -20,6 +20,9 @@ namespace ToonSaloon.Models
 
         public string ImgUrl { get; set; }
 
+        //newbool! I iz saries
+        public bool HasNotBeenPosted { get; set; }
+
         [Required(ErrorMessage = "Whats the shows name?")]
         public string ShowName { get; set; }
 

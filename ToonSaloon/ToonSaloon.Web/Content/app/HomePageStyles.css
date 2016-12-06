@@ -86,3 +86,6 @@
     vertical-align: middle;
 
 }
+.fixed {
+    position: fixed;
+}

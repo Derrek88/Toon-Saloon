@@ -54,20 +54,6 @@ namespace ToonSaloon.BLL
             repo.AddBlogPost(postToAdd); 
         }
 
-        public void AddImage(Img imgToAdd)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.AddImageToBlogPost(imgToAdd);
-        }
-
-        public void InsertImage(BlogPost id)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.InsertImgBlogBridgeTable(id);
-        }
-
         public void RemoveBlogPost(BlogPost postToRemove)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
@@ -76,12 +62,96 @@ namespace ToonSaloon.BLL
         }
 
         public void EditBlogPost(BlogPost postToEdit)
-        { 
+        {
 
             var repo = BlogFactory.CreatBlogPostRepository();
 
             repo.EditBlogPost(postToEdit);
 
+        }
+
+        public void AddImage(Img imgToAdd)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.AddImageToBlogPost(imgToAdd);
+        }
+
+        public void AddImageFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.InsertImgBlogBridgeTable(id);
+        }
+
+        public void DeleteImage(Img imgToDelete)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.RemoveImageToBlogPost(imgToDelete);
+        }
+
+        public void DeleteImageFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteImgBlogBridgeTable(id);
+        }
+
+        public void EditImage(Img imgToEdit)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditImageOnBlogPost(imgToEdit);
+        }
+
+        public void EditImageOnBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditImgBlogBridgeTable(id);
+        }
+
+        public void AddTag(Tag tagToAdd)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.AddTagIntoBlogPost(tagToAdd);
+        }
+
+        public void AddTagFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.InsertTagBlogBridgeTable(id);
+        }
+
+        public void DeleteTag(Tag tagToDelete)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteTagFromBlogPost(tagToDelete);
+        }
+
+        public void DeleteTagFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteTagBlogBridgeTable(id);
+        }
+
+        public void EditTag(Tag tagToEdit)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditTagFromBlogPost(tagToEdit);
+        }
+
+        public void EditTagFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditTagBlogBridgeTable(id);
         }
 
         public List<BlogPost> GetPostByTag(string TagName)
