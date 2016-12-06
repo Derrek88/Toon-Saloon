@@ -25,8 +25,8 @@ namespace ToonSaloon.Data.InMemRepo
                     },
                     new Tag()
                     {
-                        Id = 2,
-                        Name = "Static Page"
+                        Id = 3,
+                        Name = "Cosmos"
                     },
                     new Tag()
                     {
