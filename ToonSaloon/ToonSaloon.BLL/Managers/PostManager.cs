@@ -54,6 +54,22 @@ namespace ToonSaloon.BLL
             repo.AddBlogPost(postToAdd); 
         }
 
+        public void RemoveBlogPost(BlogPost postToRemove)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.RemoveBlogPost(postToRemove);
+        }
+
+        public void EditBlogPost(BlogPost postToEdit)
+        {
+
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditBlogPost(postToEdit);
+
+        }
+
         public void AddImage(Img imgToAdd)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
@@ -61,7 +77,7 @@ namespace ToonSaloon.BLL
             repo.AddImageToBlogPost(imgToAdd);
         }
 
-        public void InsertImage(BlogPost id)
+        public void AddImageFromBridge(BlogPost id)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
@@ -96,20 +112,46 @@ namespace ToonSaloon.BLL
             repo.EditImgBlogBridgeTable(id);
         }
 
-        public void RemoveBlogPost(BlogPost postToRemove)
+        public void AddTag(Tag tagToAdd)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.RemoveBlogPost(postToRemove);
+            repo.AddTagIntoBlogPost(tagToAdd);
         }
 
-        public void EditBlogPost(BlogPost postToEdit)
-        { 
-
+        public void AddTagFromBridge(BlogPost id)
+        {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.EditBlogPost(postToEdit);
+            repo.InsertTagBlogBridgeTable(id);
+        }
 
+        public void DeleteTag(Tag tagToDelete)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteTagFromBlogPost(tagToDelete);
+        }
+
+        public void DeleteTagFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.DeleteTagBlogBridgeTable(id);
+        }
+
+        public void EditTag(Tag tagToEdit)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditTagFromBlogPost(tagToEdit);
+        }
+
+        public void EditTagFromBridge(BlogPost id)
+        {
+            var repo = BlogFactory.CreatBlogPostRepository();
+
+            repo.EditTagBlogBridgeTable(id);
         }
 
         public List<BlogPost> GetPostByTag(string TagName)

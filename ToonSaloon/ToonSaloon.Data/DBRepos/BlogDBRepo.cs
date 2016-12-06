@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using ToonSaloon.Models;
@@ -350,6 +351,111 @@ namespace ToonSaloon.Data
                cmd.ExecuteNonQuery();
            }
        }
+
+       public void AddTagIntoBlogPost(Tag tagToAdd)
+        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"INSERT INTO Tag(Name)
+                                            VALUES (@Name)";
+
+                cmd.Parameters.AddWithValue("@Name", tagToAdd.Name);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       public void EditTagFromBlogPost(Tag tagToEdit)
+       {
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+               cmd.Connection = cn;
+               cmd.CommandText = @"UPDATE Tag
+                                        SET Name = @Name";
+
+               cmd.Parameters.AddWithValue("@Name", tagToEdit.Name);
+
+               cmd.ExecuteNonQuery();
+           }
+       }
+
+       public void DeleteTagFromBlogPost(Tag tagToDelete)
+       {
+           using (var cn = new SqlConnection(_connectiionString))
+           {
+               var cmd = new SqlCommand();
+               cmd.Connection = cn;
+               cmd.CommandText = @"DELETE FROM Tag
+                                            WHERE TagId = @TagId";
+
+               cmd.Parameters.AddWithValue("@Name", tagToDelete.Name);
+
+               cn.Open();
+
+               cmd.ExecuteNonQuery();
+           }
+       }
+
+       public void InsertTagBlogBridgeTable(BlogPost id)
+       {
+           foreach (var tag in id.Tags)
+           {
+               using (var cn = new SqlConnection(_connectiionString))
+               {
+                   var cmd = new SqlCommand();
+
+                   cmd.Connection = cn;
+                   cmd.CommandText = @"INSTER INTO Tag_BlogBridge (TagId, BlogId)
+                                                VALUES (@TagId, @BlogId)";
+
+                    cmd.Parameters.AddWithValue("@BlogId", id);
+                    cmd.Parameters.AddWithValue("@TagId", tag.Id);
+
+                }
+           }
+       }
+
+       public void EditTagBlogBridgeTable(BlogPost id)
+       {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"UPDATE Tag_BlogBridge
+                                        WHERE BlogId = @BlogId;";
+
+                cmd.Parameters.AddWithValue("@BlogId", id);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       public void DeleteTagBlogBridgeTable(BlogPost id)
+       {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"DELETE FROM Tag_BlogBridge
+                                                WHERE BlogId = @BlogId";
+
+                cmd.Parameters.AddWithValue("@BlogId", id);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
 
        public void EditImgBlogBridgeTable(BlogPost id)
        {

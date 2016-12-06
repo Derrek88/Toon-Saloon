@@ -32,5 +32,17 @@ namespace ToonSaloon.Data
        void EditImageOnBlogPost(Img imgToEdit);
 
        void EditImgBlogBridgeTable(BlogPost id);
+
+       void AddTagIntoBlogPost(Tag tagToAdd);
+
+       void EditTagFromBlogPost(Tag tagToEdit);
+
+       void DeleteTagFromBlogPost(Tag tagToDelete);
+
+       void InsertTagBlogBridgeTable(BlogPost id);
+
+       void EditTagBlogBridgeTable(BlogPost id);
+
+       void DeleteTagBlogBridgeTable(BlogPost id);
    }
 }
