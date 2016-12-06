@@ -25,6 +25,8 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT * FROM Tag";
 
+                cmd.Connection = cn;
+
                 cn.Open();
 
                 using (var dr = cmd.ExecuteReader())
