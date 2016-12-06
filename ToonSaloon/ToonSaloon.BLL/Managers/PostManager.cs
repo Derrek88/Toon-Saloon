@@ -143,13 +143,6 @@ namespace ToonSaloon.BLL
             repo.EditImgBlogBridgeTable(id);
         }
 
-        public void AddTag(Tag tagToAdd)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.AddTagIntoBlogPost(tagToAdd);
-        }
-
         public void AddTagFromBridge(BlogPost id)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
@@ -157,25 +150,11 @@ namespace ToonSaloon.BLL
             repo.InsertTagBlogBridgeTable(id);
         }
 
-        public void DeleteTag(Tag tagToDelete)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.DeleteTagFromBlogPost(tagToDelete);
-        }
-
         public void DeleteTagFromBridge(BlogPost id)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
             repo.DeleteTagBlogBridgeTable(id);
-        }
-
-        public void EditTag(Tag tagToEdit)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.EditTagFromBlogPost(tagToEdit);
         }
 
         public void EditTagFromBridge(BlogPost id)

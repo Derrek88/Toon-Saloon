@@ -214,6 +214,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PopularTagsController.cs" />
     <Compile Include="Controllers\StaticPageListController.cs" />
     <Compile Include="Controllers\ToonOfDayController.cs" />
     <Compile Include="Global.asax.cs">
