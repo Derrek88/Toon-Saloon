@@ -21,8 +21,15 @@ namespace ToonSaloon.Models
 
         public DateTime DateCreated { get; set; }
 
+        public Category Category { get; set; }
+
         public Approved Approved { get; set; }
 
         public List<Tag> Tag { get; set; }
+
+        // does not need stored
+        public List<BlogPost> Posts { get; set; }
+
+        
     }
 }

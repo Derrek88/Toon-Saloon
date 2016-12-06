@@ -78,6 +78,7 @@ namespace ToonSaloon.Data.DBRepos
                 Body = dr["Body"].ToString(),
                 DateCreated = (DateTime) dr["DateCreated"],
                 Approved = (Approved) dr["Approved"],
+                Category = (Category) dr["Category"]
                
             };
            return newPage;
@@ -90,12 +91,13 @@ namespace ToonSaloon.Data.DBRepos
                var cmd = new SqlCommand();
                cmd.Connection = cn;
                cmd.CommandText =
-                   @"INSERT INTO CartoonOfTheDay(Name, Body, DateCreated, Approced)
+                   @"INSERT INTO CartoonOfTheDay(Name, Body, DateCreated, Approved, Category)
                             VALUES (@Name, @Body, @DateCreated, @Approved)";
                cmd.Parameters.AddWithValue("@Name", pageToAdd.Name);
                cmd.Parameters.AddWithValue("@Body", pageToAdd.Body);
                cmd.Parameters.AddWithValue("@DateCreated", pageToAdd.DateCreated);
                cmd.Parameters.AddWithValue("@Approved", pageToAdd.Approved);
+               cmd.Parameters.AddWithValue("@Category", pageToAdd.Category);
 
                cn.Open();
 
@@ -116,6 +118,7 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Parameters.AddWithValue("@Body", pageToRemove.Body);
                 cmd.Parameters.AddWithValue("@DateCreated", pageToRemove.DateCreated);
                 cmd.Parameters.AddWithValue("@Approved", pageToRemove.Approved);
+                cmd.Parameters.AddWithValue("@Category", pageToRemove.Category);
 
                 cn.Open();
 
@@ -137,6 +140,64 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Parameters.AddWithValue("@Body", pageToEdit.Body);
                 cmd.Parameters.AddWithValue("@DateCreated", pageToEdit.DateCreated);
                 cmd.Parameters.AddWithValue("@Approved", pageToEdit.Approved);
+                cmd.Parameters.AddWithValue("@Category", pageToEdit.Category);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       public void InsertTagStaticBridgeTable(StaticPage id)
+        {
+            foreach (var tag in id.Tag)
+            {
+                using (var cn = new SqlConnection(_connectiionString))
+                {
+                    var cmd = new SqlCommand();
+
+                    cmd.Connection = cn;
+                    cmd.CommandText = @"INSERT INTO Page_TagBridge (TagId, PageId)
+                                                VALUES (@TagId, PageId)";
+
+                    cmd.Parameters.AddWithValue("@TagId", tag.Id);
+                    cmd.Parameters.AddWithValue("@BlogId", id);
+
+                    cn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+       public void DeleteTagStaticBridgeTable(StaticPage id)
+        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"DELETE FROM Page_TagBridge (TagId, PageId)";
+
+                cmd.Parameters.AddWithValue("@PageId", id);
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       public void EditTagStaticBridgeTable(StaticPage id)
+        {
+            using (var cn = new SqlConnection(_connectiionString))
+            {
+                var cmd = new SqlCommand();
+
+                cmd.Connection = cn;
+                cmd.CommandText = @"UPDATE Page_TagBridge
+                                        WHERE PageId = @PageId";
+
+                cmd.Parameters.AddWithValue("@PageId", id);
 
                 cn.Open();
 

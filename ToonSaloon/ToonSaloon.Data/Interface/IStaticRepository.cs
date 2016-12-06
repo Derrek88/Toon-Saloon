@@ -18,5 +18,11 @@ namespace ToonSaloon.Data.Interface
         void RemoveStaticPage(StaticPage pageToRemove);
 
         void EditStaticPage(StaticPage pageToEdit);
+
+        void EditTagStaticBridgeTable(StaticPage id);
+
+        void DeleteTagStaticBridgeTable(StaticPage id);
+
+        void InsertTagStaticBridgeTable(StaticPage id);
     }
 }

@@ -85,22 +85,20 @@ namespace ToonSaloon.BLL.Managers
 
             foreach (var tag in oldTags)
             {
-
                 if (tagname == tag.Name)
                 {
 
                     tagtoreturn = tag;
                 }
-                else //if (tagname != tag.Name)
+                else if(tagname != tag.Name)
                 {
                     var newtag = new Tag();
                     newtag.Name = tagname;
-                    newtag.Id = oldTags.Max(t => t.Id) + 1;
                     repo.AddTag(newtag);
                
                     tagtoreturn = newtag;
                 }
-                break;
+                
 
             }
             return tagtoreturn;
