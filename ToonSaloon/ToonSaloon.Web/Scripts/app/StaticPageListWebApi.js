@@ -12,7 +12,7 @@ function GetPages() {
         .done(function (data) {
             $.each(data,
                 function (index, pages) {
-                    $('<li><a href="/Home/ViewInfoPage/' + pages.Id + '">' + pages.Name + '</a></li>').appendTo($('#staticList'));
+                    $('<li><a href="/Home/ViewSearchedStaticPage/' + pages.Id + '">' + pages.Name + '</a></li>').appendTo($('#staticList'));
                 });
         });
 };

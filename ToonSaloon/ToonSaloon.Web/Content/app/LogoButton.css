@@ -1,0 +1,9 @@
+﻿a.logobutton
+{
+    background: url(../../Images/appimages/logo.jpg) no-repeat center;
+    background-size: 150px 45px;
+     display: block; 
+     width: 150px;
+     height: 50px;
+     text-indent: -9999px; /* hides the link text */
+}

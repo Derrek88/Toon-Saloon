@@ -42,8 +42,15 @@ namespace ToonSaloon.BLL
         public void AddStaticPage(StaticPage pageToAdd)
         {
             var repo = StaticFactory.CreateStaticPageRepository();
-            
+
             repo.AddStaticPage(pageToAdd);
+
+            foreach (var tag in pageToAdd.Tag)
+            {
+              //  InsertTagStaticBridgeTable();
+            }
+            
+            
         }
 
         public void RemoveStaticPage(StaticPage pageToRemove)
