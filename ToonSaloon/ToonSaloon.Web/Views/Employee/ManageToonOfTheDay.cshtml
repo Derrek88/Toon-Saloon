@@ -3,17 +3,21 @@
     ViewBag.Title = "ManageToonOfTheDay";
 }
 
-<h2>ManageToonOfTheDay</h2>
+@section styles{
+    <link rel='stylesheet' href='../../Content/app/ListPageStyles.css' type='text/css' />
+}
 
 <div class="row">
-    <h1><strong>Manage Current Posts</strong></h1>
-    @Html.ActionLink("Add", "EmployeeAddToon", "Employee", null, new { @class = "btn btn-lg btn-success" })
+    <div class="col-sm-10 col-sm-offset-1 bpost" style="margin-bottom: 65%">
+        <h1>
+            <strong>Manage Your Toons</strong>
+        </h1>
+        @Html.ActionLink("Add", "EmployeeAddToon", "Employee", null, new { @class = "btn btn-lg btn-success" })
 
 
-    <table id="posts" class="table table-responsive table-bordered">
-        <thead>
+        <table id="posts" class="table table-responsive table-condensed table-striped">
+            <thead>
             <tr class="active">
-                <th>Toon ID</th>
                 <th>Show Name</th>
                 <th>Season</th>
                 <th>Episode</th>
@@ -22,23 +26,24 @@
                 <th>Approval</th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @if (Model != null)
             {
 
                 foreach (var toon in Model)
                 {
                     <tr class="active">
-                        <td>@toon.Id</td>
                         <td>@toon.ShowName</td>
                         <td>@toon.Season</td>
                         <td>@toon.Episode</td>
                         <td>@toon.Author</td>
                         <td>@toon.DateCreated.ToShortDateString()</td>
                         <td>@toon.Approved</td>
-                        <td>@Html.ActionLink("Edit", "EmployeeEditToon", "Employee", new { id = toon.Id }, new { @class = "btn btn-sm btn-info" })
-                        @Html.ActionLink("Delete", "EmployeeDeleteToon", "Employee", new { id = toon.Id }, new { @class = "btn btn-sm btn-danger" })</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EmployeeEditToon", "Employee", new {id = toon.Id}, new {@class = "btn btn-sm btn-info"})
+                            @Html.ActionLink("Delete", "EmployeeDeleteToon", "Employee", new {id = toon.Id}, new {@class = "btn btn-sm btn-danger"})
+                        </td>
                     </tr>
                 }
             }
@@ -46,7 +51,8 @@
             {
                 <tr><td style="color: red">There are no post in the blog.</td></tr>
             }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+        </div>
+    </div>
 

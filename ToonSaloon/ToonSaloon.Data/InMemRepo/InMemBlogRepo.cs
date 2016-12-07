@@ -178,9 +178,8 @@ namespace ToonSaloon.Data.InMemRepo
         public void EditBlogPost(BlogPost postToEdit)
         {
             var post = _posts.FirstOrDefault(p => p.Id == postToEdit.Id);
-            _posts.Remove(post);
-            post = postToEdit;
-            _posts.Add(post);
+            _posts.Remove(post); 
+            _posts.Add(postToEdit);
         }
 
         public List<BlogPost> GetPostByTag(string TagName)
