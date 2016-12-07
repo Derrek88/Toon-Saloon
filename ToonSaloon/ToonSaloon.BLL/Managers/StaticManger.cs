@@ -63,6 +63,9 @@ namespace ToonSaloon.BLL
         public void EditStaticPage(StaticPage pageToEdit)
         {
             var repo = StaticFactory.CreateStaticPageRepository();
+            repo.DeleteTagStaticBridgeTable(pageToEdit);
+            repo.InsertTagStaticBridgeTable(pageToEdit);
+
 
             repo.EditStaticPage(pageToEdit);
         }
