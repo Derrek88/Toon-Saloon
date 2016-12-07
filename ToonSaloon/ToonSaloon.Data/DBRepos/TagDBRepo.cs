@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -59,19 +60,32 @@ namespace ToonSaloon.Data.DBRepos
             return tag;
         }
 
-        public void AddTag(Tag tagToAdd)
+        public void AddTag(Tag tagToAdd, int blogId)
         {
             using (var cn = new SqlConnection(_connectiionString))
             {
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO Tag(Name)
-                                           VALUES (@Name)";
+                cmd.CommandText = @"dbo.AddTag";
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter param = new SqlParameter()
+                {
+                    SqlDbType = SqlDbType.Int,
+                    ParameterName = @"TagId",
+                    SourceColumn = "TagId",
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(param);
                 cmd.Parameters.AddWithValue("@Name", tagToAdd.Name);
+
+               
 
                 cn.Open();
 
                 cmd.ExecuteNonQuery();
+                tagToAdd.Id = int.Parse(param.Value.ToString());
+                new BlogDBRepo().InsertTagBlogBridgeTable(tagToAdd.Id, blogId);
+
             }
         }
 

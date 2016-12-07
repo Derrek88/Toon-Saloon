@@ -85,7 +85,7 @@ namespace ToonSaloon.Data.InMemRepo
             return _tags.FirstOrDefault(t => t.Id == id);
         }
 
-        public void AddTag(Tag tagToAdd)
+        public void AddTag(Tag tagToAdd, int blogId)
         {
             _tags.Add(tagToAdd);
         }

@@ -13,7 +13,7 @@ namespace ToonSaloon.Data.Interface
 
         Tag GetTagById(int id);
 
-        void AddTag(Tag tagToAdd);
+        void AddTag(Tag tagToAdd, int blogId);
 
         void RemoveTag(Tag tagToRemove);
     }
