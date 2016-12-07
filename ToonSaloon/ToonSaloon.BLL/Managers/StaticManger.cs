@@ -67,6 +67,21 @@ namespace ToonSaloon.BLL
             repo.EditStaticPage(pageToEdit);
         }
 
+        public void EditTagStaticBridgeTable(StaticPage id)
+        {
+            
+        }
+
+        public void DeleteTagStaticBridgeTable(StaticPage id)
+        {
+            
+        }
+
+        public void InsertTagStaticBridgeTable(StaticPage id)
+        {
+            
+        }
+
         public StaticPage GetBySearch(int id)
         {
             var filteredPosts = new List<BlogPost>();
