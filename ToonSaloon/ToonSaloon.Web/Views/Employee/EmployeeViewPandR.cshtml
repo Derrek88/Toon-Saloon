@@ -3,15 +3,12 @@
     ViewBag.Title = "EmployeeViewPandR";
 }
 
-<h2>EmployeeViewPandR</h2>
-
-
 @section styles{
-    <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
+    <link rel='stylesheet' href='../../Content/app/SinglePostStyle.css' type='text/css' />
 }
 <br />
 <div class="row">
-    <div class="col-xs-10 bpost">
+    <div class="col-sm-10 col-sm-offset-1 bpost">
         <h2 class="text-center">Please Read Carefullly</h2>
         <div class="col-sm-10 col-sm-offset-1">
 
@@ -23,8 +20,8 @@
                 <p>@Model.Body</p>
             </div>
         </div>
-        <div class="row">
-            @Html.ActionLink("Back", "Index", "Employee", null, new {@class = "btn btn-sm btn-info"})
+        <div class="col-sm-2 col-sm-offset-5">
+            @Html.ActionLink("Back", "Index", "Employee", null, new {@class = "btn btn-lg btn-info"})
         </div>
        
     </div>

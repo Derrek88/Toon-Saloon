@@ -2,20 +2,32 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Employee Dashboard</h2>
-
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-sm-6 bpost text-center">
-            <h3>Manage Current Posts</h3>
-            <h4>@Html.ActionLink("My Posts", "ManageCurrentPosts", "Employee")</h4>
-            <h4>@Html.ActionLink("My Toons", "ManageToonOfTheDay", "Employee")</h4>
-
+        <div class="col-sm-8 col-sm-offset-2 bpost vertical-center">
+            <div class="jumbotron">
+                <h1>Create your Posts</h1>
+                <p>
+                    Share your favorite titles and individual episodes!
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <h1>@Html.ActionLink("My Posts", "ManageCurrentPosts", "Employee")</h1>
+                <h1>@Html.ActionLink("My Toons", "ManageToonOfTheDay", "Employee")</h1>
+            </div>
         </div>
-        <div class="col-sm-6 bpost text-center">
-            <h3>Policies and Regulations</h3>
-            <h4>@Html.ActionLink("Information Pages", "EmployeeViewPandR", "Employee")</h4>
+
+        <div class="col-sm-8 col-sm-offset-2 bpost vertical-center">
+            <div class="jumbotron">
+                <h1>Policies and Regulations</h1>
+                <p>
+                    Please read these carefully. You are held responsile for all the content
+                    you create
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <h1>@Html.ActionLink("Policies and Regulations", "EmployeeViewPandR", "Employee")</h1>
+            </div>
         </div>
     </div>
 </div>
