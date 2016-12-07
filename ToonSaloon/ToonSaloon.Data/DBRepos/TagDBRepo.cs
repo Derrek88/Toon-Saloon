@@ -84,7 +84,7 @@ namespace ToonSaloon.Data.DBRepos
 
                 cmd.ExecuteNonQuery();
                 tagToAdd.Id = int.Parse(param.Value.ToString());
-                new BlogDBRepo().InsertTagBlogBridgeTable(tagToAdd.Id, blogId);
+                //new BlogDBRepo().InsertTagBlogBridgeTable(tagToAdd.Id, blogId);
 
             }
         }
@@ -97,7 +97,7 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Tag
                                           WHERE TagId = @TagId";
-                cmd.Parameters.AddWithValue("@Name", tagToRemove.Name);
+                cmd.Parameters.AddWithValue("@TagId", tagToRemove.Id);
 
                 cn.Open();
 

@@ -54,15 +54,14 @@ namespace ToonSaloon.BLL
 
             foreach (var img in postToAdd.Imgs)
             {
-                AddImage(img, postToAdd.Id);
-                AddImageFromBridge(postToAdd.Id, img.Id);
+                if (img.Source != null)
+                {
+                    AddImage(img, postToAdd.Id);
+                    AddImageFromBridge(postToAdd.Id, img.Id);
+                }
             }
 
             AddTagFromBridge(postToAdd);
-
-
-
-
         }
 
         public void RemoveBlogPost(BlogPost postToRemove)
@@ -70,9 +69,13 @@ namespace ToonSaloon.BLL
             var repo = BlogFactory.CreatBlogPostRepository();
 
             DeleteImageFromBridge(postToRemove);
-            foreach(var img in postToRemove.Imgs)
+            if (postToRemove.Imgs != null)
             {
-                DeleteImage(img);
+                foreach (var img in postToRemove.Imgs)
+                {
+                    DeleteImage(img);
+                }
+
             }
 
             DeleteTagFromBridge(postToRemove);
@@ -92,14 +95,15 @@ namespace ToonSaloon.BLL
             DeleteTagFromBridge(postToEdit);
             taglist = manager.addTagToPost(posttags, postToEdit.Id);
             postToEdit.Tags = taglist;
+            AddTagFromBridge(postToEdit);
 
 
             // edit images
-            DeleteImageFromBridge(postToEdit);
-            foreach (var img in postToEdit.Imgs)
-            {
-                AddImage(img, postToEdit.Id);
-            }
+            // DeleteImageFromBridge(postToEdit);
+            //foreach (var img in postToEdit.Imgs)
+            //{
+            //    AddImage(img, postToEdit.Id);
+            //}
 
             repo.EditBlogPost(postToEdit);
 
