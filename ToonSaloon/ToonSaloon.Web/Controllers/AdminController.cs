@@ -283,15 +283,39 @@ namespace ToonSaloon.Web.Controllers
         [HttpGet]
         public ActionResult AdminEditStaticPage(int id)
         {
+            var tagmanager = new TagManager();
             var manager = new StaticManger();
-            var model = manager.GetPostByID(id);
-            return View(model);
+            var page = manager.GetPostByID(id);
+            var vm = new StaticPageSearchVM();
+            vm.SetTags(tagmanager.GetAllTags());
+
+            vm.Page = page;
+
+            return View(vm);
         }
 
         [HttpPost]
-        public ActionResult AdminEditStaticPage(StaticPage page)
+        public ActionResult AdminEditStaticPage(StaticPageSearchVM vm)
         {
             var manager = new StaticManger();
+            var tagm = new TagManager();
+            var page = new StaticPage();
+
+            var pagetags = new List<Tag>();
+            page.Name = vm.Page.Name;
+            page.Tag = vm.Page.Tag;
+            page.Category = vm.Page.Category;
+            page.Name = vm.Page.Name;
+            page.Approved = Approved.Yes;
+            page.DateCreated = DateTime.Today;
+            foreach (var id in vm.SelectedTagIds)
+            {
+                var tag = tagm.GetTagById(id);
+                pagetags.Add(tag);
+
+            }
+            page.Tag = pagetags;
+
             manager.EditStaticPage(page);
             return RedirectToAction("ManageStaticPages");
         }

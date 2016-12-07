@@ -26,6 +26,12 @@ namespace ToonSaloon.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult EmployeeAddPost()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult EmployeeAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
