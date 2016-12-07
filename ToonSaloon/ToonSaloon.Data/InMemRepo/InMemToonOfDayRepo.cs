@@ -27,7 +27,7 @@ namespace ToonSaloon.Data.InMemRepo
                         Season = 2,
                         Episode = 4,
                         ShowName = "Rick and Morty",
-                        Approved = Approved.Yes,
+                        Approved = Approved.Waiting,
                         ImgUrl = "../../Images/appimages/api.jpg",
                         HasNotBeenPosted = true
 

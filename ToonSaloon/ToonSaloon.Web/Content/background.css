@@ -1,17 +1,25 @@
 ﻿#background {
-            background: no-repeat center center fixed;
-            background-size: cover;
-            -webkit-background-size: cover;
-            /*height: 100vh;*/
-            /*background-position: center;*/
-            position: static;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+    background: no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    /*height: 100vh;*/
+    /*background-position: center;*/
+    position: static;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 1px;
+    margin: 0;
+}
 
-        .box {
-            background-color: floralwhite;
-        }
-        body {
-            padding-bottom: 0;
-        }
+.container {
+     position: relative;
+}
+
+.box { background-color: floralwhite; }
+
+body { padding-bottom: 0; }
+
+#footer {
+    position: absolute;
+    bottom: 0;
+}
