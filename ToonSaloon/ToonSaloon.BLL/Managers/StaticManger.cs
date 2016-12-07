@@ -81,7 +81,7 @@ namespace ToonSaloon.BLL
             }
           
             //get posts by tags
-            if(page.Tag.Count != 0)
+            if(page.Tag.Count > 0)
             {
                 tagposts = GetTagPosts(page);
             }else
@@ -92,11 +92,15 @@ namespace ToonSaloon.BLL
             // get filtered tags if needed
             if(categoryPosts != null && tagposts != null)
             {
-                filteredPosts = tagposts.Where(p => p.Category == page.Category).ToList();
-                
-               //  FilteredPosts(tagposts, categoryPosts);
+                var filter =  tagposts.Where(p => p.Category == page.Category).ToList();
 
-            }else if(categoryPosts != null && tagposts == null)
+                //filteredPosts = filter.GroupBy(i => i.Id)..ToList();
+                filteredPosts = filter.Distinct().ToList();
+
+                //  FilteredPosts(tagposts, categoryPosts);
+
+            }
+            else if(categoryPosts != null && tagposts == null)
             {
                 filteredPosts = categoryPosts;
             }else if(categoryPosts == null && tagposts != null)
@@ -132,11 +136,21 @@ namespace ToonSaloon.BLL
         {
             var repo = BlogFactory.CreatBlogPostRepository();
             var tagposts = new List<BlogPost>();
+            var posts = repo.GetAllPosts();
 
             foreach (var tag in page.Tag)
             {
-                var postsbytag = repo.GetPostByTag(tag.Name);
-                tagposts.AddRange(postsbytag);
+                foreach(var post in posts)
+                {
+                    foreach(var posttag in post.Tags)
+                    if(tag.Name == posttag.Name)
+                        {
+                            var postbytag = post;
+                            tagposts.Add(postbytag);
+                        }
+                    
+                }
+                
             }
 
             return tagposts;

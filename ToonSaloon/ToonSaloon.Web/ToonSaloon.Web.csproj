@@ -236,6 +236,7 @@
     <Content Include="BackGrounds\transformers.jpg" />
     <Content Include="Content\app\AdminAddpostbox.css" />
     <Content Include="Content\app\AdminDashStyles.css" />
+    <Content Include="Content\app\DashboardStyles.css" />
     <Content Include="Content\app\font-awesome.css" />
     <Content Include="Content\app\HomePageStyles.css" />
     <Content Include="Content\app\images\arrows_strip_left.png" />
@@ -247,6 +248,7 @@
     <Content Include="Content\app\images\button_playpause_single.png" />
     <Content Include="Content\app\jssocials-theme-classic.css" />
     <Content Include="Content\app\jssocials.css" />
+    <Content Include="Content\app\ListPageStyles.css" />
     <Content Include="Content\app\ug-theme-default.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\button-close.png" />
@@ -432,7 +434,6 @@
     <Content Include="Views\Admin\ManageToonOfTheDay.cshtml" />
     <Content Include="Views\Admin\AdminAddToon.cshtml" />
     <Content Include="Views\Admin\AdminViewBlogPostSubmissions.cshtml" />
-    <Content Include="Views\Admin\AdminViewPost.cshtml" />
     <Content Include="Views\Admin\AdminApprovePost.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Admin\AdminEditToon.cshtml" />

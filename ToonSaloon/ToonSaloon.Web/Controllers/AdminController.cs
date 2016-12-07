@@ -253,13 +253,22 @@ namespace ToonSaloon.Web.Controllers
         public ActionResult AdminStaticPageWithPosts(StaticPageSearchVM vm)
         {
             var manager = new StaticManger();
+            var tagm = new TagManager();
             StaticPage page = new StaticPage();
+            var pagetags = new List<Tag>();
             page.Name = vm.Page.Name;
             page.Tag = vm.Page.Tag;
             page.Category = vm.Page.Category;
             page.Name = vm.Page.Name;
             page.Approved = Approved.Yes;
             page.DateCreated = DateTime.Today;
+            foreach(var id in vm.SelectedTagIds)
+            {
+                var tag = tagm.GetTagById(id);
+                pagetags.Add(tag);
+
+            }
+            page.Tag = pagetags;
             manager.AddStaticPage(page);
             return RedirectToAction("ManageStaticPages");
         }

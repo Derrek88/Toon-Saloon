@@ -93,6 +93,7 @@ namespace ToonSaloon.BLL
             taglist = manager.addTagToPost(posttags, postToEdit.Id);
             postToEdit.Tags = taglist;
 
+
             // edit images
             DeleteImageFromBridge(postToEdit);
             foreach (var img in postToEdit.Imgs)

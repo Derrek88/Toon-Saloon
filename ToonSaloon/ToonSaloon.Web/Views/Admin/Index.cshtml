@@ -3,26 +3,50 @@
 }
 
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-xs-4 bpost text-center">
-            <h3>Manage Current Posts</h3>
-            <h4>@Html.ActionLink("Blog Posts", "ManageCurrentPosts", "Admin")</h4>
-            <h4>@Html.ActionLink("Toon of the Day", "ManageToonOfTheDay", "Admin")</h4>
-
+        <div class="col-sm-8 col-sm-offset-2 bpost vertical-center">
+            <div class="jumbotron">
+                <h1>Manage Current Posts</h1>
+                <p>
+                    View, Update, or Remove old posts that are currently being displayed on
+                    the Homepage
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <h1>@Html.ActionLink("Blog Posts", "ManageCurrentPosts", "Admin")</h1>
+                <h1>@Html.ActionLink("Toon of the Day", "ManageToonOfTheDay", "Admin")</h1>
+            </div>
         </div>
-        <div class="col-xs-4 bpost text-center">
-            <h3>Submissions For Approval</h3>
-            <h4>@Html.ActionLink("BlogPost", "AdminViewBlogPostSubmissions", "Admin")</h4>
-            <h4>@Html.ActionLink("Toon of the Day", "AdminViewToonOfTheDaySubmissions", "Admin")</h4>
+        <div class="col-sm-8 col-sm-offset-2 bpost vertical-center">
+            <div class="jumbotron">
+                <h1>Posts for Approval</h1>
+                <p>
+                    See what your team has been up to. Check up on, Approve, or let them know,
+                    "That's one way to do it."
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <h1>@Html.ActionLink("BlogPost", "AdminViewBlogPostSubmissions", "Admin")</h1>
+                <h1>@Html.ActionLink("Toon of the Day", "AdminViewToonOfTheDaySubmissions", "Admin")</h1>
+            </div>
         </div>
 
-        <div class="col-xs-4 bpost text-center">
-            <h3>Manage Information Pages</h3>
-            <h4>@Html.ActionLink("Information Pages", "ManageStaticPages", "Admin")</h4>
+        <div class="col-sm-8 col-sm-offset-2 bpost vertical-center">
+            <div class="jumbotron">
+                <h1>Manage Information Pages</h1>
+                <p>
+                    Create or Edit information pages so that our users know exactly what's going
+                    on.
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <h1>@Html.ActionLink("Information Pages", "ManageStaticPages", "Admin")</h1>
+            </div>
         </div>
     </div>
 </div>
+
 
 @section styles{
         <link rel='stylesheet' href='../../Content/app/AdminDashStyles.css' type='text/css' />

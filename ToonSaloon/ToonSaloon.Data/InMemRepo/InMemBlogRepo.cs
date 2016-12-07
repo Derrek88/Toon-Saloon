@@ -110,22 +110,22 @@ namespace ToonSaloon.Data.InMemRepo
                            new Tag()
                            {
                                Id = 7,
-                               Name = "Rick and Morty"
+                               Name = "Doc"
                            },
                            new Tag()
                            {
                                Id = 8,
-                               Name = "Rick and Morty"
+                               Name = "Back to the Future"
                            },
                            new Tag()
                            {
                                Id = 9,
-                               Name = "Rick and Morty"
+                               Name = "glub glub"
                            },
                            new Tag()
                            {
                                Id = 10,
-                               Name = "Rick and Morty"
+                               Name = "zipppydoo"
                            },
 
 
