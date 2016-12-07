@@ -282,7 +282,7 @@ namespace ToonSaloon.Data
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"UPDATE BlogPost
-                        SET Body = @Body, AuthorName = @AuthorName, @Category = Cateogry, Approved = @Approved, DateCreated = @DateCreated, Headline = @Headline, Subtitle = @Subtitle
+                        SET Body = @Body, AuthorName = @AuthorName, @Category = Category, Approved = @Approved, DateCreated = @DateCreated, Headline = @Headline, Subtitle = @Subtitle
                         WHERE BlogId = @BlogId";
 
                 cmd.Parameters.AddWithValue("@BlogId", postToEdit.Id);

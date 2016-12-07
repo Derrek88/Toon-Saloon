@@ -162,7 +162,7 @@ namespace ToonSaloon.BLL
             
         }
 
-        public void DeleteTagFromBridge(int tagId, int blogId)
+        public void DeleteTagFromBridge(BlogPost id)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 

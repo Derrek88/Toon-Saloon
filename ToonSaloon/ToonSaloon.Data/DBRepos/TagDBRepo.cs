@@ -84,7 +84,7 @@ namespace ToonSaloon.Data.DBRepos
 
                 cmd.ExecuteNonQuery();
                 tagToAdd.Id = int.Parse(param.Value.ToString());
-                new BlogDBRepo().InsertTagBlogBridgeTable(tagToAdd.Id, blogId);
+                //new BlogDBRepo().InsertTagBlogBridgeTable(tagToAdd.Id, blogId);
 
             }
         }
