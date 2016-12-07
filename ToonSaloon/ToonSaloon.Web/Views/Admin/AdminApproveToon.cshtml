@@ -4,47 +4,51 @@
 }
 
 @section styles{
-    <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
+    <link rel='stylesheet' href='../../Content/app/SinglePostStyle.css' type='text/css' />
 }
 <br />
 
-<div class="col-xs-4 bpost">
+<div class="col-sm-4 col-sm-offset-4 bpost">
+    <div id="center">
     <h2 class="text-center">Approve Toon</h2>
-    @using (Html.BeginForm("AdminApproveToon", "Admin", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    @using (Html.BeginForm("AdminApproveToon", "Admin", FormMethod.Post, new {enctype = "multipart/from-data"}))
     {
         @Html.HiddenFor(t => t.Id)
+
+        <img id="img" src="@Model.ImgUrl"/>
         <div class="form-group">
             <label>Show Name</label>
-            @Html.HiddenFor(t=> t.ShowName)
-            @Html.DisplayFor(t => t.ShowName, new { @class = "form-control" })
+            @Html.HiddenFor(t => t.ShowName)
+            @Html.DisplayFor(t => t.ShowName, new {@class = "form-control"})
         </div>
 
         <div class="form-group">
             <label>Season</label>
             @Html.HiddenFor(t => t.Season)
-            @Html.DisplayFor(t => t.Season, new { @class = "form-control" })
+            @Html.DisplayFor(t => t.Season, new {@class = "form-control"})
         </div>
 
         <div class="form-group">
             <label>Episode</label>
             @Html.HiddenFor(t => t.Episode)
-            @Html.DisplayFor(t => t.Episode, new { @class = "form-control" })
+            @Html.DisplayFor(t => t.Episode, new {@class = "form-control"})
         </div>
 
         <div class="form-group">
             <label>Author</label>
             @Html.HiddenFor(t => t.Author)
-            @Html.DisplayFor(t => t.Author, new { @class = "form-control" })
+            @Html.DisplayFor(t => t.Author, new {@class = "form-control"})
         </div>
 
         <div class="form-group">
-            @Html.EnumDropDownListFor(t=>t.Approved, new { @class = "form-control" })
+            @Html.EnumDropDownListFor(t => t.Approved, new {@class = "form-control"})
         </div>
 
-        
 
-        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Approve</button>
-        @Html.ActionLink("Cancel", "AdminViewToonOfTheDaySubmissions", "Admin", null, new { @class = "btn btn-sm btn-info" })
+
+        <button type="submit" class="col-sm-offset-2 btn-sm btn-success">Approve</button>
+        @Html.ActionLink("Cancel", "AdminViewToonOfTheDaySubmissions", "Admin", null, new {@class = "btn btn-sm btn-info"})
 
     }
+        </div>
 </div>
