@@ -28,6 +28,7 @@ namespace ToonSaloon.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/app/LogoButton.css",
                       "~/Content/background.css"));
         }
     }

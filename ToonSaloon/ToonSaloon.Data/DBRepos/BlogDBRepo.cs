@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Policy;
@@ -89,7 +90,6 @@ namespace ToonSaloon.Data
 
                         post.Tags = GetTagsByPostId(post.Id);
                         post.Imgs = GetImgsByPostId(post.Id);
-                        post.Youtubes = GetYoutubeById(post.Id);
 
                     }
                 }
@@ -130,40 +130,6 @@ namespace ToonSaloon.Data
             return imgs;
         }
 
-       private List<Youtube> GetYoutubeById(int id)
-       {
-           List<Youtube> youtubes = new List<Youtube>();
-
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-
-               cmd.CommandText = @"SELECT y.YoutubeId, y.TubeId, y.Description
-                                        FROM Youtube y
-                                           JOIN Youtube_BlogBridge b
-                                               ON y.YoutubeId = b.YoutubeId
-                                                    WHERE b.BlogId = @BlogId";
-
-                cmd.Parameters.AddWithValue("@BlogId", id);
-
-                cmd.Connection = cn;
-
-                cn.Open();
-
-                using (var dr = cmd.ExecuteReader())
-               {
-                   while (dr.Read())
-                   {
-                       Youtube youtube = ConvertToYoutube(dr);
-
-                       youtubes.Add(youtube);
-                   }
-               }
-            }
-           return youtubes;
-
-       }
-
        private List<Tag> GetTagsByPostId(int id)
         {
             List<Tag> tags = new List<Tag>();
@@ -197,17 +163,6 @@ namespace ToonSaloon.Data
             }
             return tags;
         }
-
-       private Youtube ConvertToYoutube(SqlDataReader dr)
-       {
-           return new Youtube()
-           {
-               Id = (int) dr["YoutubeId"],
-               Description = dr["Description"].ToString(),
-               TubeId = dr["TubeId"].ToString()
-
-           };
-       }
 
        private Tag ConvertToTag(SqlDataReader dr)
         {
@@ -257,12 +212,20 @@ namespace ToonSaloon.Data
                var cmd = new SqlCommand();
                cmd.Connection = cn;
                cmd.CommandText =
-                   @"INSERT INTO BlogPost(Body, AuthorName, Category, Approved, DateCreated, Headline, Subtitle) 
-                                    VALUES (@Body, @AuthorName, @Category, @Approved, @DateCreated, @Headline, @Subtitle)";
+                   @"dbo.AddPost";
+               cmd.CommandType = CommandType.StoredProcedure;
+               SqlParameter param = new SqlParameter()
+               {
+                   SqlDbType = SqlDbType.Int,
+                   ParameterName = @"BlogId",
+                   SourceColumn = "BlogId",
+                   Direction = ParameterDirection.Output
+               };
 
+               cmd.Parameters.Add(param);
                cmd.Parameters.AddWithValue("@Body", postToAdd.Body);
                cmd.Parameters.AddWithValue("@AuthorName", postToAdd.AuthorName);
-               cmd.Parameters.AddWithValue("@Category", postToAdd.Category);
+               cmd.Parameters.AddWithValue("@Cateogry", postToAdd.Category);
                cmd.Parameters.AddWithValue("@Approved", postToAdd.Approved);
                cmd.Parameters.AddWithValue("@DateCreated", postToAdd.DateCreated);
                cmd.Parameters.AddWithValue("@Headline", postToAdd.Headline);
@@ -271,8 +234,25 @@ namespace ToonSaloon.Data
                cn.Open();
 
                cmd.ExecuteNonQuery();
+               postToAdd.Id = int.Parse(param.Value.ToString());
 
-           }
+               //if (postToAdd.Tags != null)
+               //{
+               //    foreach(var tag in postToAdd.Tags)
+               //    {
+               //        InsertTagBlogBridgeTable(tag.Id, postToAdd.Id);
+               //    }
+               //}
+
+                //if (postToAdd.Imgs != null)
+                //{
+                //    foreach (var img in postToAdd.Imgs)
+                //    {
+                //        InsertImgBlogBridgeTable(img.Id, newBlogId);
+                //    }
+                //}
+
+            }
        }
 
        public void RemoveBlogPost(BlogPost postToRemove)
@@ -326,7 +306,7 @@ namespace ToonSaloon.Data
             }
         }
 
-       public void AddImageToBlogPost(Img imgToAdd)
+       public void AddImageToBlogPost(Img imgToAdd, int blogid)
        {
 
            using (var cn = new SqlConnection(_connectiionString))
@@ -334,9 +314,17 @@ namespace ToonSaloon.Data
                var cmd = new SqlCommand();
 
                cmd.Connection = cn;
-               cmd.CommandText = @"INSERT INTO Img(Title, Source, Description)
-                                                VALUES (@Title, @Source, @Description)";
+               cmd.CommandText = @"dbo.AddImage";
+               cmd.CommandType = CommandType.StoredProcedure;
+               SqlParameter param = new SqlParameter()
+               {
+                   SqlDbType = SqlDbType.Int,
+                   ParameterName = @"ImgId",
+                   SourceColumn = "ImgId",
+                   Direction = ParameterDirection.Output
+               };
 
+               cmd.Parameters.Add(param);
                cmd.Parameters.AddWithValue("@Title", imgToAdd.Title);
                cmd.Parameters.AddWithValue("@Source", imgToAdd.Source);
                cmd.Parameters.AddWithValue("@Description", imgToAdd.Description);
@@ -344,8 +332,11 @@ namespace ToonSaloon.Data
                cn.Open();
 
                cmd.ExecuteNonQuery();
-           }
+               imgToAdd.Id = int.Parse(param.Value.ToString());
+               InsertImgBlogBridgeTable(imgToAdd.Id, blogid);
 
+
+           }
        }
 
        public void RemoveImageToBlogPost(Img imgToDelete)
@@ -387,26 +378,26 @@ namespace ToonSaloon.Data
            }
        }
 
-       public void InsertTagBlogBridgeTable(BlogPost id)
+       public void InsertTagBlogBridgeTable(int tagId, int newBlogId )
        {
-           foreach (var tag in id.Tags)
+
+
+           using (var cn = new SqlConnection(_connectiionString))
            {
-               using (var cn = new SqlConnection(_connectiionString))
-               {
-                   var cmd = new SqlCommand();
+               var cmd = new SqlCommand();
 
-                   cmd.Connection = cn;
-                   cmd.CommandText = @"INSTER INTO Tag_BlogBridge (TagId, BlogId)
-                                                VALUES (@TagId, @BlogId)";
+               cmd.Connection = cn;
+               cmd.CommandText = @"INSERT INTO Tag_BlogBridge (TagId, BlogId)
+                                                VALUES (@TagId, @BlogId);";
 
-                    cmd.Parameters.AddWithValue("@BlogId", id.Id);
-                    cmd.Parameters.AddWithValue("@TagId", tag.Id);
+               cmd.Parameters.AddWithValue("@BlogId", newBlogId);
+               cmd.Parameters.AddWithValue("@TagId", tagId);
 
-                    cn.Open();
+               cn.Open();
 
-                    cmd.ExecuteNonQuery();
-                }
+               cmd.ExecuteNonQuery();
            }
+
        }
 
        public void EditTagBlogBridgeTable(BlogPost id)
@@ -483,26 +474,20 @@ namespace ToonSaloon.Data
 
        }
 
-       public void InsertImgBlogBridgeTable(BlogPost id)
+       public void InsertImgBlogBridgeTable(int imgId, int newBlogId)
        {
-           foreach (var image in id.Imgs )
+           using (var cn = new SqlConnection(_connectiionString))
            {
-               using (var cn = new SqlConnection(_connectiionString))
-               {
-                   var cmd = new SqlCommand();
+               var cmd = new SqlCommand();
 
-                   cmd.Connection = cn;
-                   cmd.CommandText = @"INSERT INTO Img_BlogBridge (BlogId, ImgId)
-                                                VALUES (@BlogId, @ImgId)";
+               cmd.Connection = cn;
+               cmd.CommandText = @"INSERT INTO Img_BlogBridge (BlogId, ImgId)
+                                                VALUES (@Blogid, @ImgId)";
 
-                   cmd.Parameters.AddWithValue("@BlogId", id.Id);
-                   cmd.Parameters.AddWithValue("@ImgId", image.Id);
-
-                   cn.Open();
-
-                   cmd.ExecuteNonQuery();
-               }
-
+               cmd.Parameters.AddWithValue("@ImgId", imgId);
+               cmd.Parameters.AddWithValue("@BlogId", newBlogId);
+               cn.Open();
+               cmd.ExecuteNonQuery();
            }
        }
 

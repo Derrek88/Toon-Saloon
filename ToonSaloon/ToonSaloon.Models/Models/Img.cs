@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ToonSaloon.Models
 {
-   public class Img
-    {
+   public class Img 
+   {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "What is the title?")]
@@ -19,5 +20,6 @@ namespace ToonSaloon.Models
 
         [Required(ErrorMessage = "Tell us about this image")]
         public string Description { get; set; }
-    }
+      
+   }
 }

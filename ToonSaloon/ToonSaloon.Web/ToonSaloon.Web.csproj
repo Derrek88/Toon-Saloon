@@ -249,6 +249,7 @@
     <Content Include="Content\app\SinglePostStyle.css" />
     <Content Include="Content\app\jssocials-theme-classic.css" />
     <Content Include="Content\app\jssocials.css" />
+    <Content Include="Content\app\LogoButton.css" />
     <Content Include="Content\app\ListPageStyles.css" />
     <Content Include="Content\app\ug-theme-default.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />

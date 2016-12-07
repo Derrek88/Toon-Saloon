@@ -42,11 +42,11 @@ namespace ToonSaloon.BLL.Managers
 
         }
 
-        public void AddTag(Tag tagToAdd)
+        public void AddTag(Tag tagToAdd, int blogId)
         {
             var repo = TagFactory.CreateTagRepository();
 
-            repo.AddTag(tagToAdd);
+            repo.AddTag(tagToAdd, blogId);
         }
 
         public void RemoveTag(Tag tagToRemove)
@@ -73,21 +73,21 @@ namespace ToonSaloon.BLL.Managers
 
         //Met and create tags
 
-        public List<Tag> addTagToPost(string taglist)
+        public List<Tag> addTagToPost(string taglist, int BlogId)
         {
             var tags = new List<Tag>();
             var tagWords = taglist.Split(',');
 
             foreach (var name in tagWords)
             {
-                tags.Add(doestagexist(name));
+                tags.Add(doestagexist(name, BlogId));
 
             }
             return tags;
 
         }
 
-        public Tag doestagexist(string tagname)
+        public Tag doestagexist(string tagname, int blogId)
         {
             var repo = TagFactory.CreateTagRepository();
             var tagtoreturn = new Tag();
@@ -106,7 +106,7 @@ namespace ToonSaloon.BLL.Managers
                 {
                     var newtag = new Tag();
                     newtag.Name = tagname;
-                    repo.AddTag(newtag);
+                    repo.AddTag(newtag, blogId);
                
                     tagtoreturn = newtag;
                 }
