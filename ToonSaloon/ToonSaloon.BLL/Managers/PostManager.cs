@@ -48,17 +48,21 @@ namespace ToonSaloon.BLL
             var taglist = new List<Tag>();
             var posttags = postToAdd.TagPlaceHolder;
             var manager = new TagManager();
-            taglist = manager.addTagToPost(posttags);
+            taglist = manager.addTagToPost(posttags, postToAdd.Id);
             postToAdd.Tags = taglist;
+            repo.AddBlogPost(postToAdd);
 
-            foreach(var img in postToAdd.Imgs)
+            foreach (var img in postToAdd.Imgs)
             {
-                AddImage(img);
+                AddImage(img, postToAdd.Id);
+                AddImageFromBridge(postToAdd.Id, img.Id);
             }
-            AddImageFromBridge(postToAdd);
+
             AddTagFromBridge(postToAdd);
-         
-            repo.AddBlogPost(postToAdd); 
+
+
+
+
         }
 
         public void RemoveBlogPost(BlogPost postToRemove)
@@ -86,7 +90,7 @@ namespace ToonSaloon.BLL
             // edit tags
             //EditTagFromBridge(postToEdit);
             DeleteTagFromBridge(postToEdit);
-            taglist = manager.addTagToPost(posttags);
+            taglist = manager.addTagToPost(posttags, postToEdit.Id);
             postToEdit.Tags = taglist;
 
 
@@ -94,25 +98,25 @@ namespace ToonSaloon.BLL
             DeleteImageFromBridge(postToEdit);
             foreach (var img in postToEdit.Imgs)
             {
-                AddImage(img);
+                AddImage(img, postToEdit.Id);
             }
 
             repo.EditBlogPost(postToEdit);
 
         }
 
-        public void AddImage(Img imgToAdd)
+        public void AddImage(Img imgToAdd, int blogId)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.AddImageToBlogPost(imgToAdd);
+            repo.AddImageToBlogPost(imgToAdd, blogId);
         }
 
-        public void AddImageFromBridge(BlogPost id)
+        public void AddImageFromBridge(int imgId, int newBlogId)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.InsertImgBlogBridgeTable(id);
+            repo.InsertImgBlogBridgeTable(imgId, newBlogId);
         }
 
         public void DeleteImage(Img imgToDelete)
@@ -147,7 +151,11 @@ namespace ToonSaloon.BLL
         {
             var repo = BlogFactory.CreatBlogPostRepository();
 
-            repo.InsertTagBlogBridgeTable(id);
+            foreach (var tag in id.Tags)
+            {
+               repo.InsertTagBlogBridgeTable(tag.Id, id.Id);
+            }
+            
         }
 
         public void DeleteTagFromBridge(BlogPost id)

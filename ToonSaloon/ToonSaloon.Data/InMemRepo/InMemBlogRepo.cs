@@ -208,12 +208,12 @@ namespace ToonSaloon.Data.InMemRepo
             //tagPosts = tagPosts.Where
         }
 
-        public void AddImageToBlogPost(Img imgToAdd)
+        public void AddImageToBlogPost(Img imgToAdd, int blogid)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertImgBlogBridgeTable(BlogPost id)
+        public void InsertImgBlogBridgeTable(int imgId, int newBlogId)
         {
             throw new NotImplementedException();
         }
@@ -253,7 +253,7 @@ namespace ToonSaloon.Data.InMemRepo
             throw new NotImplementedException();
         }
 
-        public void InsertTagBlogBridgeTable(BlogPost id)
+        public void InsertTagBlogBridgeTable(int tagId, int newBlogId)
         {
             throw new NotImplementedException();
         }

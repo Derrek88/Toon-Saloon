@@ -4,7 +4,20 @@
     -webkit-border-radius: 111px;
     border-radius: 111px;
     background-color: whitesmoke;
-    /*padding-right: 30vw;
-    width: 55vw;*/
-    padding: 10px 10px 10px 10px;
+    margin: 2%;
+}
+.jumbotron {
+    height: 50vh;
+    width: 30vw;
+    vertical-align: middle;
+    margin-left: 5%;
+    margin-top: 5%;
+ 
+}
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }
