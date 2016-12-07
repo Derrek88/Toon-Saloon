@@ -4,7 +4,7 @@
 }
 
 <br />
-<div class="bpost">
+<div class="bpost" style=" margin-bottom: 35%">
     <h2 class="text-center">Edit Post</h2>
     @using (Html.BeginForm("AdminEditPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -20,30 +20,23 @@
                 @Html.EditorFor(model => Model.Imgs[i].Title);
                 @Html.EditorFor(model => Model.Imgs[i].Source);
             </div>
-
-
         }
-
-
-
-
         @Html.HiddenFor(p=> p.Subtitle)
         @Html.HiddenFor(p=> p.Approved)
         <div class="form-group">
             <label>Head line</label>
             @Html.TextBoxFor(p => p.Headline, new { @class = "form-control" })
         </div>
-
-
         @Html.TextAreaFor(p => p.Body, new { @class = "form-control", id = "mytextarea" })
         <br />
         <div class="form-group">
             <label>Tags</label>
-            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "Form-control" })
+            @Html.TextBoxFor(p => p.TagPlaceHolder, new { @class = "form-control" })
         </div>
 
         <div class="form-group">
             <label>Category</label>
+            
             @Html.EnumDropDownListFor(p => p.Category, "Select a Category", new { @class = "form-control" })
         </div>
             @*<div class="form-group">

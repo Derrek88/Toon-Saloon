@@ -53,15 +53,6 @@ namespace ToonSaloon.Data.InMemRepo
                            },
                         },
                         Category = Category.Childrens,
-                        Youtubes = new List<Youtube>
-                        {
-                            new Youtube()
-                            {
-                                TubeId = "XG5OwBqxIe8",
-                                Id = 1,
-                                Description = "Cool Card trick"
-                            }
-                        },
                         Imgs = new List<Img>
                         {
                             new Img()
@@ -134,15 +125,6 @@ namespace ToonSaloon.Data.InMemRepo
 
                         },
                         Category = Category.Childrens,
-                        Youtubes = new List<Youtube>
-                        {
-                            new Youtube()
-                            {
-                                TubeId = "XG5OwBqxIe8",
-                                Id = 1,
-                                Description = "Cool Card trick"
-                            }
-                        },
                         Imgs = new List<Img>
                         {
                             new Img()

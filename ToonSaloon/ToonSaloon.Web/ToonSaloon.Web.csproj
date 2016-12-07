@@ -246,6 +246,7 @@
     <Content Include="Content\app\images\button_fullscreen_single.png" />
     <Content Include="Content\app\images\button_playpause.png" />
     <Content Include="Content\app\images\button_playpause_single.png" />
+    <Content Include="Content\app\SinglePostStyle.css" />
     <Content Include="Content\app\jssocials-theme-classic.css" />
     <Content Include="Content\app\jssocials.css" />
     <Content Include="Content\app\LogoButton.css" />

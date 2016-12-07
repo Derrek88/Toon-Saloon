@@ -1,0 +1,44 @@
+﻿.bpost {
+    -webkit-box-shadow: 10px 10px 2px 2px #FF1F17;
+    box-shadow: 10px 10px 2px 2px #FF1F17;
+    -webkit-border-radius: 111px;
+    border-radius: 111px;
+    background-color: whitesmoke;
+    /*padding-right: 30vw;
+    width: 55vw;*/
+    padding: 10px 10px 10px 10px;
+    margin-top: 4%;
+    margin-bottom: 30%;
+}
+.author {
+    text-align: right;
+}
+.cata {
+    padding-top: 10%;   
+    font-variant: small-caps;
+    font-weight: bolder;
+ 
+    vertical-align: middle;
+
+}
+.datedate {
+    text-align: center;
+}
+#tag {
+    padding-top: 54%;
+}
+#tags {
+    padding-top: 10%;
+}
+#center {
+    margin-left: 9%;
+}
+#img {
+    height: 35vh;
+    width: 15vw;
+    padding:1px;
+   border:1px solid #021a40;
+}
+#approve {
+    padding-left: 12%;
+}

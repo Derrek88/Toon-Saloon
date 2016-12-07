@@ -86,7 +86,6 @@
     <Compile Include="Models\StaticPage.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Responses\ToonOfDayResponse.cs" />
-    <Compile Include="Models\Youtube.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -6,16 +6,16 @@
 @section styles{
     <link rel='stylesheet' href='../../Content/app/ListPageStyles.css' type='text/css' />
 }
-<h2>AdminViewBlogPostSubmissions</h2>
+
 @using (Html.BeginForm("AdminAddToon", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
 
 
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 bpost">
+        <div class="col-sm-10 col-sm-offset-1 bpost" style="margin-bottom: 45%">
             <h1>
-                <strong>Current Toons to</strong>
+                <strong>Toon of the day Approvals</strong>
             </h1>
 
             <table id="posts" class="table table-responsive table-striped table-condensed">

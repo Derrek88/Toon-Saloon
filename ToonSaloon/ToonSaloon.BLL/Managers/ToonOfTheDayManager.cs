@@ -71,6 +71,7 @@ namespace ToonSaloon.BLL
         public void AddToonOfDay(CartoonOfTheDay toonToAdd)
         {
             var repo = ToonOfDayFactory.CreateToonOfDayRepository();
+            toonToAdd.WhenPosted = DateTime.Today;
             repo.AddToonOfDay(toonToAdd);
         }
 

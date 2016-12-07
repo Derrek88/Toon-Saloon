@@ -77,7 +77,8 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"INSERT INTO CartoonOfTheDay(Author, ShowName, Season, Episode, Approved, DateCreated, ImgUrl, WhenPosted, HasNotBeenPosted)
-                                            VALUES (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreared, @ImgUrl, @WhenPosted, @HasNotBeenPosted)";
+                                            VALUES (@Author, @ShowName, @Season, @Episode, @Approved, @DateCreated, @ImgUrl, @WhenPosted, @HasNotBeenPosted)";
+
                 cmd.Parameters.AddWithValue("@Author", toonToAdd.Author);
                 cmd.Parameters.AddWithValue("@ShowName", toonToAdd.ShowName);
                 cmd.Parameters.AddWithValue("@Season", toonToAdd.Season);
@@ -104,15 +105,7 @@ namespace ToonSaloon.Data.DBRepos
                     @"DELETE FROM CartoonOfTheDay
                                 WHERE CotDId = @CotDId";
 
-                cmd.Parameters.AddWithValue("@Author", toonToRemove.Author);
-                cmd.Parameters.AddWithValue("@ShowName", toonToRemove.ShowName);
-                cmd.Parameters.AddWithValue("@Season", toonToRemove.Season);
-                cmd.Parameters.AddWithValue("@Episode", toonToRemove.Episode);
-                cmd.Parameters.AddWithValue("@Approved", toonToRemove.Approved);
-                cmd.Parameters.AddWithValue("@DateCreated", toonToRemove.DateCreated);
-                cmd.Parameters.AddWithValue("@ImgUrl", toonToRemove.ImgUrl);
-                cmd.Parameters.AddWithValue("@WhenPosted", toonToRemove.WhenPosted);
-                cmd.Parameters.AddWithValue("@HasNotBeenPosted", toonToRemove.HasNotBeenPosted);
+                cmd.Parameters.AddWithValue("@CotDId", toonToRemove.Id);
 
                 cn.Open();
 
@@ -128,9 +121,10 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"UPDATE CartoonOfTheDay
-                         SET Author = @Author, ShowName = @ShowName, Seaon = @Season, Episode = @Episode, Approve = @Approved, DateCreated = @DateCreated, ImgUrl = @ImgUrl, WhenPosted = @WhenPosted, HasNotBeenPosted = @HasNotBeenPosted
+                         SET Author = @Author, ShowName = @ShowName, Season = @Season, Episode = @Episode, Approved = @Approved, DateCreated = @DateCreated, ImgUrl = @ImgUrl, WhenPosted = @WhenPosted, HasNotBeenPosted = @HasNotBeenPosted
                           WHERE CotDId = @CotDId";
 
+                cmd.Parameters.AddWithValue("@CotDId", toonToEdit.Id);
                 cmd.Parameters.AddWithValue("@Author", toonToEdit.Author);
                 cmd.Parameters.AddWithValue("@ShowName", toonToEdit.ShowName);
                 cmd.Parameters.AddWithValue("@Season", toonToEdit.Season);
