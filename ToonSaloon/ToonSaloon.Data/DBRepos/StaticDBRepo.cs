@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -84,15 +85,24 @@ namespace ToonSaloon.Data.DBRepos
            return newPage;
        }
 
-       public void AddStaticPage(StaticPage pageToAdd)
-       {
+        public void AddStaticPage(StaticPage pageToAdd)
+        {
            using (var cn = new SqlConnection(_connectiionString))
            {
                var cmd = new SqlCommand();
                cmd.Connection = cn;
                cmd.CommandText =
-                   @"INSERT INTO CartoonOfTheDay(Name, Body, DateCreated, Approved, Category)
-                            VALUES (@Name, @Body, @DateCreated, @Approved)";
+                   @"dbo.AddPage";
+               cmd.CommandType = CommandType.StoredProcedure;
+
+               SqlParameter param = new SqlParameter()
+               {
+                   SqlDbType = SqlDbType.Int,
+                   ParameterName = @"StaticId",
+                   SourceColumn = "StaticId",
+                   Direction = ParameterDirection.Output
+               };
+               cmd.Parameters.Add(param);
                cmd.Parameters.AddWithValue("@Name", pageToAdd.Name);
                cmd.Parameters.AddWithValue("@Body", pageToAdd.Body);
                cmd.Parameters.AddWithValue("@DateCreated", pageToAdd.DateCreated);
@@ -102,6 +112,7 @@ namespace ToonSaloon.Data.DBRepos
                cn.Open();
 
                cmd.ExecuteNonQuery();
+               pageToAdd.Id = int.Parse(param.Value.ToString());
            }
        }
 
@@ -112,8 +123,9 @@ namespace ToonSaloon.Data.DBRepos
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText =
-                    @"DELETE FROM CartoonOfTheDay
-                                WHERE CotDId = @CotDId";
+                    @"DELETE FROM StaticPage
+                                WHERE StaticId = @StaticId";
+                cmd.Parameters.AddWithValue("@StaticId", pageToRemove.Id);
                 cmd.Parameters.AddWithValue("@Name", pageToRemove.Name);
                 cmd.Parameters.AddWithValue("@Body", pageToRemove.Body);
                 cmd.Parameters.AddWithValue("@DateCreated", pageToRemove.DateCreated);
@@ -133,9 +145,11 @@ namespace ToonSaloon.Data.DBRepos
                 var cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText =
-                    @"UPDATE CartoonOfTheDay
+                    @"UPDATE StaticPage
                             SET Name = @Name, Body = @Body, DateCreated = @DateCreated, Approved = @Approved
-                             WHERE CotDId = @CotDId";
+                             WHERE StaticId = @StaticId";
+
+                cmd.Parameters.AddWithValue("@StaticId", pageToEdit.Id);
                 cmd.Parameters.AddWithValue("@Name", pageToEdit.Name);
                 cmd.Parameters.AddWithValue("@Body", pageToEdit.Body);
                 cmd.Parameters.AddWithValue("@DateCreated", pageToEdit.DateCreated);
