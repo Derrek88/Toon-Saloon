@@ -265,13 +265,7 @@ namespace ToonSaloon.Data
                     @"DELETE FROM BlogPost 
                               WHERE BlogId = @BlogId";
 
-                cmd.Parameters.AddWithValue("@Body", postToRemove.Body);
-                cmd.Parameters.AddWithValue("@AuthorName", postToRemove.AuthorName);
-                cmd.Parameters.AddWithValue("@Category", postToRemove.Category);
-                cmd.Parameters.AddWithValue("@Approved", postToRemove.Approved);
-                cmd.Parameters.AddWithValue("@DateCreated", postToRemove.DateCreated);
-                cmd.Parameters.AddWithValue("@Headline", postToRemove.Headline);
-                cmd.Parameters.AddWithValue("@Subtitle", postToRemove.Subtitle);
+                cmd.Parameters.AddWithValue("@BlogId", postToRemove.Id);
 
                 cn.Open();
 
@@ -288,9 +282,10 @@ namespace ToonSaloon.Data
                 cmd.Connection = cn;
                 cmd.CommandText =
                     @"UPDATE BlogPost
-                        SET Body = @Body, AuthorName = @AuthorName, @Cateogry = Cateogry, Approved = @Approved, DateCreated = @DateCreated, Headline = @Headline, Subtitle = @Subtitle
+                        SET Body = @Body, AuthorName = @AuthorName, @Category = Cateogry, Approved = @Approved, DateCreated = @DateCreated, Headline = @Headline, Subtitle = @Subtitle
                         WHERE BlogId = @BlogId";
 
+                cmd.Parameters.AddWithValue("@BlogId", postToEdit.Id);
                 cmd.Parameters.AddWithValue("@Body", postToEdit.Body);
                 cmd.Parameters.AddWithValue("@AuthorName", postToEdit.AuthorName);
                 cmd.Parameters.AddWithValue("@Category", postToEdit.Category);
@@ -348,9 +343,7 @@ namespace ToonSaloon.Data
                cmd.CommandText = @"DELETE FROM Img
                                          WHERE ImgId = @ImgId";
 
-               cmd.Parameters.AddWithValue("@Title", imgToDelete.Title);
-               cmd.Parameters.AddWithValue("@Source", imgToDelete.Source);
-               cmd.Parameters.AddWithValue("@Description", imgToDelete.Description);
+               cmd.Parameters.AddWithValue("@ImgId", imgToDelete.Id);
 
                cn.Open();
 
@@ -368,6 +361,7 @@ namespace ToonSaloon.Data
                                        SET Title = @Title, Source = @Source, Description = @Description
                                             WHERE ImgId = @ImgId";
 
+               cmd.Parameters.AddWithValue("@ImgId", imgToEdit.Id);
                cmd.Parameters.AddWithValue("@Title", imgToEdit.Title);
                cmd.Parameters.AddWithValue("@Source", imgToEdit.Source);
                cmd.Parameters.AddWithValue("@Description", imgToEdit.Description);

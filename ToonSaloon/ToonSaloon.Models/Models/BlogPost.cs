@@ -34,8 +34,6 @@ namespace ToonSaloon.Models
 
         public Approved Approved { get; set; }
 
-        public List<Youtube> Youtubes { get; set; }
-
         public List<Img> Imgs { get; set; }
 
         //just a placeholder for tags don't think this needs to go in the database

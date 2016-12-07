@@ -62,7 +62,14 @@ namespace ToonSaloon.Web.Controllers
         [HttpGet]
         public ActionResult AdminEditPost(int id)
         {
+            string holder = "";
             var model = new PostManager().GetPostByID(id);
+
+            foreach (var tag in model.Tags)
+            {
+                holder = $"{holder},{tag.Name}";
+            }
+            model.TagPlaceHolder = holder;
             return View(model);
         }
 

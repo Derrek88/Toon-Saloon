@@ -97,7 +97,7 @@ namespace ToonSaloon.Data.DBRepos
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Tag
                                           WHERE TagId = @TagId";
-                cmd.Parameters.AddWithValue("@Name", tagToRemove.Name);
+                cmd.Parameters.AddWithValue("@TagId", tagToRemove.Id);
 
                 cn.Open();
 
