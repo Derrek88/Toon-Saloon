@@ -18,16 +18,30 @@ namespace ToonSaloon.BLL
             var toons = repo.GetAllToons();
 
             var result = from t in toons
-                         where t.Approved == Approved.Yes && t.HasNotBeenPosted
+                         where t.Approved == Approved.Yes && t.WhenPosted <= DateTime.Now.AddDays(-1)
                          select t;
 
             var theToon = result.OrderBy(t => t.DateCreated).FirstOrDefault();
 
-            if (theToon != null && theToon.WhenPosted <= theToon.WhenPosted.AddDays(1) )
+            if (theToon == null)
             {
-                return theToon;
-            }
+                var getNewUnposted = from t in toons
+                              where t.Approved == Approved.Yes && t.HasNotBeenPosted
+                              select t;
 
+                Random rnd = new Random();
+                var rlist = getNewUnposted.ToList();
+
+                if (rlist.Any())
+                {
+                    int r = rnd.Next(rlist.Count);
+
+                    return rlist[r];
+                }
+                
+            }
+            
+            
             if (theToon == null)
             {
                 var recycle = from t in toons
