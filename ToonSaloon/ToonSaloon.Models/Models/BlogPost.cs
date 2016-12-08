@@ -23,7 +23,6 @@ namespace ToonSaloon.Models
        
         public DateTime DateCreated { get; set; }
 
-        [Required(ErrorMessage = "What tags does this post need?")]
         public List<Tag> Tags { get; set; }
 
         [Required(ErrorMessage = "Who is posting this?")]
@@ -37,6 +36,8 @@ namespace ToonSaloon.Models
         public List<Img> Imgs { get; set; }
 
         //just a placeholder for tags don't think this needs to go in the database
+
+        [Required(ErrorMessage = "What tags does this post need?")]
         public string TagPlaceHolder { get; set; }
 
     }

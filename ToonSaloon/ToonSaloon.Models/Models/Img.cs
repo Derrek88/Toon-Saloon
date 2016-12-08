@@ -12,13 +12,10 @@ namespace ToonSaloon.Models
    {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "What is the title?")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "What is the source?")]
         public string Source { get; set; }
 
-        [Required(ErrorMessage = "Tell us about this image")]
         public string Description { get; set; }
       
    }
