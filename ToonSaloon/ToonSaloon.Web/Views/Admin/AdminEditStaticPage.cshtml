@@ -10,7 +10,7 @@
 <div class="col-xs-10 bpost" style="padding: 20px; margin-bottom: 10%">
     @Html.HiddenFor(p=>p.Page.Id)
     <h2 class="text-center">Edit Information Page</h2>
-    @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post, new {id = "addPage"}))
     {
         @Html.ValidationSummary()
         @Html.HiddenFor(p => p.Page.Id)

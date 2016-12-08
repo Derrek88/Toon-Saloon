@@ -6,7 +6,7 @@
 
 <div class="bpost">
     <h2 class="text-center">Add Post</h2>
-    @using (Html.BeginForm("AdminAddPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AdminAddPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "addPost"}))
     {
         @Html.ValidationSummary()
         <div class="form-group">

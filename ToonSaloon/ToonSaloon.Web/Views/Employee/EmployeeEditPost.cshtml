@@ -9,7 +9,7 @@
 <br />
 <div class="bpost">
     <h2 class="text-center">Edit Post</h2>
-    @using (Html.BeginForm("EmployeeEditPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("EmployeeEditPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data", id = "addPost" }))
     {
         @Html.ValidationSummary()
         @Html.HiddenFor(p => p.Id)

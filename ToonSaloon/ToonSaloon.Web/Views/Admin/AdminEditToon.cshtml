@@ -10,7 +10,7 @@
 
 <div class="col-sm-6 col-sm-offset-3 bpost" style="margin-bottom: 65%">
     <h2 class="text-center">Edit Toon</h2>
-    @using (Html.BeginForm("AdminEditToon", "Admin", FormMethod.Post, new {enctype = "multipart/from-data"}))
+    @using (Html.BeginForm("AdminEditToon", "Admin", FormMethod.Post, new {enctype = "multipart/from-data", id = "editToon"}))
     {
         @Html.ValidationSummary()
        @*<div class="invisible">*@

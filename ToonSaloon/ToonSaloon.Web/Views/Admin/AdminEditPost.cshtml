@@ -6,7 +6,7 @@
 <br />
 <div class="bpost" style="margin-bottom: 35%">
     <h2 class="text-center">Edit Post</h2>
-    @using (Html.BeginForm("AdminEditPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AdminEditPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "addPost"}))
     {
         @Html.ValidationSummary()
         @Html.HiddenFor(p=> p.Id)

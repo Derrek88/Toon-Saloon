@@ -12,7 +12,7 @@
 <div class="col-sm-4 col-sm-offset-4 bpost">
     <div id="center">
         <h2 class="text-center">Edit Toon</h2>
-        @using (Html.BeginForm("EmployeeEditToon", "Employee", FormMethod.Post, new {enctype = "multipart/from-data"}))
+        @using (Html.BeginForm("EmployeeEditToon", "Employee", FormMethod.Post, new {enctype = "multipart/from-data", id = "editToon"}))
         {
             @Html.ValidationSummary()
             @Html.HiddenFor(t => t.Id)
