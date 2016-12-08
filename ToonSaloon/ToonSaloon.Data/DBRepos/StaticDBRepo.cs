@@ -74,7 +74,7 @@ namespace ToonSaloon.Data.DBRepos
         {
             ToonSaloon.Models.StaticPage newPage = new ToonSaloon.Models.StaticPage
             {
-                Id = (int) dr["PageId"],
+                Id = (int) dr["StaticId"],
                 Name = dr["Name"].ToString(),
                 Body = dr["Body"].ToString(),
                 DateCreated = (DateTime) dr["DateCreated"],
@@ -126,11 +126,6 @@ namespace ToonSaloon.Data.DBRepos
                     @"DELETE FROM StaticPage
                                 WHERE StaticId = @StaticId";
                 cmd.Parameters.AddWithValue("@StaticId", pageToRemove.Id);
-                cmd.Parameters.AddWithValue("@Name", pageToRemove.Name);
-                cmd.Parameters.AddWithValue("@Body", pageToRemove.Body);
-                cmd.Parameters.AddWithValue("@DateCreated", pageToRemove.DateCreated);
-                cmd.Parameters.AddWithValue("@Approved", pageToRemove.Approved);
-                cmd.Parameters.AddWithValue("@Category", pageToRemove.Category);
 
                 cn.Open();
 
@@ -162,26 +157,25 @@ namespace ToonSaloon.Data.DBRepos
             }
         }
 
-       public void InsertTagStaticBridgeTable(StaticPage id)
+       public void InsertTagStaticBridgeTable(int tagId, int pageId)
         {
-            foreach (var tag in id.Tag)
-            {
+           
                 using (var cn = new SqlConnection(_connectiionString))
                 {
                     var cmd = new SqlCommand();
 
                     cmd.Connection = cn;
-                    cmd.CommandText = @"INSERT INTO Page_TagBridge (TagId, PageId)
-                                                VALUES (@TagId, PageId)";
+                    cmd.CommandText = @"INSERT INTO Page_TagBridge (TagId, StaticId)
+                                                VALUES (@TagId, @StaticId)";
 
-                    cmd.Parameters.AddWithValue("@TagId", tag.Id);
-                    cmd.Parameters.AddWithValue("@BlogId", id);
+                    cmd.Parameters.AddWithValue("@TagId", tagId);
+                    cmd.Parameters.AddWithValue("@StaticId", pageId);
 
                     cn.Open();
 
                     cmd.ExecuteNonQuery();
                 }
-            }
+            
         }
 
        public void DeleteTagStaticBridgeTable(StaticPage id)
@@ -191,9 +185,11 @@ namespace ToonSaloon.Data.DBRepos
                 var cmd = new SqlCommand();
 
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Page_TagBridge (TagId, PageId)";
+                cmd.CommandText = @"DELETE FROM Page_TagBridge
+                                               WHERE StaticId = @StaticId";
+                                               
 
-                cmd.Parameters.AddWithValue("@PageId", id);
+                cmd.Parameters.AddWithValue("@StaticId", id.Id);
 
                 cn.Open();
 
@@ -227,13 +223,13 @@ namespace ToonSaloon.Data.DBRepos
             {
                 var cmd = new SqlCommand();
 
-                cmd.CommandText = @"SELECT TagId, Name
+                cmd.CommandText = @"SELECT t.TagId, t.Name
                                         FROM Tag t
                                             JOIN Page_TagBridge b
                                                 ON t.TagId = b.TagId
-                                                  WHERE t.Page.Id = @Page.Id";
+                                                  WHERE b.StaticId = @StaticId";
 
-                cmd.Parameters.AddWithValue("@Page.Id", id);
+                cmd.Parameters.AddWithValue("@StaticId", id);
 
                 cmd.Connection = cn;
 

@@ -265,6 +265,7 @@ namespace ToonSaloon.Web.Controllers
             var pagetags = new List<Tag>();
             page.Name = vm.Page.Name;
             page.Tag = vm.Page.Tag;
+            page.Body = vm.Page.Body;
             page.Category = vm.Page.Category;
             page.Name = vm.Page.Name;
             page.Approved = Approved.Yes;
@@ -305,9 +306,11 @@ namespace ToonSaloon.Web.Controllers
             page.Name = vm.Page.Name;
             page.Tag = vm.Page.Tag;
             page.Category = vm.Page.Category;
+            page.Body = vm.Page.Body;
             page.Name = vm.Page.Name;
             page.Approved = Approved.Yes;
             page.DateCreated = DateTime.Today;
+            page.Id = vm.Page.Id;
             foreach (var id in vm.SelectedTagIds)
             {
                 var tag = tagm.GetTagById(id);

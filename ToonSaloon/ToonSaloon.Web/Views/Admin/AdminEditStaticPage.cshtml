@@ -8,16 +8,13 @@
 }
 <br />
 
-@section styles{
-    <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
-}
-<br />
-
 <div class="col-xs-10 bpost">
-    @Html.HiddenFor(p=>p.Page.Id)
+    
     <h2 class="text-center">Static Page With Posts</h2>
-    @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("AdminEditStaticPage", "Admin", FormMethod.Post))
     {
+        @Html.HiddenFor(p => p.Page.Id)
+        @Html.HiddenFor(t=> t.Page.DateCreated)
 
         <div class="form-group">
             <label>Title</label>          

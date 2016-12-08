@@ -91,7 +91,6 @@ namespace ToonSaloon.BLL
             var repo = BlogFactory.CreatBlogPostRepository();
 
             // edit tags
-            //EditTagFromBridge(postToEdit);
             DeleteTagFromBridge(postToEdit);
             taglist = manager.addTagToPost(posttags, postToEdit.Id);
             postToEdit.Tags = taglist;
@@ -99,12 +98,6 @@ namespace ToonSaloon.BLL
 
 
             // edit images
-            // DeleteImageFromBridge(postToEdit);
-            //foreach (var img in postToEdit.Imgs)
-            //{
-            //    AddImage(img, postToEdit.Id);
-            //}
-
             repo.EditBlogPost(postToEdit);
 
         }
@@ -137,20 +130,6 @@ namespace ToonSaloon.BLL
             repo.DeleteImgBlogBridgeTable(id);
         }
 
-        public void EditImage(Img imgToEdit)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.EditImageOnBlogPost(imgToEdit);
-        }
-
-        public void EditImageOnBridge(BlogPost id)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.EditImgBlogBridgeTable(id);
-        }
-
         public void AddTagFromBridge(BlogPost id)
         {
             var repo = BlogFactory.CreatBlogPostRepository();
@@ -167,21 +146,6 @@ namespace ToonSaloon.BLL
             var repo = BlogFactory.CreatBlogPostRepository();
 
             repo.DeleteTagBlogBridgeTable(id);
-        }
-
-        public void EditTagFromBridge(BlogPost id)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            repo.EditTagBlogBridgeTable(id);
-        }
-
-        public List<BlogPost> GetPostByTag(string TagName)
-        {
-            var repo = BlogFactory.CreatBlogPostRepository();
-
-            return repo.GetPostByTag(TagName);
-
         }
 
         public List<BlogPost> GetUnapprovedBlogPosts()
