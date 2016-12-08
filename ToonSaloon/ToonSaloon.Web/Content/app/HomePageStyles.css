@@ -23,8 +23,8 @@
     -webkit-border-radius: 111px;
     border-radius: 111px;
     background-color: whitesmoke;
-    width: 17vw;
-    height: 22vw;
+    width: 19vw;
+    height: 25vw;
     margin-left: 10%;
     margin-bottom: 8%;
     padding-bottom: 10%;
@@ -37,8 +37,7 @@
     border:1px solid #021a40;
     background-color:whitesmoke;
     width: 12vw;
-    height: 27vh;
-    
+    height: 27vh;   
 }
 #toondayshowtitle {
     text-align: center;
@@ -52,10 +51,11 @@
     -webkit-border-radius: 111px;
     border-radius: 111px;
     background-color: whitesmoke;
-    width: 17vw;
-    height: 15vw;
-    margin-top: 4%;
+    width: 19vw;
+    height: 17vw;
+    margin-top: 7%;
     margin-left: 10%;
+    padding-top: 4%;
 }
 #share {
     text-align: center;
@@ -74,6 +74,10 @@
     margin-top: 10%;
     padding-bottom: 10%;
     margin-left: 14%;
+    padding-left: 15%;
+    width: 19vw;
+    height: 19vw;
+   
 }
 .author {
     text-align: right;
@@ -88,4 +92,7 @@
 }
 .fixed {
     position: fixed;
+}
+#infobody {
+    padding: 28px;
 }

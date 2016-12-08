@@ -11,7 +11,7 @@
 }
 <br />
 
-<div class="col-xs-10 bpost">
+<div class="col-sm-10 col-sm-offset-1 bpost" style="padding: 30px;">
     <h2 class="text-center">Static Page With Posts</h2>
     @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
     {
@@ -36,7 +36,7 @@
             @Html.ListBoxFor(t => t.SelectedTagIds, Model.Tags, new { @class = "form-control" })
         </div>
 
-        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>
+        <button type="submit" class="col-sm-offset-2 btn-sm btn-success">Add</button>
         @Html.ActionLink("Cancel", "ManageStaticPages", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }
