@@ -35,28 +35,32 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult EmployeeAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
-            int i = 0;
-            foreach (var file in files)
+            if (ModelState.IsValid)
             {
-
-                if (file != null && file.ContentLength > 0)
+                int i = 0;
+                foreach (var file in files)
                 {
-                    var filename = System.IO.Path.GetFileName(file.FileName);
 
-                    // Where do we want to save the image
-                    var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
-                    file.SaveAs(path);
-                    post.Imgs[i].Source = "../../Images/appimages/" + filename;
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var filename = System.IO.Path.GetFileName(file.FileName);
 
+                        // Where do we want to save the image
+                        var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+                        file.SaveAs(path);
+                        post.Imgs[i].Source = "../../Images/appimages/" + filename;
+
+                    }
+                    i++;
                 }
-                i++;
-            }
 
-            var manager = new PostManager();
-            post.Approved = Approved.Waiting;
-            post.DateCreated = DateTime.Today;
-            manager.AddBlogPost(post);
-            return RedirectToAction("ManageCurrentPosts", "Employee");
+                var manager = new PostManager();
+                post.Approved = Approved.Waiting;
+                post.DateCreated = DateTime.Today;
+                manager.AddBlogPost(post);
+                return RedirectToAction("ManageCurrentPosts", "Employee");
+            }
+            return View("EmployeeAddPost");
         }
         [HttpGet]
         public ActionResult EmployeeEditPost(int id)
@@ -68,9 +72,13 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult EmployeeEditPost(BlogPost post)
         {
-            var manager = new PostManager();
-            manager.EditBlogPost(post);
-            return RedirectToAction("ManageCurrentPosts", "Employee");
+            if (ModelState.IsValid)
+            {
+                var manager = new PostManager();
+                manager.EditBlogPost(post);
+                return RedirectToAction("ManageCurrentPosts", "Employee");
+            }
+            return View("EmployeeEditPost");
         }
 
         [HttpGet]
@@ -107,18 +115,22 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult EmployeeAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
-            var filename = System.IO.Path.GetFileName(file.FileName);
-            var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
-            file.SaveAs(path);
+            if (ModelState.IsValid)
+            {
+                var filename = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+                file.SaveAs(path);
 
-            toon.ImgUrl = "../../Images/appimages/" + filename;
-            toon.Approved = Approved.Waiting;
-            toon.DateCreated = DateTime.Today;
+                toon.ImgUrl = "../../Images/appimages/" + filename;
+                toon.Approved = Approved.Waiting;
+                toon.DateCreated = DateTime.Today;
 
-            var manager = new ToonOfTheDayManager();
-            manager.AddToonOfDay(toon);
+                var manager = new ToonOfTheDayManager();
+                manager.AddToonOfDay(toon);
 
-            return RedirectToAction("ManageToonOfTheDay", "Employee");
+                return RedirectToAction("ManageToonOfTheDay", "Employee");
+            }
+            return View("EmployeeAddToon");
         }
 
         [HttpGet]
@@ -131,9 +143,13 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult EmployeeEditToon(CartoonOfTheDay toon)
         {
-            var manager = new ToonOfTheDayManager();
-            manager.RemoveToonOfDay(toon);
-            return RedirectToAction("ManageToonOfTheDay", "Employee");
+            if (ModelState.IsValid)
+            {
+                var manager = new ToonOfTheDayManager();
+                manager.RemoveToonOfDay(toon);
+                return RedirectToAction("ManageToonOfTheDay", "Employee");
+            }
+            return View("EmployeeEditToon");
         }
 
         [HttpGet]

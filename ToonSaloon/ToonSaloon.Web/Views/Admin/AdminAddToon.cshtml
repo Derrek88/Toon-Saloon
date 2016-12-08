@@ -11,40 +11,48 @@
 <div class="col-sm-4 col-sm-offset-4 bpost">
     <h2 class="text-center">Add Toon</h2>
     <div id="center">
-        @using (Html.BeginForm("AdminAddToon", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("AdminAddToon", "Admin", FormMethod.Post, new {enctype = "multipart/form-data", id = "addToon"}))
         {
+            @Html.ValidationSummary()
             <div class="form-group">
                 <label>Show Name</label>
-                @Html.TextBoxFor(t => t.ShowName, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.ShowName, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label>Season</label>
-                @Html.TextBoxFor(t => t.Season, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Season, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label>Episode</label>
-                @Html.TextBoxFor(t => t.Episode, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Episode, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label for="file">Image</label>
-                <input type="file" name="file" id="file" />
+                <input type="file" name="file" id="file"/>
             </div>
 
             <div class="form-group">
                 <label>Author</label>
-                @Html.TextBoxFor(t => t.Author, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Author, new {@class = "form-control"})
             </div>
 
             <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>
-            @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Admin", null, new { @class = "btn btn-lg btn-info" })
+            @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Admin", null, new {@class = "btn btn-lg btn-info"})
 
 
         }
     </div>
 </div>
+
+@section scripts{
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/app/Validation/jquery-validate-default.js"></script>
+    <script src="~/Scripts/app/Validation/AddToon.js"></script>
+}
 
 
 

@@ -55,8 +55,8 @@ namespace ToonSaloon.Data.DBRepos
 
         public Tag GetTagById(int id)
         {
-            var repo = new TagDBRepo();
-            var tag = repo.GetTagById(id);
+            var allTags = GetAllTags();
+            var tag = allTags.FirstOrDefault(b => b.Id == id);
             return tag;
         }
 

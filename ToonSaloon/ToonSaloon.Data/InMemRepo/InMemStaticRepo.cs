@@ -154,6 +154,11 @@ computer systems are to be used for business purposes only.When using [Companyâ€
             throw new NotImplementedException();
         }
 
+        public void InsertTagStaticBridgeTable(int tagId, int pageId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void InsertTagStaticBridgeTable(StaticPage id)
         {
             throw new NotImplementedException();

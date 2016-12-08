@@ -19,8 +19,6 @@ namespace ToonSaloon.Data
 
        void EditBlogPost(BlogPost postToEdit);
 
-       List<BlogPost> GetPostByTag(string TagName);
-
        void AddImageToBlogPost(Img imgToAdd, int blogid);
 
        void InsertImgBlogBridgeTable(int imgId, int newBlogId);
@@ -29,13 +27,7 @@ namespace ToonSaloon.Data
 
        void DeleteImgBlogBridgeTable(BlogPost id);
 
-       void EditImageOnBlogPost(Img imgToEdit);
-
-       void EditImgBlogBridgeTable(BlogPost id);
-
        void InsertTagBlogBridgeTable(int tagId, int newBlogId);
-
-       void EditTagBlogBridgeTable(BlogPost id);
 
        void DeleteTagBlogBridgeTable(BlogPost id);
    }

@@ -87,8 +87,6 @@ namespace ToonSaloon.Data
                             posts.Add(post);
                         }
 
-                        //ToonSaloon.Models.BlogPost newBlogPost = ConvertReaderToPost(dr);
-
                         post.Tags = GetTagsByPostId(post.Id);
                         post.Imgs = GetImgsByPostId(post.Id);
 
@@ -237,22 +235,6 @@ namespace ToonSaloon.Data
                cmd.ExecuteNonQuery();
                postToAdd.Id = int.Parse(param.Value.ToString());
 
-               //if (postToAdd.Tags != null)
-               //{
-               //    foreach(var tag in postToAdd.Tags)
-               //    {
-               //        InsertTagBlogBridgeTable(tag.Id, postToAdd.Id);
-               //    }
-               //}
-
-                //if (postToAdd.Imgs != null)
-                //{
-                //    foreach (var img in postToAdd.Imgs)
-                //    {
-                //        InsertImgBlogBridgeTable(img.Id, newBlogId);
-                //    }
-                //}
-
             }
        }
 
@@ -352,27 +334,6 @@ namespace ToonSaloon.Data
            }
        }
 
-       public void EditImageOnBlogPost(Img imgToEdit)
-       {
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-               cmd.Connection = cn;
-               cmd.CommandText = @"UPDATE Img
-                                       SET Title = @Title, Source = @Source, Description = @Description
-                                            WHERE ImgId = @ImgId";
-
-               cmd.Parameters.AddWithValue("@ImgId", imgToEdit.Id);
-               cmd.Parameters.AddWithValue("@Title", imgToEdit.Title);
-               cmd.Parameters.AddWithValue("@Source", imgToEdit.Source);
-               cmd.Parameters.AddWithValue("@Description", imgToEdit.Description);
-
-               cn.Open();
-
-               cmd.ExecuteNonQuery();
-           }
-       }
-
        public void InsertTagBlogBridgeTable(int tagId, int newBlogId )
        {
 
@@ -395,24 +356,6 @@ namespace ToonSaloon.Data
 
        }
 
-       public void EditTagBlogBridgeTable(BlogPost id)
-       {
-            using (var cn = new SqlConnection(_connectiionString))
-            {
-                var cmd = new SqlCommand();
-
-                cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Tag_BlogBridge
-                                        WHERE BlogId = @BlogId;";
-
-                cmd.Parameters.AddWithValue("@BlogId", id.Id);
-
-                cn.Open();
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
        public void DeleteTagBlogBridgeTable(BlogPost id)
        {
             using (var cn = new SqlConnection(_connectiionString))
@@ -430,24 +373,6 @@ namespace ToonSaloon.Data
                 cmd.ExecuteNonQuery();
             }
         }
-
-       public void EditImgBlogBridgeTable(BlogPost id)
-       {
-           using (var cn = new SqlConnection(_connectiionString))
-           {
-               var cmd = new SqlCommand();
-
-               cmd.Connection = cn;
-               cmd.CommandText = @"UPDATE Img_BlogBridge
-                                        WHERE BlogId = @BlogId";
-
-               cmd.Parameters.AddWithValue("@BlogId", id.Id);
-
-               cn.Open();
-
-               cmd.ExecuteNonQuery();
-           }
-       }
 
        public void DeleteImgBlogBridgeTable(BlogPost id)
        {
@@ -486,9 +411,6 @@ namespace ToonSaloon.Data
            }
        }
 
-       public List<BlogPost> GetPostByTag(string TagName)
-       {
-           throw new NotImplementedException();
-       }
+       
    }
 }

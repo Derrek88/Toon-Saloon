@@ -8,8 +8,9 @@
 <div class="bpost col-sm-10 col-sm-offset-1" style="margin-bottom: 3%">
     <div>
         <h2 class="text-center">Create Your Post</h2>
-        @using (Html.BeginForm("EmployeeAddPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("EmployeeAddPost", "Employee", FormMethod.Post, new { enctype = "multipart/form-data", id ="addPost" }))
         {
+            @Html.ValidationSummary()
             <div class="form-group">
                 <label>Headline</label>
                 @Html.TextBoxFor(p => p.Headline, new {@class = "form-control"})
@@ -70,6 +71,9 @@
 </div>
 
 @section scripts{
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/app/Validation/jquery-validate-default.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script src="~/Scripts/app/TinyMCE.js"></script>
     <script src="~/Scripts/app/AddmoreImages.js"></script>
@@ -77,6 +81,7 @@
     <script src="~/Scripts/jquery-ui-1.8.11.min.js"></script>
     <script src="~/Scripts/tag-it.js"></script>
     <script src="~/Scripts/app/tags.js"></script>
+    <script src="~/Scripts/app/Validation/AddPost.js"></script>
 
 }
 @section styles{

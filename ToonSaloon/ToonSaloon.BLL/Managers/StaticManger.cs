@@ -47,7 +47,7 @@ namespace ToonSaloon.BLL
 
             foreach (var tag in pageToAdd.Tag)
             {
-              //  InsertTagStaticBridgeTable();
+              InsertTagStaticBridgeTable(tag.Id, pageToAdd.Id);
             }
             
             
@@ -57,6 +57,7 @@ namespace ToonSaloon.BLL
         {
             var repo = StaticFactory.CreateStaticPageRepository();
 
+            repo.DeleteTagStaticBridgeTable(pageToRemove);
             repo.RemoveStaticPage(pageToRemove);
         }
 
@@ -64,25 +65,21 @@ namespace ToonSaloon.BLL
         {
             var repo = StaticFactory.CreateStaticPageRepository();
             repo.DeleteTagStaticBridgeTable(pageToEdit);
-            repo.InsertTagStaticBridgeTable(pageToEdit);
 
+            foreach (var tag in pageToEdit.Tag)
+            {
+                repo.InsertTagStaticBridgeTable(tag.Id, pageToEdit.Id);
+            }
 
             repo.EditStaticPage(pageToEdit);
+
         }
 
-        public void EditTagStaticBridgeTable(StaticPage id)
+        public void InsertTagStaticBridgeTable(int tagId, int pageId)
         {
-            
-        }
+            var repo = StaticFactory.CreateStaticPageRepository();
 
-        public void DeleteTagStaticBridgeTable(StaticPage id)
-        {
-            
-        }
-
-        public void InsertTagStaticBridgeTable(StaticPage id)
-        {
-            
+            repo.InsertTagStaticBridgeTable(tagId, pageId);
         }
 
         public StaticPage GetBySearch(int id)
