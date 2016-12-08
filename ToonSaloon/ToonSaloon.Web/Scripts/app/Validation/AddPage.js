@@ -1,6 +1,6 @@
 ﻿$(document)
     .ready(function() {
-        $('addPage')
+        $('#addPage')
             .validate({
                 rules: {
                     Name: {
@@ -12,9 +12,6 @@
                     Category: {
                         required: true
                     },
-                    Tag: {
-                        required: true
-                    },
                     messages: {
                         Name: {
                             required: "Who is posting this?"
@@ -24,9 +21,6 @@
                         },
                         Category: {
                             required: "Please choose one if its something specfic! (default is none)"
-                        },
-                        Tag: {
-                            required: "All you need is one!"
                         }
                     }
 
