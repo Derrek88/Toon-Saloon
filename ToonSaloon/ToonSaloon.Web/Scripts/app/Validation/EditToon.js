@@ -1,6 +1,6 @@
 ﻿$(document)
     .ready(function () {
-        $('#addToon')
+        $('#editToon')
             .validate({
                 rules: {
                     Author: {
