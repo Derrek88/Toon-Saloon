@@ -11,12 +11,14 @@ namespace ToonSaloon.Web.Controllers
     public class EmployeeController : Controller
     {
         // GET: Employee
+        [Authorize(Roles = "Employee")]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult ManageCurrentPosts()
 
         {
@@ -27,12 +29,14 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeAddPost()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
             if (ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace ToonSaloon.Web.Controllers
             return View("EmployeeAddPost");
         }
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeEditPost(int id)
         {
             var model = new PostManager().GetPostByID(id);
@@ -70,6 +75,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeEditPost(BlogPost post)
         {
             if (ModelState.IsValid)
@@ -82,6 +88,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeDeletetPost(int id)
         {
             var model = new PostManager().GetPostByID(id);
@@ -90,6 +97,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeDeletetPost(BlogPost post)
         {
             var manager = new PostManager();
@@ -99,6 +107,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult ManageToonOfTheDay()
         {
             var repo = new ToonOfTheDayManager();
@@ -107,12 +116,14 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeAddToon()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -134,6 +145,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeEditToon(int id)
         {
             var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
@@ -141,6 +153,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeEditToon(CartoonOfTheDay toon)
         {
             if (ModelState.IsValid)
@@ -153,6 +166,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeDeleteToon(int id)
         {
             var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
@@ -160,6 +174,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeDeleteToon(CartoonOfTheDay toon)
         {
             var manager = new ToonOfTheDayManager();
@@ -168,6 +183,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeViewPandR()
         {
             var manager = new StaticManger();

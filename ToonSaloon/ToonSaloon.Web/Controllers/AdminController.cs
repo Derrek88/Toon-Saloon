@@ -13,6 +13,7 @@ namespace ToonSaloon.Web.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
@@ -20,6 +21,7 @@ namespace ToonSaloon.Web.Controllers
    
         //BLOG POST SECTION
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageCurrentPosts()
         {
             var model = new PostManager().GetAllPosts();
@@ -27,12 +29,14 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddPost()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditPost(int id)
         {
             string holder = "";
@@ -79,6 +84,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditPost(BlogPost post)
         {
             if (ModelState.IsValid)
@@ -91,6 +97,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeletetPost(int id)
         {
             var model = new PostManager().GetPostByID(id);
@@ -98,6 +105,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeletetPost(BlogPost post)
         {
             var manager = new PostManager();
@@ -108,6 +116,7 @@ namespace ToonSaloon.Web.Controllers
 
         //TOON OF THE DAY SECTION
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageToonOfTheDay()
         {
             var manager = new ToonOfTheDayManager();
@@ -116,12 +125,14 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddToon()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -142,6 +153,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditToon(int id)
         {
             var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
@@ -149,6 +161,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditToon(CartoonOfTheDay toon)
         {
             if (ModelState.IsValid)
@@ -162,6 +175,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeleteToon(int id)
         {
             var model = new ToonOfTheDayManager().GetCartoonOfTheDay(id);
@@ -169,6 +183,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeleteToon(CartoonOfTheDay toon)
         {
             var manager = new ToonOfTheDayManager();
@@ -181,6 +196,7 @@ namespace ToonSaloon.Web.Controllers
         //SUBMISSIONS SECTION
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminViewBlogPostSubmissions()
         {
             var repo = new PostManager();
@@ -189,6 +205,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminViewToonOfTheDaySubmissions()
         {
             var manager = new ToonOfTheDayManager();
@@ -206,6 +223,7 @@ namespace ToonSaloon.Web.Controllers
         //    return View(model);
         //}
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminApprovePost(BlogPost post)
         {
             var manager = new PostManager();
@@ -216,6 +234,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminApprovePost(int id)
         {
 
@@ -226,6 +245,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminApproveToon(int id)
         {
             var manager = new ToonOfTheDayManager();
@@ -234,6 +254,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminApproveToon(CartoonOfTheDay toon)
         {
             var manager = new ToonOfTheDayManager();
@@ -244,6 +265,7 @@ namespace ToonSaloon.Web.Controllers
         //STATIC PAGE SECTION
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageStaticPages()
         {
             var manager = new StaticManger();
@@ -252,12 +274,14 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddStaticPage()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminAddStaticPage(StaticPage page)
         {
             var manager = new StaticManger();
@@ -266,6 +290,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminStaticPageWithPosts()
         {
             var manager = new TagManager();
@@ -275,6 +300,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminStaticPageWithPosts(StaticPageSearchVM vm)
         {
             if (ModelState.IsValid)
@@ -304,6 +330,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditStaticPage(int id)
         {
             var tagmanager = new TagManager();
@@ -318,6 +345,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminEditStaticPage(StaticPageSearchVM vm)
         {
             if (ModelState.IsValid)
@@ -350,6 +378,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeleteStaticPage(int id)
         {
             var manager = new StaticManger();
@@ -358,6 +387,7 @@ namespace ToonSaloon.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminDeleteStaticPage(StaticPage page)
         {
             var manager = new StaticManger();
