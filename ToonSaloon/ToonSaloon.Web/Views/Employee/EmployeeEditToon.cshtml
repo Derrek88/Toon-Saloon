@@ -12,38 +12,46 @@
 <div class="col-sm-4 col-sm-offset-4 bpost">
     <div id="center">
         <h2 class="text-center">Edit Toon</h2>
-        @using (Html.BeginForm("EmployeeEditToon", "Employee", FormMethod.Post, new { enctype = "multipart/from-data" }))
+        @using (Html.BeginForm("EmployeeEditToon", "Employee", FormMethod.Post, new {enctype = "multipart/from-data"}))
         {
+            @Html.ValidationSummary()
             @Html.HiddenFor(t => t.Id)
             <div class="form-group">
                 <label>Show Name</label>
-                @Html.TextBoxFor(t => t.ShowName, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.ShowName, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label>Season</label>
-                @Html.TextBoxFor(t => t.Season, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Season, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label>Episode</label>
-                @Html.TextBoxFor(t => t.Episode, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Episode, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
                 <label>Author</label>
-                @Html.TextBoxFor(t => t.Author, new { @class = "form-control" })
+                @Html.TextBoxFor(t => t.Author, new {@class = "form-control"})
             </div>
 
             <div class="form-group">
-                <img id="img" src="@Model.ImgUrl" />
-                @Html.HiddenFor(t => t.ImgUrl, new { @class = "form-control" })
+                <img id="img" src="@Model.ImgUrl"/>
+                @Html.HiddenFor(t => t.ImgUrl, new {@class = "form-control"})
             </div>
             <button type="submit" class="col-sm-offset-2 btn-sm btn-success">Save Changes</button>
-            @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Employee", null, new { @class = "btn btn-sm btn-info" })
+            @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Employee", null, new {@class = "btn btn-sm btn-info"})
 
 
         }
     </div>
 </div>
+
+@section scripts{
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/app/Validation/jquery-validate-default.js"></script>
+    <script src="~/Scripts/app/Validation/EditToon.js"></script>
+}
 

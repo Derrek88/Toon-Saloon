@@ -35,28 +35,32 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult AdminAddPost(BlogPost post, IEnumerable<HttpPostedFileBase> files)
         {
-            int i = 0;
-            foreach (var file in files)
+            if (ModelState.IsValid)
             {
-                
-                if (file != null && file.ContentLength > 0)
+                int i = 0;
+                foreach (var file in files)
                 {
-                    var filename = System.IO.Path.GetFileName(file.FileName);
 
-                    // Where do we want to save the image
-                    var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
-                    file.SaveAs(path);
-                    post.Imgs[i].Source = "../../Images/appimages/" + filename;
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var filename = System.IO.Path.GetFileName(file.FileName);
 
+                        // Where do we want to save the image
+                        var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+                        file.SaveAs(path);
+                        post.Imgs[i].Source = "../../Images/appimages/" + filename;
+
+                    }
+                    i++;
                 }
-                i++;
-            }
 
-            var manager = new PostManager();
-            post.Approved = Approved.Yes;
-            post.DateCreated = DateTime.Today;
-            manager.AddBlogPost(post);
-            return RedirectToAction("ManageCurrentPosts");
+                var manager = new PostManager();
+                post.Approved = Approved.Yes;
+                post.DateCreated = DateTime.Today;
+                manager.AddBlogPost(post);
+                return RedirectToAction("ManageCurrentPosts");
+            }
+            return View("AdminAddPost");
         }
 
         [HttpGet]
@@ -71,14 +75,19 @@ namespace ToonSaloon.Web.Controllers
             }
             model.TagPlaceHolder = holder;
             return View(model);
+
         }
 
         [HttpPost]
         public ActionResult AdminEditPost(BlogPost post)
         {
-            var manager = new PostManager();
-            manager.EditBlogPost(post);
-            return RedirectToAction("ManageCurrentPosts");
+            if (ModelState.IsValid)
+            {
+                var manager = new PostManager();
+                manager.EditBlogPost(post);
+                return RedirectToAction("ManageCurrentPosts");
+            }
+            return View("AdminEditPost");
         }
 
         [HttpGet]
@@ -115,17 +124,21 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult AdminAddToon(CartoonOfTheDay toon, HttpPostedFileBase file)
         {
-            var filename = System.IO.Path.GetFileName(file.FileName);
-            var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
-            file.SaveAs(path);
+            if (ModelState.IsValid)
+            {
+                var filename = System.IO.Path.GetFileName(file.FileName);
+                var path = System.IO.Path.Combine(Server.MapPath("../Images/appimages"), filename);
+                file.SaveAs(path);
 
-            toon.ImgUrl = "../../Images/appimages/" + filename;
-            toon.Approved = Approved.Yes;
-            toon.DateCreated = DateTime.Today;
+                toon.ImgUrl = "../../Images/appimages/" + filename;
+                toon.Approved = Approved.Yes;
+                toon.DateCreated = DateTime.Today;
 
-            var manager = new ToonOfTheDayManager();
-            manager.AddToonOfDay(toon);
-            return RedirectToAction("ManageToonOfTheDay");
+                var manager = new ToonOfTheDayManager();
+                manager.AddToonOfDay(toon);
+                return RedirectToAction("ManageToonOfTheDay");
+            }
+            return View("AdminAddToon");
         }
 
         [HttpGet]
@@ -138,9 +151,14 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult AdminEditToon(CartoonOfTheDay toon)
         {
-            var manager = new ToonOfTheDayManager();
-            manager.EditToonOfDay(toon); ;
-            return RedirectToAction("ManageToonOfTheDay");
+            if (ModelState.IsValid)
+            {
+                var manager = new ToonOfTheDayManager();
+                manager.EditToonOfDay(toon);
+                ;
+                return RedirectToAction("ManageToonOfTheDay");
+            }
+            return View("AdminEditPost");
         }
 
         [HttpGet]
@@ -259,26 +277,30 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult AdminStaticPageWithPosts(StaticPageSearchVM vm)
         {
-            var manager = new StaticManger();
-            var tagm = new TagManager();
-            StaticPage page = new StaticPage();
-            var pagetags = new List<Tag>();
-            page.Name = vm.Page.Name;
-            page.Tag = vm.Page.Tag;
-            page.Body = vm.Page.Body;
-            page.Category = vm.Page.Category;
-            page.Name = vm.Page.Name;
-            page.Approved = Approved.Yes;
-            page.DateCreated = DateTime.Today;
-            foreach(var id in vm.SelectedTagIds)
+            if (ModelState.IsValid)
             {
-                var tag = tagm.GetTagById(id);
-                pagetags.Add(tag);
+                var manager = new StaticManger();
+                var tagm = new TagManager();
+                StaticPage page = new StaticPage();
+                var pagetags = new List<Tag>();
+                page.Name = vm.Page.Name;
+                page.Tag = vm.Page.Tag;
+                page.Body = vm.Page.Body;
+                page.Category = vm.Page.Category;
+                page.Name = vm.Page.Name;
+                page.Approved = Approved.Yes;
+                page.DateCreated = DateTime.Today;
+                foreach (var id in vm.SelectedTagIds)
+                {
+                    var tag = tagm.GetTagById(id);
+                    pagetags.Add(tag);
 
+                }
+                page.Tag = pagetags;
+                manager.AddStaticPage(page);
+                return RedirectToAction("ManageStaticPages");
             }
-            page.Tag = pagetags;
-            manager.AddStaticPage(page);
-            return RedirectToAction("ManageStaticPages");
+            return View("AdminStaticPageWithPosts");
         }
 
         [HttpGet]
@@ -298,29 +320,33 @@ namespace ToonSaloon.Web.Controllers
         [HttpPost]
         public ActionResult AdminEditStaticPage(StaticPageSearchVM vm)
         {
-            var manager = new StaticManger();
-            var tagm = new TagManager();
-            var page = new StaticPage();
-
-            var pagetags = new List<Tag>();
-            page.Name = vm.Page.Name;
-            page.Tag = vm.Page.Tag;
-            page.Category = vm.Page.Category;
-            page.Body = vm.Page.Body;
-            page.Name = vm.Page.Name;
-            page.Approved = Approved.Yes;
-            page.DateCreated = DateTime.Today;
-            page.Id = vm.Page.Id;
-            foreach (var id in vm.SelectedTagIds)
+            if (ModelState.IsValid)
             {
-                var tag = tagm.GetTagById(id);
-                pagetags.Add(tag);
+                var manager = new StaticManger();
+                var tagm = new TagManager();
+                var page = new StaticPage();
 
+                var pagetags = new List<Tag>();
+                page.Name = vm.Page.Name;
+                page.Tag = vm.Page.Tag;
+                page.Category = vm.Page.Category;
+                page.Body = vm.Page.Body;
+                page.Name = vm.Page.Name;
+                page.Approved = Approved.Yes;
+                page.DateCreated = DateTime.Today;
+                page.Id = vm.Page.Id;
+                foreach (var id in vm.SelectedTagIds)
+                {
+                    var tag = tagm.GetTagById(id);
+                    pagetags.Add(tag);
+
+                }
+                page.Tag = pagetags;
+
+                manager.EditStaticPage(page);
+                return RedirectToAction("ManageStaticPages");
             }
-            page.Tag = pagetags;
-
-            manager.EditStaticPage(page);
-            return RedirectToAction("ManageStaticPages");
+            return View("AdminEditStaticPage");
         }
 
         [HttpGet]

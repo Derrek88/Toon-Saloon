@@ -12,6 +12,7 @@
     <h2 class="text-center">Edit Information Page</h2>
     @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
     {
+        @Html.ValidationSummary()
         @Html.HiddenFor(p => p.Page.Id)
         @Html.HiddenFor(t=> t.Page.DateCreated)
 
@@ -42,8 +43,12 @@
 </div>
 
 @section scripts{
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/app/Validation/jquery-validate-default.js"></script>
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script src="~/Scripts/app/TinyMCE.js"></script>
+    <script src="~/Scripts/app/Validation/AddPage.js"></script>
 }
 
 @*<div class="col-xs-10 bpost">
