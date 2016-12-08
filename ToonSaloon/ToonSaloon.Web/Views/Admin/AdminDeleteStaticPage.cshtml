@@ -8,7 +8,7 @@
 }
 <br />
 
-<div class="col-xs-10 bpost">
+<div class="col-sm-8 col-sm-offset-2 bpost" style="margin-bottom: 40%;">
 
     <h2 class="text-center">Static Page With Posts</h2>
     @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
@@ -38,7 +38,7 @@
             }
         </div>
 
-        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>
+        <button type="submit" class="col-sm-offset-2 btn-sm btn-success">Remove</button>
         @Html.ActionLink("Cancel", "ManageStaticPages", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }

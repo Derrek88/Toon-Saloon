@@ -6,16 +6,12 @@
 @section styles{
     <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
 }
+
 <br />
 
-@section styles{
-    <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
-}
-<br />
-
-<div class="col-xs-10 bpost">
+<div class="col-xs-10 bpost" style="padding: 20px; margin-bottom: 10%">
     @Html.HiddenFor(p=>p.Page.Id)
-    <h2 class="text-center">Static Page With Posts</h2>
+    <h2 class="text-center">Edit Information Page</h2>
     @using (Html.BeginForm("AdminStaticPageWithPosts", "Admin", FormMethod.Post))
     {
 
@@ -35,11 +31,11 @@
         </div>
 
         <div class="form-group">
-            <label>Select Category</label>
+            <label>Select Tags</label>
             @Html.ListBoxFor(t => t.SelectedTagIds, Model.Tags, new { @class = "form-control" })
         </div>
 
-        <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Add</button>
+        <button type="submit" class="col-sm-offset-2 btn-sm btn-success">Save</button>
         @Html.ActionLink("Cancel", "ManageStaticPages", "Admin", null, new { @class = "btn btn-sm btn-info" })
 
     }

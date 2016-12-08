@@ -6,12 +6,14 @@
     <link rel='stylesheet' href='../../Content/app/HomePageStyles.css' type='text/css' />
 }
 
-@*<div class="bpost">*@
-    <h2>@Model.Name</h2>
+<div class="bpost col-sm-8 col-sm-offset-2" style="margin-bottom: 55%">
+    <div id="infobody">
+        <h2>@Model.Name</h2>
 
 
-    <h5><strong>@Model.Body</strong></h5>
-@*</div>*@
+        <h5><strong>@Model.Body</strong></h5>
+    </div>
+</div>
 
 
 @if (Model.Posts != null)
@@ -118,5 +120,6 @@
 
         </div>
         <div class="col-sm-5 spacer"></div>
+
     }
 }              

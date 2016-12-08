@@ -57,7 +57,7 @@ namespace ToonSaloon.BLL
                 if (img.Source != null)
                 {
                     AddImage(img, postToAdd.Id);
-                    AddImageFromBridge(postToAdd.Id, img.Id);
+                    //AddImageFromBridge(postToAdd.Id, img.Id);
                 }
             }
 
