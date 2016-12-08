@@ -168,10 +168,11 @@ namespace ToonSaloon.Web.Controllers
             {
                 var manager = new ToonOfTheDayManager();
                 manager.EditToonOfDay(toon);
-                ;
+
                 return RedirectToAction("ManageToonOfTheDay");
             }
-            return View("AdminEditPost");
+            
+            return View("AdminEditToon");
         }
 
         [HttpGet]

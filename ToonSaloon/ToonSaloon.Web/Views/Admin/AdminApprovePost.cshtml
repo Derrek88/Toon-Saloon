@@ -17,10 +17,12 @@
                     <div>
                         @Html.HiddenFor(p => p.Id)
                         <div class="col-sm-2 datedate">
+                            @Html.HiddenFor(p=>p.DateCreated)
                             <h2>@Model.DateCreated.ToString("MMM")</h2>
                             <h3>@Model.DateCreated.ToString("dd")th</h3>
                             <div class="cata">
                                 Category:
+                                @Html.HiddenFor(p=>p.Category)
                                 @Model.Category.ToString()
                             </div>
                             <div id="tag">
@@ -36,6 +38,8 @@
                         </div>
 
                         <div class="col-sm-10">
+                            @Html.HiddenFor(p=>p.Headline)
+                            @Html.HiddenFor(p=>p.Subtitle)
                             <h2>@Model.Headline</h2>
                             <h3>@Model.Subtitle</h3>
                         </div>
@@ -114,6 +118,7 @@
                     <div class="row">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8 postbody">
+                            @Html.HiddenFor(p=>p.Body)
                             @Html.Raw(Model.Body)
                         </div>
                     </div>
@@ -123,6 +128,7 @@
                             @Html.EnumDropDownListFor(p => p.Approved, "Select a Category", new { @class = "form-control" })
                             <button type="submit" class="btn btn-lg btn-success pull-left">Save Approval</button>
                             <h3>
+                                @Html.HiddenFor(p=>p.AuthorName)
                                 - @Model.AuthorName
                             </h3>
                         </div>

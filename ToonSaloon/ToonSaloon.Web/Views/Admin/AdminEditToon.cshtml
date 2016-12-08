@@ -47,7 +47,7 @@
                 <img id="img" src="@Model.ImgUrl"/>
                 @Html.HiddenFor(t => t.ImgUrl, new {@class = "form-control"})
             </div>
-            <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Edit</button>
+            <button type="submit" class="col-sm-offset-2 btn-lg btn-success">Save</button>
             @Html.ActionLink("Cancel", "ManageToonOfTheDay", "Admin", null, new {@class = "btn btn-lg btn-info"})
         </div>
     }
